@@ -1,23 +1,29 @@
 #include <iostream>
 #include <fstream>
+#include <vector>
 using namespace std;
 
 // Structure to store user information
 struct User {
     std::string username;
     std::string password;
+    int gems; // New member variable to store gem count
 };
+
+// Global variables
+int experience = 0;
+int daystreak = 0;
 
 // Function declarations
 void login();
-void menu(std::string username);
+void menu(User currentuser); // Pass currentuser to menu function
 void characters();
 void leaderboard();
-void profile();
-void shop();
+void profile(User currentuser); // Pass currentuser to profile function
+void shop(User currentuser); // Pass currentuser to shop function
 void quests();
 void settings();
-void languages();
+void languages(User currentuser); // Pass currentuser to languages function
 void japanese();
 void spanish();
 void learn();
@@ -27,7 +33,7 @@ void exitProgram();
 // Functions
 
 // Language Selection
-void languages(std::string username) {
+void languages(User currentuser) {
     system("clear");
     int choice;
     std::cout << "Choose Language: " << std::endl;
@@ -44,66 +50,32 @@ void languages(std::string username) {
             spanish();
             break;
         case 3:
-            menu(username);
-            break;
+            return; // Return to menu
         default:
             std::cout << "Invalid Choice." << std::endl;
             break;
     }
 }
 
-// Function for register
-void createuser() {
+// Profile function
+void profile(User currentuser) {
     system("clear");
-
-    User newuser;
-    std::cout << "Enter Username: ";
-    std::cin >> newuser.username;
-    std::cout << "Enter Password: ";
-    std::cin >> newuser.password;
-
-    ofstream usersfile("Accounts.txt", ios::app);
-    usersfile << newuser.username << " " << newuser.password << " " << std::endl;
-    usersfile.close();
-
-    std::cout << "Account Created Successfully!" << std::endl;
-
-    main();
+    // Display Username
+    std::cout << currentuser.username << std::endl;
+    // Profile Statistics
+    std::cout << "Statistics:" << std::endl << std::endl;
+    std::cout << "Day Streak: " << daystreak << std::endl;
+    std::cout << "Total XP: " << experience << std::endl;
+    std::cout << "Gems: " << currentuser.gems << std::endl; // Display gem count
 }
 
-// Function for login
-void login() {
-    system("clear");
-    string username, password;
-    User currentuser;
-    bool found = false; // Initialize found variable
-
-    std::cout << "Enter Username: ";
-    std::cin >> username;
-    std::cout << "Enter password: ";
-    std::cin >> password; // Read password
-
-    if (username.empty() || password.empty()) { // Corrected usage of empty()
-        std::cout <<"Username and password can not be empty." << std::endl;
-        return; // Return from function if username or password is empty
-    }
-
-    ifstream usersfile("Accounts.txt");
-    while (usersfile >> currentuser.username >> currentuser.password) {
-        if (currentuser.username == username && currentuser.password == password) {
-            found = true;
-            menu(username); // Call menu function with username
-            break;
-        }
-    }
-    if (!found) {
-        std::cout << "Username or password is incorrect." << std::endl;
-    }
-    usersfile.close(); // Close the file outside the loop
+// Shop function
+void shop(User currentuser) {
 }
 
-// Main Menu
-void menu(std::string username) {
+
+// Main Menu Function
+void menu(User currentuser) {
     system("clear");
     int choice;
     do {
@@ -130,19 +102,20 @@ void menu(std::string username) {
                 leaderboard();
                 break;
             case 4:
-                shop();
+                shop(currentuser); // Pass currentuser to shop function
                 break;
             case 5:
                 quests();
                 break;
             case 6:
-                languages(username);
+                languages(currentuser); // Pass currentuser to languages function
                 break;
             case 7:
-                profile();
+                profile(currentuser); // Pass currentuser to profile function
                 break;
             case 8:
                 settings();
+                break;
             case 9:
                 return; // Return from menu function if logout is chosen
             default:
@@ -158,6 +131,58 @@ void exitProgram() {
     exit(0);
 }
 
+// Function for register
+void createuser() {
+    system("clear");
+
+    User newuser;
+    std::cout << "Enter Username: ";
+    std::cin >> newuser.username;
+    std::cout << "Enter Password: ";
+    std::cin >> newuser.password;
+
+
+    ofstream usersfile("Accounts.txt", ios::app);
+    usersfile << newuser.username << " " << newuser.password << " " << std::endl;
+    usersfile.close();
+
+    std::cout << "Account Created Successfully!" << std::endl;
+
+    main();
+}
+
+// Function for login
+void login() {
+    system("clear");
+    string username, password;
+    User currentuser;
+    bool found = false; // Initialize found variable
+
+    std::cout << "Enter Username: ";
+    std::cin >> username;
+    std::cout << "Enter password: ";
+    std::cin >> password; // Read password
+
+    if (username.empty() || password.empty()) {
+        std::cout <<"Username and password can not be empty." << std::endl;
+        return;
+    }
+
+    ifstream usersfile("Accounts.txt");
+    while (usersfile >> currentuser.username >> currentuser.password) {
+        if (currentuser.username == username && currentuser.password == password) {
+            found = true;
+            menu(currentuser);
+            break;
+        }
+    }
+    if (!found) {
+        std::cout << "Username or password is incorrect." << std::endl;
+    }
+    usersfile.close();
+}
+
+// Main function
 int main() {
     system("clear");
     int choice;
