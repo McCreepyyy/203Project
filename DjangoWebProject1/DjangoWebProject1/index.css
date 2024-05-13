@@ -1,0 +1,155 @@
+body {
+    font-family: 'Varela Round', sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.menu {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.language {
+    list-style: none;
+    color: #c0c0c0;
+}
+
+.flag {
+    width: 20px; /* Adjust as needed */
+    height: auto;
+    border-radius: 2.5px; /* Adjust border radius */
+    margin-right: 5px; /* Adjust spacing */
+}
+
+/* Dropdown Button */
+.dropbtn {
+    background-color: transparent;
+    color: black;
+    padding: 10px 30px 10px 15px; /* Adjusted padding */
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    position: relative;
+    font-family: 'Varela Round', sans-serif;
+}
+
+/* Dropdown arrow */
+.arrow {
+    position: absolute;
+    right: 10px;
+    top: 50%; /* Adjusted position */
+    transform: translateY(-50%); /* Adjusted position */
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    top: 100%; /* Adjusted position */
+    right: 0; /* Adjusted position */
+    font-family: 'Varela Round', sans-serif;
+}
+
+.dropdown {
+    position: relative;
+    font-family: 'Varela Round', sans-serif;
+}
+
+    /* Links inside the dropdown */
+    .dropdown-content a {
+        color: black;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+    }
+
+        /* Change color of dropdown links on hover */
+        .dropdown-content a:hover {
+            background-color: #f1f1f1;
+        }
+
+    /* Show the dropdown menu on click */
+    .dropdown-content.active {
+        display: block;
+    }
+
+        /* Change the background color of the dropdown button when the dropdown content is shown */
+        .dropdown-content.active + .dropbtn {
+            background-color: #f1f1f1;
+        }
+
+
+
+
+.container {
+    display: flex; /* Use flexbox to align items */
+}
+
+.groupimage {
+    flex: 1; /* Take up half of the container */
+    background-color: #ffffff;
+    padding: 20px;
+    padding-top: 75px;
+    padding-left: 150px;
+}
+
+.getstarted {
+    flex: 1; /* Take up half of the container */
+    background-color: #ffffff;
+    padding-top: 95px; /* Add padding for better readability */
+    margin-top: 80px;
+    font-size:medium;
+}
+
+    .getstarted .signupbtn {
+        font-family: 'Varela Round', sans-serif;
+        background-color: #58cc02;
+        color: #000000;
+        padding-left: 10px 20px;
+        margin-left: 70px;
+        font-weight: 100;
+        display: flex;
+        width: 325px;
+        display: inline-block;
+        border-radius: 20px;
+        cursor: pointer;
+        transition: box-shadow 0.3s ease;
+        box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.3);
+    }
+
+    .getstarted .signupbtn:active {
+        position: relative;
+        top: 1px;
+        box-shadow: -2px 2px 5px rgba(0, 0, 0, 0.3);
+    }
+
+    .getstarted .signinbtn {
+        margin-top: 15px;
+        font-family: 'Varela Round', sans-serif;
+        background-color: #ffffff;
+        color: #009af4;
+        padding-left: 10px 20px;
+        font-weight: 100;
+        display: flex;
+        margin-left: 70px;
+        display: inline-block;
+        border-radius: 20px;
+        cursor: pointer;
+        transition: box-shadow 0.3s ease;
+        box-shadow: 0px 3px 5px (rgba, 0, 0, 0, 0.3);
+    }
+
+    .getstarted .signinbtn:active {
+        position: relative;
+        top: 1px;
+        box-shadow: -2px 2px 5px rgba(0, 0, 0, 0.3);
+    }
+
+.text1 {
+    margin-left: 90px;
+}

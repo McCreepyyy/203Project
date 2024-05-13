@@ -1,0 +1,4 @@
+White - ffffff (text and background)
+Harlequin Green - 58cc02 (background colors)
+Vivid Cerulean Blue - 009af4 (text)
+Argent Grey - c0c0c0 (text)
