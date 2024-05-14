@@ -1,12 +1,88 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "C:\\Yoobee\\2024\\203\\.2\\203Project\\DjangoWebProject1\\",
-  "Documents": [],
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{73F38555-7065-40DB-A785-73F6C1CE4C72}|DjangoWebProject1\\DjangoWebProject1.pyproj|C:\\Yoobee\\2024\\203\\.2\\203Project\\DjangoWebProject1\\DjangoWebProject1\\getstartedjp.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{73F38555-7065-40DB-A785-73F6C1CE4C72}|DjangoWebProject1\\DjangoWebProject1.pyproj|solutionrelative:DjangoWebProject1\\getstartedjp.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{73F38555-7065-40DB-A785-73F6C1CE4C72}|DjangoWebProject1\\DjangoWebProject1.pyproj|C:\\Yoobee\\2024\\203\\.2\\203Project\\DjangoWebProject1\\DjangoWebProject1\\getstartedfr.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{73F38555-7065-40DB-A785-73F6C1CE4C72}|DjangoWebProject1\\DjangoWebProject1.pyproj|solutionrelative:DjangoWebProject1\\getstartedfr.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{73F38555-7065-40DB-A785-73F6C1CE4C72}|DjangoWebProject1\\DjangoWebProject1.pyproj|C:\\Yoobee\\2024\\203\\.2\\203Project\\DjangoWebProject1\\DjangoWebProject1\\getstarted.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{73F38555-7065-40DB-A785-73F6C1CE4C72}|DjangoWebProject1\\DjangoWebProject1.pyproj|solutionrelative:DjangoWebProject1\\getstarted.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{73F38555-7065-40DB-A785-73F6C1CE4C72}|DjangoWebProject1\\DjangoWebProject1.pyproj|C:\\Yoobee\\2024\\203\\.2\\203Project\\DjangoWebProject1\\DjangoWebProject1\\getstarted.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{73F38555-7065-40DB-A785-73F6C1CE4C72}|DjangoWebProject1\\DjangoWebProject1.pyproj|solutionrelative:DjangoWebProject1\\getstarted.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
       "VerticalTabListWidth": 256,
-      "DocumentGroups": []
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "getstartedjp.html",
+              "DocumentMoniker": "C:\\Yoobee\\2024\\203\\.2\\203Project\\DjangoWebProject1\\DjangoWebProject1\\getstartedjp.html",
+              "RelativeDocumentMoniker": "DjangoWebProject1\\getstartedjp.html",
+              "ToolTip": "C:\\Yoobee\\2024\\203\\.2\\203Project\\DjangoWebProject1\\DjangoWebProject1\\getstartedjp.html",
+              "RelativeToolTip": "DjangoWebProject1\\getstartedjp.html",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABoAAABBAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
+              "WhenOpened": "2024-05-14T03:05:13.396Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "getstartedfr.html",
+              "DocumentMoniker": "C:\\Yoobee\\2024\\203\\.2\\203Project\\DjangoWebProject1\\DjangoWebProject1\\getstartedfr.html",
+              "RelativeDocumentMoniker": "DjangoWebProject1\\getstartedfr.html",
+              "ToolTip": "C:\\Yoobee\\2024\\203\\.2\\203Project\\DjangoWebProject1\\DjangoWebProject1\\getstartedfr.html",
+              "RelativeToolTip": "DjangoWebProject1\\getstartedfr.html",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAAAcAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
+              "WhenOpened": "2024-05-14T03:05:12.488Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "getstarted.css",
+              "DocumentMoniker": "C:\\Yoobee\\2024\\203\\.2\\203Project\\DjangoWebProject1\\DjangoWebProject1\\getstarted.css",
+              "RelativeDocumentMoniker": "DjangoWebProject1\\getstarted.css",
+              "ToolTip": "C:\\Yoobee\\2024\\203\\.2\\203Project\\DjangoWebProject1\\DjangoWebProject1\\getstarted.css",
+              "RelativeToolTip": "DjangoWebProject1\\getstarted.css",
+              "ViewState": "AQIAAAkAAAAAAAAAAAAAABwAAAAMAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2024-05-14T02:58:58.208Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "getstarted.html",
+              "DocumentMoniker": "C:\\Yoobee\\2024\\203\\.2\\203Project\\DjangoWebProject1\\DjangoWebProject1\\getstarted.html",
+              "RelativeDocumentMoniker": "DjangoWebProject1\\getstarted.html",
+              "ToolTip": "C:\\Yoobee\\2024\\203\\.2\\203Project\\DjangoWebProject1\\DjangoWebProject1\\getstarted.html",
+              "RelativeToolTip": "DjangoWebProject1\\getstarted.html",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
+              "WhenOpened": "2024-05-14T01:53:39.185Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
     }
   ]
 }

@@ -1,11 +1,43 @@
 <!DOCTYPE html>
-
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<html lang="en">
 <head>
     <meta charset="utf-8" />
-    <title></title>
+    <title>Duolingo ー Get Started</title>
+    <link rel="icon" type="image/x-icon" href="images/bird.png" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" />
+    <link rel="stylesheet" href="getstarted.css" />
 </head>
 <body>
-
+    <nav class="menu">
+        <div style="position:relative; left: 30px; top: 20px;">
+            <a href="index.html"><img src="images/duolingo.png" alt="Duolingo" style="width: 179px; height: 42px;"></a>
+        </div>
+    </nav>
+    <div class="container">
+        <a href="signin.html" class="login-button">LOGIN</a>
+        <h2 class="profile-text">Create your profile</h2>
+        <form action="/submit_form" method="post">
+            <div class="form-group">
+                <input type="text" id="age" name="age" placeholder="Age" required>
+            </div>
+            <div class="privacy-policy">
+                <p>Providing your age ensures you get the right Duolingo experience. For more details, please visit our <a href="privacypolicy.html">Privacy Policy</a>.</p>
+            </div>
+            <div class="form-group">
+                <input type="text" id="name" name="name" placeholder="Name" required>
+            </div>
+            <div class="form-group">
+                <input type="email" id="email" name="email" placeholder="Email" required>
+            </div>
+            <div class="form-group">
+                <input type="password" id="password" name="password" placeholder="Password" required>
+            </div>
+            <button type="submit">CREATE ACCOUNT</button>
+        </form>
+        <div class="terms">
+            <p>By signing into Duolingo, you agree to our Terms and Privacy Policy.</p>
+            <p>This site is protected by reCAPTCHA Enterprise and the Google Privacy Policy and Terms of Service Apply.</p>
+        </div>
+    </div>
 </body>
 </html>

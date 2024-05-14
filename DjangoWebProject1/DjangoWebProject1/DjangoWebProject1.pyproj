@@ -36,11 +36,16 @@
     <Compile Include="DjangoWebProject1\wsgi.py" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="getstartedjp.html" />
+    <Content Include="indexfr.html" />
+    <Content Include="indexjp.html" />
     <Content Include="requirements.txt" />
     <Content Include="index.html" />
     <Content Include="index.css" />
     <Content Include="getstarted.html" />
     <Content Include="signin.html" />
+    <Content Include="getstartedfr.html" />
+    <Content Include="getstarted.css" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="DjangoWebProject1\" />

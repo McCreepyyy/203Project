@@ -1,0 +1,118 @@
+body {
+    font-family: 'Varela Round', sans-serif;
+    background-color: #131f24; /* Updated background color */
+    margin: 0;
+    padding: 0;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.menu {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.container {
+    border-radius: 10px; /* More rounded corners */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    width: 300px;
+    margin: auto; /* Center horizontally */
+    margin-top: 50px; /* Adjust top margin to position at the top */
+}
+
+.login-button {
+    font-family: 'Varela Round', sans-serif;
+    font-weight: 600;
+    position: absolute;
+    top: 25px;
+    right: 30px;
+    padding: 10px;
+    background-color: transparent; /* Transparent background */
+    border: 1px solid #ccc; /* Add border outline */
+    border-radius: 8px; /* More rounded corners */
+    color: #49c0f8; /* Text color */
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s; /* Smooth transition */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* 3D effect */
+    text-decoration: none; /* Remove underline */
+}
+
+    .login-button:hover {
+        background-color: #0078a0;
+        border-color: #0078a0; /* Change border color on hover */
+        transform: translateY(-2px); /* 3D hover effect */
+        color: white; /* Change text color on hover */
+    }
+
+
+.privacy-policy {
+    font-family: 'Varela Round', sans-serif;
+    color: #586c74;
+    font-size: 12px;
+}
+
+.profile-text {
+    text-align: center;
+    margin-bottom: 20px;
+    color: white; /* Change text color to white */
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="age"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 8px; /* More rounded corners */
+    box-sizing: border-box;
+    font-family: 'Varela Round', sans-serif; /* Ensure input text uses the same font */
+    background-color: #202f36;
+    color: white; /* Text color */
+    font-weight: 600; /* Make typed text semi-bold */
+}
+
+    /* Set the font for the placeholder text with vendor prefixes */
+    input[type="text"]::placeholder,
+    input[type="email"]::placeholder,
+    input[type="password"]::placeholder,
+    input[type="age"]::placeholder {
+        font-family: 'Varela Round', sans-serif;
+        color: white; /* Placeholder text color */
+        font-weight: 600; /* Make placeholder text semi-bold */
+        font-style: italic; /* Keep placeholder text italic */
+    }
+
+button {
+    font-family: 'Varela Round', sans-serif;
+    width: 100%;
+    padding: 10px;
+    background-color: #49c0f8;
+    border: 1px solid #ccc; /* Add border outline */
+    border-radius: 8px; /* More rounded corners */
+    color: #202f36; /* Text color */
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s; /* Smooth transition */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* 3D effect */
+}
+
+    button:hover {
+        background-color: #0078a0;
+        transform: translateY(-2px); /* 3D hover effect */
+        border-color: #ccc; /* Add border color change on hover */
+    }
+
+.terms {
+    font-family: 'Varela Round', sans-serif;
+    color: #586c74;
+    margin-top: 20px;
+    font-size: 12px;
+    text-align: center;
+}

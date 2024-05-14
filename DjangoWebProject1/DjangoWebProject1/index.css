@@ -18,7 +18,7 @@ body {
 .flag {
     width: 20px; /* Adjust as needed */
     height: auto;
-    border-radius: 2.5px; /* Adjust border radius */
+    border-radius: 5px; /* Adjust border radius */
     margin-right: 5px; /* Adjust spacing */
 }
 
@@ -122,33 +122,46 @@ body {
         box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.3);
     }
 
-    .getstarted .signupbtn:active {
-        position: relative;
-        top: 1px;
-        box-shadow: -2px 2px 5px rgba(0, 0, 0, 0.3);
+    .getstarted .signupbtn {
+        font-family: 'Varela Round', sans-serif;
+        background-color: #58cc02;
+        color: #000000;
+        padding: 10px 20px; /* Corrected padding */
+        margin-left: 70px;
+        font-weight: 100;
+        width: 325px;
+        border-radius: 20px;
+        cursor: pointer;
+        transition: box-shadow 0.3s ease;
+        box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.3);
     }
+
+        .getstarted .signupbtn:active {
+            position: relative;
+            top: 1px;
+            box-shadow: -2px 2px 5px rgba(0, 0, 0, 0.3);
+        }
 
     .getstarted .signinbtn {
         margin-top: 15px;
         font-family: 'Varela Round', sans-serif;
         background-color: #ffffff;
         color: #009af4;
-        padding-left: 10px 20px;
+        padding: 10px 20px; /* Corrected padding */
         font-weight: 100;
-        display: flex;
+        width: 325px;
         margin-left: 70px;
-        display: inline-block;
         border-radius: 20px;
         cursor: pointer;
         transition: box-shadow 0.3s ease;
-        box-shadow: 0px 3px 5px (rgba, 0, 0, 0, 0.3);
+        box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.3); /* Corrected box-shadow syntax */
     }
 
-    .getstarted .signinbtn:active {
-        position: relative;
-        top: 1px;
-        box-shadow: -2px 2px 5px rgba(0, 0, 0, 0.3);
-    }
+        .getstarted .signinbtn:active {
+            position: relative;
+            top: 1px;
+            box-shadow: -2px 2px 5px rgba(0, 0, 0, 0.3);
+        }
 
 .text1 {
     margin-left: 90px;
