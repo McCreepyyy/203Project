@@ -43,9 +43,12 @@
     <Content Include="index.html" />
     <Content Include="index.css" />
     <Content Include="getstarted.html" />
+    <Content Include="signinjp.html" />
+    <Content Include="signinfr.html" />
     <Content Include="signin.html" />
     <Content Include="getstartedfr.html" />
     <Content Include="getstarted.css" />
+    <Content Include="signin.css" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="DjangoWebProject1\" />
