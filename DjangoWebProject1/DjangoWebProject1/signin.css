@@ -20,8 +20,8 @@ body {
     margin-top: 50px;
     background-color: transparent;
     padding: 20px;
-    box-shadow: none; /* Removed box shadow */
-    border: none; /* Removed border */
+    box-shadow: none;
+    border: none;
 }
 
 .login-button {
@@ -70,7 +70,7 @@ input[type="email"],
 input[type="password"] {
     width: 100%;
     padding: 10px;
-    border: 1px solid #ccc; /* Retained border */
+    border: 1px solid #ccc;
     border-radius: 8px;
     box-sizing: border-box;
     font-family: 'Varela Round', sans-serif;

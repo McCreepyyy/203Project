@@ -1,6 +1,6 @@
 body {
     font-family: 'Varela Round', sans-serif;
-    background-color: #131f24; /* Updated background color */
+    background-color: #131f24;
     margin: 0;
     padding: 0;
     font-weight: 400;
@@ -14,11 +14,11 @@ body {
 }
 
 .container {
-    border-radius: 10px; /* More rounded corners */
+    border-radius: 10px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     width: 300px;
-    margin: auto; /* Center horizontally */
-    margin-top: 50px; /* Adjust top margin to position at the top */
+    margin: auto;
+    margin-top: 50px;
 }
 
 .login-button {
@@ -28,22 +28,22 @@ body {
     top: 25px;
     right: 30px;
     padding: 10px;
-    background-color: transparent; /* Transparent background */
-    border: 1px solid #ccc; /* Add border outline */
-    border-radius: 8px; /* More rounded corners */
-    color: #49c0f8; /* Text color */
+    background-color: transparent;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    color: #49c0f8;
     font-size: 14px;
     cursor: pointer;
-    transition: background-color 0.3s, transform 0.3s; /* Smooth transition */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* 3D effect */
-    text-decoration: none; /* Remove underline */
+    transition: background-color 0.3s, transform 0.3s;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-decoration: none;
 }
 
     .login-button:hover {
         background-color: #0078a0;
-        border-color: #0078a0; /* Change border color on hover */
-        transform: translateY(-2px); /* 3D hover effect */
-        color: white; /* Change text color on hover */
+        border-color: #0078a0;
+        transform: translateY(-2px);
+        color: white;
     }
 
 
@@ -56,7 +56,7 @@ body {
 .profile-text {
     text-align: center;
     margin-bottom: 20px;
-    color: white; /* Change text color to white */
+    color: white;
 }
 
 .form-group {
@@ -70,23 +70,22 @@ input[type="age"] {
     width: 100%;
     padding: 10px;
     border: 1px solid #ccc;
-    border-radius: 8px; /* More rounded corners */
+    border-radius: 8px;
     box-sizing: border-box;
-    font-family: 'Varela Round', sans-serif; /* Ensure input text uses the same font */
+    font-family: 'Varela Round', sans-serif;
     background-color: #202f36;
-    color: white; /* Text color */
-    font-weight: 600; /* Make typed text semi-bold */
+    color: white;
+    font-weight: 600;
 }
 
-    /* Set the font for the placeholder text with vendor prefixes */
     input[type="text"]::placeholder,
     input[type="email"]::placeholder,
     input[type="password"]::placeholder,
     input[type="age"]::placeholder {
         font-family: 'Varela Round', sans-serif;
-        color: white; /* Placeholder text color */
-        font-weight: 600; /* Make placeholder text semi-bold */
-        font-style: italic; /* Keep placeholder text italic */
+        color: white;
+        font-weight: 600;
+        font-style: italic;
     }
 
 button {
@@ -94,19 +93,19 @@ button {
     width: 100%;
     padding: 10px;
     background-color: #49c0f8;
-    border: 1px solid #ccc; /* Add border outline */
-    border-radius: 8px; /* More rounded corners */
-    color: #202f36; /* Text color */
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    color: #202f36;
     font-size: 16px;
     cursor: pointer;
-    transition: background-color 0.3s, transform 0.3s; /* Smooth transition */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* 3D effect */
+    transition: background-color 0.3s, transform 0.3s;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
     button:hover {
         background-color: #0078a0;
-        transform: translateY(-2px); /* 3D hover effect */
-        border-color: #ccc; /* Add border color change on hover */
+        transform: translateY(-2px);
+        border-color: #ccc;
     }
 
 .terms {

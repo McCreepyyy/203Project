@@ -3,8 +3,16 @@
   "WorkspaceRootPath": "C:\\Yoobee\\2024\\203\\.2\\203Project\\DjangoWebProject1\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{73F38555-7065-40DB-A785-73F6C1CE4C72}|DjangoWebProject1\\DjangoWebProject1.pyproj|C:\\Yoobee\\2024\\203\\.2\\203Project\\DjangoWebProject1\\DjangoWebProject1\\signinjp.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{73F38555-7065-40DB-A785-73F6C1CE4C72}|DjangoWebProject1\\DjangoWebProject1.pyproj|solutionrelative:DjangoWebProject1\\signinjp.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{73F38555-7065-40DB-A785-73F6C1CE4C72}|DjangoWebProject1\\DjangoWebProject1.pyproj|C:\\Yoobee\\2024\\203\\.2\\203Project\\DjangoWebProject1\\DjangoWebProject1\\getstarted.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{73F38555-7065-40DB-A785-73F6C1CE4C72}|DjangoWebProject1\\DjangoWebProject1.pyproj|solutionrelative:DjangoWebProject1\\getstarted.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{73F38555-7065-40DB-A785-73F6C1CE4C72}|DjangoWebProject1\\DjangoWebProject1.pyproj|C:\\Yoobee\\2024\\203\\.2\\203Project\\DjangoWebProject1\\DjangoWebProject1\\index.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{73F38555-7065-40DB-A785-73F6C1CE4C72}|DjangoWebProject1\\DjangoWebProject1.pyproj|solutionrelative:DjangoWebProject1\\index.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{73F38555-7065-40DB-A785-73F6C1CE4C72}|DjangoWebProject1\\DjangoWebProject1.pyproj|C:\\Yoobee\\2024\\203\\.2\\203Project\\DjangoWebProject1\\DjangoWebProject1\\signin.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{73F38555-7065-40DB-A785-73F6C1CE4C72}|DjangoWebProject1\\DjangoWebProject1.pyproj|solutionrelative:DjangoWebProject1\\signin.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
     }
   ],
   "DocumentGroupContainers": [
@@ -14,19 +22,45 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "signin.css",
+              "DocumentMoniker": "C:\\Yoobee\\2024\\203\\.2\\203Project\\DjangoWebProject1\\DjangoWebProject1\\signin.css",
+              "RelativeDocumentMoniker": "DjangoWebProject1\\signin.css",
+              "ToolTip": "C:\\Yoobee\\2024\\203\\.2\\203Project\\DjangoWebProject1\\DjangoWebProject1\\signin.css",
+              "RelativeToolTip": "DjangoWebProject1\\signin.css",
+              "ViewState": "AQIAAGYAAAAAAAAAAAAAAEgAAAAbAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2024-05-15T04:04:26.859Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "index.css",
+              "DocumentMoniker": "C:\\Yoobee\\2024\\203\\.2\\203Project\\DjangoWebProject1\\DjangoWebProject1\\index.css",
+              "RelativeDocumentMoniker": "DjangoWebProject1\\index.css",
+              "ToolTip": "C:\\Yoobee\\2024\\203\\.2\\203Project\\DjangoWebProject1\\DjangoWebProject1\\index.css",
+              "RelativeToolTip": "DjangoWebProject1\\index.css",
+              "ViewState": "AQIAAJMAAAAAAAAAAAAAAKEAAAABAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2024-05-15T04:04:17.627Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "signinjp.html",
-              "DocumentMoniker": "C:\\Yoobee\\2024\\203\\.2\\203Project\\DjangoWebProject1\\DjangoWebProject1\\signinjp.html",
-              "RelativeDocumentMoniker": "DjangoWebProject1\\signinjp.html",
-              "ToolTip": "C:\\Yoobee\\2024\\203\\.2\\203Project\\DjangoWebProject1\\DjangoWebProject1\\signinjp.html",
-              "RelativeToolTip": "DjangoWebProject1\\signinjp.html",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABEAAAAbAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
-              "WhenOpened": "2024-05-14T03:26:36.216Z",
+              "Title": "getstarted.css",
+              "DocumentMoniker": "C:\\Yoobee\\2024\\203\\.2\\203Project\\DjangoWebProject1\\DjangoWebProject1\\getstarted.css",
+              "RelativeDocumentMoniker": "DjangoWebProject1\\getstarted.css",
+              "ToolTip": "C:\\Yoobee\\2024\\203\\.2\\203Project\\DjangoWebProject1\\DjangoWebProject1\\getstarted.css",
+              "RelativeToolTip": "DjangoWebProject1\\getstarted.css",
+              "ViewState": "AQIAAGkAAAAAAAAAAAAAAGoAAAAkAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2024-05-15T04:04:12.703Z",
               "EditorCaption": ""
             }
           ]
