@@ -3,6 +3,7 @@
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <Name>DjangoWebProject1</Name>
     <RootNamespace>DjangoWebProject1</RootNamespace>
+    <SuppressEnvironmentCreationPrompt>True</SuppressEnvironmentCreationPrompt>
   </PropertyGroup>
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -39,6 +40,7 @@
     <Content Include="getstartedjp.html" />
     <Content Include="indexfr.html" />
     <Content Include="indexjp.html" />
+    <Content Include="lessonhub.css" />
     <Content Include="requirements.txt" />
     <Content Include="index.html" />
     <Content Include="index.css" />
@@ -49,6 +51,7 @@
     <Content Include="getstartedfr.html" />
     <Content Include="getstarted.css" />
     <Content Include="signin.css" />
+    <Content Include="lessonhub.html" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="DjangoWebProject1\" />
