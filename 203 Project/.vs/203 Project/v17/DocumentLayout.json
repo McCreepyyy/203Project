@@ -1,12 +1,71 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "C:\\Yoobee\\2024\\203\\.2\\203Project\\203 Project\\",
-  "Documents": [],
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{AA440CD7-D576-46A9-A6E4-FFB3C5E1883B}|203 Project\\203 Project.pyproj|C:\\Yoobee\\2024\\203\\.2\\203Project\\203 Project\\203 Project\\characters.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{AA440CD7-D576-46A9-A6E4-FFB3C5E1883B}|203 Project\\203 Project.pyproj|solutionrelative:203 Project\\characters.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AA440CD7-D576-46A9-A6E4-FFB3C5E1883B}|203 Project\\203 Project.pyproj|C:\\Yoobee\\2024\\203\\.2\\203Project\\203 Project\\203 Project\\characters.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{AA440CD7-D576-46A9-A6E4-FFB3C5E1883B}|203 Project\\203 Project.pyproj|solutionrelative:203 Project\\characters.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AA440CD7-D576-46A9-A6E4-FFB3C5E1883B}|203 Project\\203 Project.pyproj|C:\\Yoobee\\2024\\203\\.2\\203Project\\203 Project\\203 Project\\katakana.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{AA440CD7-D576-46A9-A6E4-FFB3C5E1883B}|203 Project\\203 Project.pyproj|solutionrelative:203 Project\\katakana.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
       "VerticalTabListWidth": 256,
-      "DocumentGroups": []
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 2,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "katakana.html",
+              "DocumentMoniker": "C:\\Yoobee\\2024\\203\\.2\\203Project\\203 Project\\203 Project\\katakana.html",
+              "RelativeDocumentMoniker": "203 Project\\katakana.html",
+              "ToolTip": "C:\\Yoobee\\2024\\203\\.2\\203Project\\203 Project\\203 Project\\katakana.html",
+              "RelativeToolTip": "203 Project\\katakana.html",
+              "ViewState": "AQIAAEkAAAAAAAAAAAAIwFwAAABPAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
+              "WhenOpened": "2024-05-17T06:10:42.518Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "characters.css",
+              "DocumentMoniker": "C:\\Yoobee\\2024\\203\\.2\\203Project\\203 Project\\203 Project\\characters.css",
+              "RelativeDocumentMoniker": "203 Project\\characters.css",
+              "ToolTip": "C:\\Yoobee\\2024\\203\\.2\\203Project\\203 Project\\203 Project\\characters.css",
+              "RelativeToolTip": "203 Project\\characters.css",
+              "ViewState": "AQIAAMQAAAAAAAAAAAAAwNIAAAAYAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2024-05-17T05:31:32.534Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "characters.html",
+              "DocumentMoniker": "C:\\Yoobee\\2024\\203\\.2\\203Project\\203 Project\\203 Project\\characters.html",
+              "RelativeDocumentMoniker": "203 Project\\characters.html",
+              "ToolTip": "C:\\Yoobee\\2024\\203\\.2\\203Project\\203 Project\\203 Project\\characters.html",
+              "RelativeToolTip": "203 Project\\characters.html",
+              "ViewState": "AQIAAFIAAAAAAAAAAAAYwHkAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
+              "WhenOpened": "2024-05-17T05:30:58.728Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
     }
   ]
 }

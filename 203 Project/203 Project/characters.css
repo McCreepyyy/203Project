@@ -7,6 +7,7 @@ body {
     padding: 0;
     display: flex;
     background-color: #131f24;
+    color: white;
 }
 
 /* Sidebar styles */
@@ -187,3 +188,58 @@ body {
 .gems {
     margin-right: 20px;
 }
+
+/* Characters section styles */
+.main-content .characters {
+    position: relative;
+    color: white;
+    text-align: center;
+    font-weight: 600;
+    margin-top: 20px; /* Adjust as needed for positioning */
+}
+
+    .main-content .characters .scripts {
+        display: flex;
+        justify-content: center;
+        gap: 50px; /* Adjust gap between links */
+    }
+
+    .main-content .characters .characters-link {
+        color: white;
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 18px;
+        position: relative;
+        padding-bottom: 30px;
+    }
+
+        .main-content .characters .characters-link::after {
+            content: '';
+            position: absolute;
+            bottom: -3px;
+            left: 0;
+            width: 0; /* Set width to 0 to remove the border */
+            height: 1px;
+            background-color: transparent; /* Set background color to transparent */
+            z-index: -1;
+        }
+
+        .main-content .characters .characters-link:hover {
+            color: #009af4;
+            border-color: #009af4;
+        }
+
+        .main-content .characters .characters-link:hover {
+            color: #009af4;
+            border-color: #009af4;
+        }
+
+    .main-content .characters .hiragana {
+        margin-top: 15px;
+        font-weight: 300;
+    }
+
+    .main-content .characters .katakana {
+        margin-top: 15px;
+        font-weight: 300;
+    }

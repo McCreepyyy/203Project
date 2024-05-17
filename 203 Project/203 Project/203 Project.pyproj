@@ -18,6 +18,7 @@
     <SuppressCollectPythonCloudServiceFiles>true</SuppressCollectPythonCloudServiceFiles>
     <Name>203 Project</Name>
     <RootNamespace>203 Project</RootNamespace>
+    <SuppressEnvironmentCreationPrompt>True</SuppressEnvironmentCreationPrompt>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
     <DebugSymbols>true</DebugSymbols>
@@ -39,6 +40,8 @@
     <Folder Include="views\" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="characters.css" />
+    <Content Include="characters.html" />
     <Content Include="getstarted.css" />
     <Content Include="getstarted.html" />
     <Content Include="getstartedfr.html" />
@@ -47,9 +50,12 @@
     <Content Include="index.html" />
     <Content Include="indexfr.html" />
     <Content Include="indexjp.html" />
+    <Content Include="katakana.html" />
     <Content Include="lessonhub.css" />
     <Content Include="lessonhub.html" />
     <Content Include="requirements.txt" />
+    <Content Include="settings.css" />
+    <Content Include="settings.html" />
     <Content Include="signin.css" />
     <Content Include="signin.html" />
     <Content Include="signinfr.html" />

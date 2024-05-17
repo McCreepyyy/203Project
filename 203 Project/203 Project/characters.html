@@ -1,11 +1,12 @@
+HTML:
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
-    <title>Duolingo ー Lesson Hub</title>
+    <title>Duolingo ー Learning Hub</title>
     <link rel="icon" type="image/x-icon" href="images/bird.png" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap">
-    <link rel="stylesheet" href="lessonhub.css" />
+    <link rel="stylesheet" href="characters.css" />
 </head>
 <body>
     <!-- Sidebar -->
@@ -86,13 +87,27 @@
             </div>
 
             <!-- Main Content -->
-            <h1>Welcome to Duolingo Learning Hub</h1>
-            <p>This is a placeholder for the main content area. Here you can add different sections related to your learning materials, lessons, and other relevant content.</p>
-        </div>
-    </div>
+            <div class="characters">
+                <div class="scripts">
+                    <a href="characters.html" class="characters-link"><b>HIRAGANA</b></a>
+                    <a href="katakana.html" class="characters-link"><b>KATAKANA</b></a>
+                </div>
+                <div class="hiragana">
+                    <p>Get to know the main writing system in Japanese</p>
+                    <img src="images/hiragana.png" alt="Hiragana" class="hiragana" style="width: 371px; height: 690px;" />
+                    <h3>Dakuon</h3>
+                    <p>Add a symbol to change the sound</p>
+                    <img src="images/hiraganadakuon.png" alt="Hiragana - Dakuon" class="hiragana" style="width: 390px; height:325px;" />
+                    <h3>Combo</h3>
+                    <p>Add small characters to make new syllables</p>
+                    <img src="images/hiraganacombo.png" alt="Hiragana - Combo" class="hiragana" style="width: 390px; height:750px;" />
+                </div>
 
-    <!-- JavaScript -->
-    <script>
+            </div>
+        </div>
+
+        <!-- JavaScript -->
+        <script>
         function toggleDropdown() {
             var dropdown = document.getElementById("dropdownContent");
             dropdown.classList.toggle("active");
@@ -121,7 +136,7 @@
 
         // Call function to initialize hearts count
         updateHearts();
-    </script>
+        </script>
 
 </body>
 </html>
