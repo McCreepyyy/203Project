@@ -40,12 +40,17 @@
     <Content Include="index.html" />
     <Content Include="indexfr.html" />
     <Content Include="indexjp.html" />
+    <Content Include="katakana.css" />
     <Content Include="katakana.html" />
+    <Content Include="leaderboards.html" />
     <Content Include="lessonhub.css" />
     <Content Include="lessonhub.html" />
+    <Content Include="profile.html" />
+    <Content Include="quests.html" />
     <Content Include="requirements.txt" />
     <Content Include="settings.css" />
     <Content Include="settings.html" />
+    <Content Include="shop.html" />
     <Content Include="signin.css" />
     <Content Include="signin.html" />
     <Content Include="signinfr.html" />

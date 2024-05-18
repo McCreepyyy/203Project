@@ -202,6 +202,8 @@ body {
         display: flex;
         justify-content: center;
         gap: 50px; /* Adjust gap between links */
+        margin-right: 51px;
+        padding-top: 20px;
     }
 
     .main-content .characters .characters-link {
@@ -235,15 +237,19 @@ body {
         }
 
     .main-content .characters .hiragana {
-        align-content: center;
         margin-top: 15px;
         font-weight: 300;
-        padding-left: 0px;
     }
 
     .main-content .characters .katakana {
         margin-top: 15px;
         font-weight: 300;
+        align-content: center;
+        padding-right: 30px;
+    }
+    
+    .main-content .characters .katakana .katakana-text1 {
+        padding-right: 30px;
     }
 
 /* Leaderboard and Daily Quests styles */
