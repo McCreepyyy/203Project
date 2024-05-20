@@ -1,18 +1,18 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
     <title>Duolingo</title>
-    <link rel="icon" type="image/x-icon" href="images/bird.png" />
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='images/bird.png') }}" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap">
-    <link rel="stylesheet" href="index.css" />
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='index.css') }}">
 </head>
 
 <body>
     <!-- Navigation Bar -->
     <nav class="menu">
         <div style="position:relative; left: 50px; bottom: 15px;">
-            <a href="index.html"><img src="images/duolingo.png" alt="Duolingo" style="width:179px;height:42px"></a>
+            <a href="{{ url_for('index') }}"><img src="{{ url_for('static', filename='images/duolingo.png') }}" alt="Duolingo" style="width:179px;height:42px"></a>
         </div>
 
         <ul>
@@ -20,9 +20,10 @@
                 <div class="dropdown">
                     <button class="dropbtn" onclick="toggleDropdown()"><b>SITE LANGUAGE: ENGLISH</b><span class="arrow">&#9662;</span></button>
                     <div class="dropdown-content" id="dropdownContent">
-                        <a href="index.html"><img src="images/flag_en.png" alt="English" class="flag" />English</a>
-                        <a href="indexjp.html"><img src="images/flag_jp.png" alt="Japanese" class="flag" />日本語</a>
-                        <a href="indexfr.html"><img src="images/flag_fr.png" alt="French" class="flag" />Français</a>
+                        <a href="{{ url_for('index') }}"><img src="{{ url_for('static', filename='images/flag_en.png') }}" alt="English" class="flag" />English</a>
+                        <!-- You'll need to create routes for these in your Flask application -->
+                        <a href="{{ url_for('indexjp') }}"><img src="{{ url_for('static', filename='images/flag_jp.png') }}" alt="Japanese" class="flag" />日本語</a>
+                        <a href="{{ url_for('indexfr') }}"><img src="{{ url_for('static', filename='images/flag_fr.png') }}" alt="French" class="flag" />Français</a>
                     </div>
                 </div>
             </li>
@@ -32,17 +33,16 @@
     <div class="container">
         <!-- Image -->
         <div class="groupimage">
-            <img src="images/group.png" width="800" height="500" alt="Group of Characters" />
+            <img src="{{ url_for('static', filename='images/group.png') }}" width="800" height="500" alt="Group of Characters" />
         </div>
         <!-- Text -->
         <div class="getstarted">
             <h1><b>The free, fun, and effective way</b></h1>
             <h1 class="text1"><b>learn a language!</b></h1>
 
-            <button onclick="window.location.href='getstarted.html'" class="signupbtn"><h2>GET STARTED</h2></button>
-            <button onclick="window.location.href='signin.html'" class="signinbtn"><h2>I ALREADY HAVE AN ACCOUNT</h2></button>
+            <button onclick="window.location.href='{{ url_for('getstarted') }}'" class="signupbtn"><h2>GET STARTED</h2></button>
+            <button onclick="window.location.href='{{ url_for('signin') }}'" class="signinbtn"><h2>I ALREADY HAVE AN ACCOUNT</h2></button>
 
-            </
         </div>
 
     </div>

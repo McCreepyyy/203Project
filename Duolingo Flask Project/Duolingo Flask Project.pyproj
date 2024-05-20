@@ -27,9 +27,6 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="app.py" />
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="requirements.txt" />
     <Content Include="static\characters.css" />
     <Content Include="static\getstarted.css" />
@@ -79,6 +76,7 @@
     <Content Include="templates\signin.html" />
     <Content Include="templates\signinfr.html" />
     <Content Include="templates\signinjp.html" />
+    <Content Include="test.db" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="templates\" />
@@ -95,6 +93,10 @@
       <PathEnvironmentVariable>PYTHONPATH</PathEnvironmentVariable>
       <Architecture>X64</Architecture>
     </Interpreter>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="app.py" />
+    <Compile Include="read_db.py" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.Web.targets" />
   <!-- Specify pre- and post-build commands in the BeforeBuild and 

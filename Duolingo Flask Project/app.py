@@ -16,6 +16,10 @@ class User(db.Model):
         return '<User %r>' % self.username
 
 @app.route('/')
+def index():
+    return render_template('index.html')
+
+@app.route('/signin')
 def signin():
     return render_template('signin.html')
 
@@ -27,9 +31,10 @@ def getstarted():
 def privacypolicy():
     return render_template('privacypolicy.html')
 
-@app.route('/index')
-def index():
-    return render_template('index.html')
+# Remove the duplicate index route
+# @app.route('/index')
+# def index():
+#     return render_template('index.html')
 
 @app.route('/indexjp')
 def indexjp():

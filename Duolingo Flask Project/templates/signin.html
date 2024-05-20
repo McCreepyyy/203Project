@@ -1,22 +1,22 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
     <title>Duolingo - Log In</title>
-    <link rel="icon" type="image/x-icon" href="images/bird.png" />
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='images/bird.png') }}">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" />
-    <link rel="stylesheet" href="signin.css" />
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='signin.css') }}">
 </head>
 <body>
     <nav class="menu">
         <div style="position:relative; left: 30px; top: 20px;">
-            <a href="index.html"><img src="images/duolingo.png" alt="Duolingo" style="width: 179px; height: 42px;"></a>
+            <a href="index.html"><img src="{{ url_for('static', filename='images/duolingo.png') }}" alt="Duolingo" style="width: 179px; height: 42px;"></a>
         </div>
     </nav>
     <div class="container">
-        <a href="signup.html" class="login-button">SIGN UP</a>
+        <a href="{{ url_for('getstarted') }}" class="login-button">SIGN UP</a>
         <h2 class="profile-text">Log in</h2>
-        <form action="/submit_form" method="post">
+        <form action="/login" method="post">
             <div class="form-group">
                 <input type="email" id="email" name="email" placeholder="Email" required>
             </div>
