@@ -2,50 +2,52 @@
 <html lang="en">
 <head>
     <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Duolingo ー Learning Hub</title>
-    <link rel="icon" type="image/x-icon" href="images/bird.png" />
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='images/bird.png') }}" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap">
-    <link rel="stylesheet" href="characters.css" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='characters.css') }}" />
 </head>
 <body>
     <!-- Sidebar -->
     <div class="sidebar">
-        <a href="lessonhub.html" class="logo-link">
-            <img src="images/duolingo2.png" alt="Duolingo" class="logo-image" style="width:120px;height:30px;" draggable="false" />
+        <a href="{{ url_for('lessonhub') }}" class="logo-link">
+            <img src="{{ url_for('static', filename='images/duolingo2.png') }}" alt="Duolingo" class="logo-image" style="width:120px;height:30px;" draggable="false" />
         </a>
-        <a href="lessonhub.html" class="sidebar-link">
-            <img src="images/learn.png" alt="Learn" style="width: 35px; height: 35px;" draggable="false" />
+        <a href="{{ url_for('lessonhub') }}" class="sidebar-link">
+            <img src="{{ url_for('static', filename='images/learn.png') }}" alt="Learn" style="width: 35px; height: 35px;" draggable="false" />
             <b>Learn</b>
         </a>
-        <a href="characters.html" class="sidebar-link">
-            <img src="images/characters.png" alt="Characters" style="width: 35px; height: 35px;" draggable="false" />
+        <a href="{{ url_for('characters') }}" class="sidebar-link">
+            <img src="{{ url_for('static', filename='images/characters.png') }}" alt="Characters" style="width: 35px; height: 35px;" draggable="false" />
             <b>Characters</b>
         </a>
-        <a href="leaderboards.html" class="sidebar-link">
-            <img src="images/leaderboards.png" alt="Leaderboards" style="width: 35px; height: 35px;" draggable="false" />
-            <b>Leaderboards</b>
+        <a href="{{ url_for('leaderboards') }}" class="sidebar-link">
+            <img src="{{ url_for('static', filename='images/leaderboards.png') }}" alt="Leaderboards" style="width: 35px; height: 35px;" draggable="false" />
+            <b>Leaderboard</b>
         </a>
-        <a href="quests.html" class="sidebar-link">
-            <img src="images/quests.png" alt="Quests" style="width: 35px; height: 35px;" draggable="false" />
+        <a href="{{ url_for('quests') }}" class="sidebar-link">
+            <img src="{{ url_for('static', filename='images/quests.png') }}" alt="Quests" style="width: 35px; height: 35px;" draggable="false" />
             <b>Quests</b>
         </a>
-        <a href="shop.html" class="sidebar-link">
-            <img src="images/shop.png" alt="Shop" style="width: 35px; height: 35px;" draggable="false" />
+        <a href="{{ url_for('shop') }}" class="sidebar-link">
+            <img src="{{ url_for('static', filename='images/shop.png') }}" alt="Shop" style="width: 35px; height: 35px;" draggable="false" />
             <b>Shop</b>
         </a>
-        <a href="profile.html" class="sidebar-link">
-            <img src="images/profile.png" alt="Profile" class="profile-image" style="width: 35px; height: 35px;" draggable="false" />
+        <a href="{{ url_for('profile') }}" class="sidebar-link">
+            <img src="{{ url_for('static', filename='images/profile.png') }}" alt="Profile" style="width: 35px; height: 35px;" draggable="false" />
             <b>Profile</b>
         </a>
-        <a href="settings.html" class="sidebar-link">
-            <img src="images/settings.png" alt="Settings" style="width: 35px; height: 35px;" draggable="false" />
+        <a href="{{ url_for('settings') }}" class="sidebar-link">
+            <img src="{{ url_for('static', filename='images/settings.png') }}" alt="Settings" style="width: 35px; height: 35px;" draggable="false" />
             <b>Settings</b>
         </a>
-        <a href="index.html" class="sidebar-link">
-            <img src="images/signout.png" alt="Sign Out" style="width: 35px; height: 35px;" draggable="false" />
-            <b>Sign out</b>
+        <a href="{{ url_for('index') }}" class="sidebar-link">
+            <img src="{{ url_for('static', filename='images/signout.png') }}" alt="Sign Out" style="width: 35px; height: 35px;" draggable="false" />
+            <b>Sign Out</b>
         </a>
     </div>
+
 
     <!-- Content -->
     <div class="content">
@@ -58,30 +60,30 @@
                     <div class="dropdown">
                         <button class="dropbtn" onclick="toggleDropdown()"><b>SITE LANGUAGE: ENGLISH</b><span class="arrow">&#9662;</span></button>
                         <div class="dropdown-content" id="dropdownContent">
-                            <a href="lessonhub.html"><img src="images/flag_en.png" alt="English" class="flag" draggable="false" />English</a>
-                            <a href="lessonhubjp.html"><img src="images/flag_jp.png" alt="Japanese" class="flag" draggable="false" />日本語</a>
-                            <a href="lessonhubfr.html"><img src="images/flag_fr.png" alt="French" class="flag" draggable="false" />Français</a>
+                            <a href="{{ url_for('lessonhub') }}"><img src="{{ url_for('static', filename='images/flag_en.png') }}" alt="English" class="flag" draggable="false" />English</a>
+                            <a href="{{ url_for('lessonhubjp') }}"><img src="{{ url_for('static', filename='images/flag_jp.png') }}" alt="Japanese" class="flag" draggable="false" />日本語</a>
+                            <a href="{{ url_for('lessonhubfr') }}"><img src="{{ url_for('static', filename='images/flag_fr.png') }}" alt="French" class="flag" draggable="false" />French</a>
                         </div>
                     </div>
                 </li>
             </ul>
         </nav>
 
-        <!-- Main Content Area -->
+        <!-- Main Content Area -->'user' is undefined
         <div class="main-content">
             <!-- Hearts, Day Streak, Gems -->
             <div class="header-icons">
                 <div class="hearts">
-                    <img src="images/hearts.png" alt="Hearts" draggable="false" />
-                    <span id="heartsCount">5</span>
+                    <img src="{{ url_for('static', filename='images/hearts.png') }}" alt="Hearts" draggable="false" />
+                    <span id="heartsCount">{{ user.hearts }}</span>
                 </div>
                 <div class="day-streak">
-                    <img src="images/daystreak.png" alt="Day Streak" draggable="false" />
-                    <span id="streakCount">0</span>
+                    <img src="{{ url_for('static', filename='images/daystreak.png') }}" alt="Day Streak" draggable="false" />
+                    <span id="streakCount">{{ user.day_streak }}</span>
                 </div>
                 <div class="gems">
-                    <img src="images/gems.png" alt="Gems" draggable="false" />
-                    <span id="gemsCount">0</span>
+                    <img src="{{ url_for('static', filename='images/gems.png') }}" alt="Gems" draggable="false" />
+                    <span id="gemsCount">{{ user.gems }}</span>
                 </div>
             </div>
 
@@ -166,7 +168,7 @@
                 var quest1XPPlaceholder = 30;
                 var quest2XPPlaceholder = 10;
                 var quest3XPPlaceholder = 15;
-                
+
                 function toggleDropdown() {
                     var dropdown = document.getElementById("dropdownContent");
                     dropdown.classList.toggle("active");
