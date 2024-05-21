@@ -52,6 +52,10 @@
     <Content Include="static\images\profile.png" />
     <Content Include="static\images\quests.png" />
     <Content Include="static\images\settings.png" />
+    <Content Include="static\leaderboards.css" />
+    <Content Include="static\profile.css" />
+    <Content Include="static\quests.css" />
+    <Content Include="static\shop.css" />
     <Content Include="static\images\shop.png" />
     <Content Include="static\images\signout.png" />
     <Content Include="static\index.css" />
