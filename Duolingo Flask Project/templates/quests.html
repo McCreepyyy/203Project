@@ -5,46 +5,46 @@ HTML:
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Duolingo ー Quests</title>
-    <link rel="icon" type="image/x-icon" href="images/bird.png" />
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='images/bird.png') }}" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap">
-    <link rel="stylesheet" href="quests.css" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='quests.css') }}" />
 </head>
 <body>
     <!-- Sidebar -->
     <div class="sidebar">
-        <a href="lessonhub.html" class="logo-link">
-            <img src="images/duolingo2.png" alt="Duolingo" class="logo-image" style="width:120px;height:30px;" draggable="false" />
+        <a href="{{ url_for('lessonhub') }}" class="logo-link">
+            <img src="{{ url_for('static', filename='images/duolingo2.png') }}" alt="Duolingo" class="logo-image" style="width:120px;height:30px;" draggable="false" />
         </a>
-        <a href="lessonhub.html" class="sidebar-link">
-            <img src="images/learn.png" alt="Learn" style="width: 35px; height: 35px;" draggable="false" />
+        <a href="{{ url_for('lessonhub') }}" class="sidebar-link">
+            <img src="{{ url_for('static', filename='images/learn.png') }}" alt="Learn" style="width: 35px; height: 35px;" draggable="false" />
             <b>Learn</b>
         </a>
-        <a href="characters.html" class="sidebar-link">
-            <img src="images/characters.png" alt="Characters" style="width: 35px; height: 35px;" draggable="false" />
+        <a href="{{ url_for('characters') }}" class="sidebar-link">
+            <img src="{{ url_for('static', filename='images/characters.png') }}" alt="Characters" style="width: 35px; height: 35px;" draggable="false" />
             <b>Characters</b>
         </a>
-        <a href="leaderboards.html" class="sidebar-link">
-            <img src="images/leaderboards.png" alt="Leaderboards" style="width: 35px; height: 35px;" draggable="false" />
+        <a href="{{ url_for('leaderboards') }}" class="sidebar-link">
+            <img src="{{ url_for('static', filename='images/leaderboards.png') }}" alt="Leaderboards" style="width: 35px; height: 35px;" draggable="false" />
             <b>Leaderboards</b>
         </a>
-        <a href="quests.html" class="sidebar-link">
-            <img src="images/quests.png" alt="Quests" style="width: 35px; height: 35px;" draggable="false" />
+        <a href="{{ url_for('quests') }}" class="sidebar-link">
+            <img src="{{ url_for('static', filename='images/quests.png') }}" alt="Quests" style="width: 35px; height: 35px;" draggable="false" />
             <b>Quests</b>
         </a>
-        <a href="shop.html" class="sidebar-link">
-            <img src="images/shop.png" alt="Shop" style="width: 35px; height: 35px;" draggable="false" />
+        <a href="{{ url_for('shop') }}" class="sidebar-link">
+            <img src="{{ url_for('static', filename='images/shop.png') }}" alt="Shop" style="width: 35px; height: 35px;" draggable="false" />
             <b>Shop</b>
         </a>
-        <a href="profile.html" class="sidebar-link">
-            <img src="images/profile.png" alt="Profile" class="profile-image" style="width: 35px; height: 35px;" draggable="false" />
+        <a href="{{ url_for('profile') }}" class="sidebar-link">
+            <img src="{{ url_for('static', filename='images/profile.png') }}" alt="Profile" class="profile-image" style="width: 35px; height: 35px;" draggable="false" />
             <b>Profile</b>
         </a>
-        <a href="settings.html" class="sidebar-link">
-            <img src="images/settings.png" alt="Settings" style="width: 35px; height: 35px;" draggable="false" />
+        <a href="{{ url_for('settings') }}" class="sidebar-link">
+            <img src="{{ url_for('static', filename='images/settings.png') }}" alt="Settings" style="width: 35px; height: 35px;" draggable="false" />
             <b>Settings</b>
         </a>
-        <a href="index.html" class="sidebar-link">
-            <img src="images/signout.png" alt="Sign Out" style="width: 35px; height: 35px;" draggable="false" />
+        <a href="{{ url_for('index') }}" class="sidebar-link">
+            <img src="{{ url_for('static', filename='images/signout.png') }}" alt="Sign Out" style="width: 35px; height: 35px;" draggable="false" />
             <b>Sign out</b>
         </a>
     </div>
@@ -60,9 +60,9 @@ HTML:
                     <div class="dropdown">
                         <button class="dropbtn" onclick="toggleDropdown()"><b>SITE LANGUAGE: ENGLISH</b><span class="arrow">&#9662;</span></button>
                         <div class="dropdown-content" id="dropdownContent">
-                            <a href="lessonhub.html"><img src="images/flag_en.png" alt="English" class="flag" draggable="false" />English</a>
-                            <a href="lessonhubjp.html"><img src="images/flag_jp.png" alt="Japanese" class="flag" draggable="false" />日本語</a>
-                            <a href="lessonhubfr.html"><img src="images/flag_fr.png" alt="French" class="flag" draggable="false" />Français</a>
+                            <a href="{{ url_for('lessonhub') }}"><img src="{{ url_for('static', filename='images/flag_en.png') }}" alt="English" class="flag" draggable="false" />English</a>
+                            <a href="{{ url_for('lessonhubjp') }}"><img src="{{ url_for('static', filename='images/flag_jp.png') }}" alt="Japanese" class="flag" draggable="false" />日本語</a>
+                            <a href="{{ url_for('lessonhubfr') }}"><img src="{{ url_for('static', filename='images/flag_fr.png') }}" alt="French" class="flag" draggable="false" />Français</a>
                         </div>
                     </div>
                 </li>
@@ -74,15 +74,15 @@ HTML:
             <!-- Hearts, Day Streak, Gems -->
             <div class="header-icons">
                 <div class="hearts">
-                    <img src="images/hearts.png" alt="Hearts" draggable="false" />
+                    <img src="{{ url_for('static', filename='images/hearts.png') }}" alt="Hearts" draggable="false" />
                     <span id="heartsCount">5</span>
                 </div>
                 <div class="day-streak">
-                    <img src="images/daystreak.png" alt="Day Streak" draggable="false" />
+                    <img src="{{ url_for('static', filename='images/daystreak.png') }}" alt="Day Streak" draggable="false" />
                     <span id="streakCount">0</span>
                 </div>
                 <div class="gems">
-                    <img src="images/gems.png" alt="Gems" draggable="false" />
+                    <img src="{{ url_for('static', filename='images/gems.png') }}" alt="Gems" draggable="false" />
                     <span id="gemsCount">0</span>
                 </div>
             </div>
@@ -111,18 +111,18 @@ HTML:
             <!-- Main Content -->
             <div class="characters">
                 <div class="scripts">
-                    <a href="characters.html" class="characters-link"><b>HIRAGANA</b></a>
-                    <a href="katakana.html" class="characters-link"><b>KATAKANA</b></a>
+                    <a href="{{ url_for('characters') }}" class="characters-link"><b>HIRAGANA</b></a>
+                    <a href="{{ url_for('katakana') }}" class="characters-link"><b>KATAKANA</b></a>
                 </div>
                 <div class="katakana">
                     <p class="katakana-text1">Practice characters used for loanwords</p>
-                    <img src="images/katakana.png" alt="katakana" class="katakana" style="width: 371px; height: 690px;" draggable="false" />
+                    <img src="{{ url_for('static', filename='images/katakana.png') }}" alt="katakana" class="katakana" style="width: 371px; height: 690px;" draggable="false" />
                     <h3>Dakuon</h3>
                     <p>Add a symbol to change the sound</p>
-                    <img src="images/katakanadakuon.png" alt="Katakana - Dakuon" class="katakana" style="width: 390px; height:325px;" draggable=false />
+                    <img src="{{ url_for('static', filename='images/katakanadakuon.png') }}" alt="Katakana - Dakuon" class="katakana" style="width: 390px; height:325px;" draggable=false />
                     <h3>Combo</h3>
                     <p>Add small characters to make new syllables</p>
-                    <img src="images/katakanacombo.png" alt="Katakana - Combo" class="katakana" style="width: 390px; height:750px;" draggable="false" />
+                    <img src="{{ url_for('static', filename='images/katakanacombo.png') }}" alt="Katakana - Combo" class="katakana" style="width: 390px; height:750px;" draggable="false" />
                 </div>
 
             </div>
@@ -160,8 +160,7 @@ HTML:
             var heartsCount = 5;
 
             function updateHearts() {
-                document.getElementById("heartsCount").innerText = heartsCount;
-            }
+                document.getElementById("heartsCount").innerText = heartsCount;            }
 
             function loseHeart() {
                 if (heartsCount > 0) {
