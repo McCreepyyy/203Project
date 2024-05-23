@@ -299,4 +299,59 @@ body {
     .daily-quests .quest-info {
         padding-left: 10px;
     }
+
+/* Shop Content styles */
+.shop-content {
+    color: white;
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: 75px;
 }
+
+
+    .shop-content .hearts-text,
+    .shop-content .powerups-text {
+        border-bottom: 2px solid #3a4a53;
+        padding-bottom: 3px;
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    .shop-content form {
+        display: flex;
+        align-items: center;
+    }
+
+        .shop-content form img {
+            width: 100px;
+            height: 100px;
+            margin-right: 20px;
+        }
+
+        .shop-content form .refill-hearts,
+        .shop-content form .streak-freeze {
+            flex: 1;
+        }
+
+        .shop-content form h3 {
+            margin-top: 0;
+        }
+
+        .shop-content form p {
+            margin-bottom: 10px;
+        }
+
+        .shop-content form button {
+            display: flex;
+            background-color: #49c0f8;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-family: 'Varela Round', sans-serif;
+        }
+
+            .shop-content form button:hover {
+                background-color: #0078a8;
+            }

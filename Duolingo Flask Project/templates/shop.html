@@ -1,4 +1,3 @@
-HTML:
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -87,102 +86,89 @@ HTML:
                 </div>
             </div>
 
-            <!-- Leaderboard -->
-            <div class="leaderboard">
-                <h2 class="leaderboard-text"><b>LEADERBOARD</b></h2>
-                <!-- Leaderboard content here -->
-                <div class="user-info">
-                    <p class="user-info">Rank: <span id="userRank">-</span></p>
-                    <p class="user-info">XP: <span id="userXP">-</span></p>
-                </div>
-            </div>
+            <!-- Shop Content -->
+            <div class="shop-content">
+                <h2 class="hearts-text"><b>Hearts</b></h2>
+                <form method="post" action="{{ url_for('shop') }}">
+                    <input type="hidden" name="item_id" value="hearts">
+                    <img src="{{ url_for('static', filename='images/hearts2.png') }}" alt="Hearts" style="width: 100px; height:100px;" draggable="false" />
+                    <div class="refill-hearts">
+                        <h3><b>Refill hearts</b></h3>
+                        <p>Get full hearts so you can worry less about making mistakes in a lesson.</p>
+                        <button type="submit" class="gemsbtn"><img src="{{ url_for('static', filename='images/gems.png') }}" alt="Gems" style="width: 20px; height: 20px;" draggable="false" />350</button>
+                    </div>
+                </form>
 
-            <!-- Daily Quests -->
-            <div class="daily-quests">
-                <h2 class="daily-quests-text"><b>DAILY QUESTS</b></h2>
-                <div class="quest-info">
-                    <p class="quest-info">Earn 30 XP</p>
-                    <p class="quest-info">Earn 10 Combo Bonus XP</p>
-                    <p class="quest-info">Spend 15 minutes learning</p>
-                </div>
-            </div>
-
-
-            <!-- Main Content -->
-            <div class="characters">
-                <div class="scripts">
-                    <a href="{{ url_for('characters') }}" class="characters-link"><b>HIRAGANA</b></a>
-                    <a href="{{ url_for('katakana') }}" class="characters-link"><b>KATAKANA</b></a>
-                </div>
-                <div class="katakana">
-                    <p class="katakana-text1">Practice characters used for loanwords</p>
-                    <img src="{{ url_for('static', filename='images/katakana.png') }}" alt="katakana" class="katakana" style="width: 371px; height: 690px;" draggable="false" />
-                    <h3>Dakuon</h3>
-                    <p>Add a symbol to change the sound</p>
-                    <img src="{{ url_for('static', filename='images/katakanadakuon.png') }}" alt="Katakana - Dakuon" class="katakana" style="width: 390px; height:325px;" draggable=false />
-                    <h3>Combo</h3>
-                    <p>Add small characters to make new syllables</p>
-                    <img src="{{ url_for('static', filename='images/katakanacombo.png') }}" alt="Katakana - Combo" class="katakana" style="width: 390px; height:750px;" draggable="false" />
-                </div>
-
+                <h2 class="powerups-text"><b>Power Ups</b></h2>
+                <form method="post" action="{{ url_for('shop') }}">
+                    <input type="hidden" name="item_id" value="streak_freeze">
+                    <img src="{{ url_for('static', filename='images/streakfreeze.png') }}" alt="Streak Freeze" style="width: 100px; height:100px;"draggable="false" />
+                    <div class="streak-freeze">
+                        <h3><b>Streak Freeze</b></h3>
+                        <p>Streak freeze allows your streak to remain in place.</p>
+                        <button type="submit" class="gemsbtn"><img src="{{ url_for('static', filename='images/gems.png') }}" alt="Gems" style="width: 20px; height: 20px;" draggable="false" />200</button>
+                    </div>
+                </form>
             </div>
         </div>
+    </div>
 
-        <!-- JavaScript -->
-        <script>
-            // Function to update user's rank and XP
-            function updateUserInfo(rank, xp) {
-                document.getElementById("userRank").innerText = rank;
-                document.getElementById("userXP").innerText = xp;
+
+    <!-- JavaScript -->
+    <script>
+        // Function to update user's rank and XP
+        function updateUserInfo(rank, xp) {
+            document.getElementById("userRank").innerText = rank;
+            document.getElementById("userXP").innerText = xp;
+        }
+
+        // Function to update quests
+        function updateQuestsInfo(quest1XP, quest2XP, quest3XP) {
+            document.getElementById("quest1XP").innerText = quest1XP;
+            document.getElementById("quest2XP").innerText = quest2XP;
+            document.getElementById("quest3XP").innerText = quest3XP;
+        }
+
+        // Placeholder Values
+        var userRankPlaceholder = 10;
+        var userXPPlaceholder = 500;
+
+        var quest1XPPlaceholder = 30;
+        var quest2XPPlaceholder = 10;
+        var quest3XPPlaceholder = 15;
+
+        function toggleDropdown() {
+            var dropdown = document.getElementById("dropdownContent");
+            dropdown.classList.toggle("active");
+        }
+
+        // Initialize hearts count
+        var heartsCount = 5;
+
+        function updateHearts() {
+            document.getElementById("heartsCount").innerText = heartsCount;
+        }
+
+        function loseHeart() {
+            if (heartsCount > 0) {
+                heartsCount--;
+                updateHearts();
             }
+        }
 
-            // Function to update quests
-            function updateQuestsInfo(quest1XP, quest2XP, quest3XP) {
-                document.getElementById("quest1XP").innerText = quest1XP;
-                document.getElementById("quest2XP").innerText = quest2XP;
-                document.getElementById("quest3XP").innerText = quest3XP;
+        function regenerateHeart() {
+            if (heartsCount < 5) {
+                heartsCount++;
+                updateHearts();
             }
+        }
 
-            // Placeholder Values
-            var userRankPlaceholder = 10;
-            var userXPPlaceholder = 500;
+        // Call function to initialize hearts count
+        updateHearts();
+        updateUserInfo(userRankPlaceholder, userXPPlaceholder);
+        updateQuestsInfo(quest1XPPlaceholder, quest2XPPlaceholder, quest3XPPlaceholder);
 
-            var quest1XPPlaceholder = 30;
-            var quest2XPPlaceholder = 10;
-            var quest3XPPlaceholder = 15;
-
-            function toggleDropdown() {
-                var dropdown = document.getElementById("dropdownContent");
-                dropdown.classList.toggle("active");
-            }
-
-            // Initialize hearts count
-            var heartsCount = 5;
-
-            function updateHearts() {
-                document.getElementById("heartsCount").innerText = heartsCount;
-            }
-
-            function loseHeart() {
-                if (heartsCount > 0) {
-                    heartsCount--;
-                    updateHearts();
-                }
-            }
-
-            function regenerateHeart() {
-                if (heartsCount < 5) {
-                    heartsCount++;
-                    updateHearts();
-                }
-            }
-
-            // Call function to initialize hearts count
-            updateHearts();
-            updateUserInfo(userRankPlaceholder, userXPPlaceholder);
-            updateQuestsInfo(quest1XPPlaceholder, quest2XPPlaceholder, quest3XPPlaceholder);
-
-        </script>
+    </script>
 
 </body>
 </html>

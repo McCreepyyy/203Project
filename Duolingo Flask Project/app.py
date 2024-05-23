@@ -2,6 +2,8 @@ from flask import Flask, render_template, request, redirect, url_for
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime, timedelta
 import os
+from flask import request
+from flask import redirect, render_template
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + os.path.join(os.path.abspath(os.path.dirname(__file__)), 'test.db')
@@ -74,9 +76,30 @@ def quests():
     # You'll need to create a 'quests.html' template and add your logic here
     return render_template('quests.html')
 
-@app.route('/shop')
+@app.route('/shop', methods=['GET', 'POST'])
 def shop():
-    # You'll need to create a 'shop.html' template and add your logic here
+    if request.method == 'POST':
+        # Check which item is being purchased
+        item_id = request.form['item_id']
+        user = User.query.first()  # Assuming there's only one user for simplicity
+        if item_id == 'hearts':
+            if user.gems >= 350:
+                user.gems -= 350
+                user.hearts = 5
+                db.session.commit()
+            # Whether sufficient or not, redirect back to the shop page
+            return redirect(url_for('shop'))
+        elif item_id == 'streak_freeze':
+            if user.gems >= 200:
+                user.gems -= 200
+                # Logic for streak freeze
+                db.session.commit()
+            # Whether sufficient or not, redirect back to the shop page
+            return redirect(url_for('shop'))
+        else:
+            return 'Invalid item ID.'
+
+    # Render the shop page with available items
     return render_template('shop.html')
 
 @app.route('/settings')
