@@ -22,7 +22,6 @@
                     <button class="dropbtn" onclick="toggleDropdown()"><b>SITE LANGUAGE: ENGLISH</b><span class="arrow">&#9662;</span></button>
                     <div class="dropdown-content" id="dropdownContent">
                         <a href="{{ url_for('index') }}"><img src="{{ url_for('static', filename='images/flag_en.png') }}" alt="English" class="flag" />English</a>
-                        <!-- You'll need to create routes for these in your Flask application -->
                         <a href="{{ url_for('indexjp') }}"><img src="{{ url_for('static', filename='images/flag_jp.png') }}" alt="Japanese" class="flag" />日本語</a>
                         <a href="{{ url_for('indexfr') }}"><img src="{{ url_for('static', filename='images/flag_fr.png') }}" alt="French" class="flag" />Français</a>
                     </div>

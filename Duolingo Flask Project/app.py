@@ -1,9 +1,7 @@
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, render_template, request, redirect, url_for, jsonify
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime, timedelta
 import os
-from flask import request
-from flask import redirect, render_template
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + os.path.join(os.path.abspath(os.path.dirname(__file__)), 'test.db')
@@ -48,81 +46,61 @@ def indexfr():
 
 @app.route('/lessonhub')
 def lessonhub():
-    user = User.query.first()
-    
-    # Print user object and its attributes
-    print(user)
-    if user is not None:
-        print(user.hearts, user.day_streak, user.gems)
-    
+    user = User.query.first()  # Update this to get the current logged-in user
     return render_template('lessonhub.html', user=user)
 
 @app.route('/katakana')
 def katakana():
     return render_template('katakana.html')
-# Add this new route
+
 @app.route('/characters')
 def characters():
-    # You'll need to create a 'characters.html' template and add your logic here
     return render_template('characters.html')
 
 @app.route('/leaderboards')
 def leaderboards():
-    # You'll need to create a 'leaderboards.html' template and add your logic here
     return render_template('leaderboards.html')
 
 @app.route('/quests')
 def quests():
-    # You'll need to create a 'quests.html' template and add your logic here
     return render_template('quests.html')
 
 @app.route('/shop', methods=['GET', 'POST'])
 def shop():
     if request.method == 'POST':
-        # Check which item is being purchased
         item_id = request.form['item_id']
-        user = User.query.first()  # Assuming there's only one user for simplicity
+        user = User.query.first()  # Update this to get the current logged-in user
         if item_id == 'hearts':
             if user.gems >= 350:
                 user.gems -= 350
                 user.hearts = 5
                 db.session.commit()
-            # Whether sufficient or not, redirect back to the shop page
             return redirect(url_for('shop'))
         elif item_id == 'streak_freeze':
             if user.gems >= 200:
                 user.gems -= 200
-                # Logic for streak freeze
                 db.session.commit()
-            # Whether sufficient or not, redirect back to the shop page
             return redirect(url_for('shop'))
         else:
             return 'Invalid item ID.'
-
-    # Render the shop page with available items
     return render_template('shop.html')
 
 @app.route('/settings')
 def settings():
-    # You'll need to create a 'settings.html' template and add your logic here
-    return render_template('settings.html')
+    user = User.query.first()  # Update this to get the current logged-in user
+    return render_template('settings.html', user=user)
 
 @app.route('/profile')
 def profile():
-    # Your logic here
     return render_template('profile.html')
 
 @app.route('/lessonhubjp')
 def lessonhubjp():
-    # Your logic here
     return render_template('lessonhubjp.html')
 
 @app.route('/lessonhubfr')
 def lessonhubfr():
-    # Your logic here
     return render_template('lessonhubfr.html')
-
-
 
 @app.route('/submit_form', methods=['POST'])
 def submit_form():
@@ -134,7 +112,25 @@ def submit_form():
     user = User(username=name, email=email, password=password)
     db.session.add(user)
     db.session.commit()
-    return redirect(url_for('signin'))
+    return redirect(url_for('lessonhub'))
+
+@app.route('/update_user_info', methods=['POST'])
+def update_user_info():
+    data = request.json
+    user = User.query.first()  # Update this to get the current logged-in user
+    user.username = data.get('username', user.username)
+    user.email = data.get('email', user.email)
+    if data.get('password'):
+        user.password = data['password']
+    db.session.commit()
+    return jsonify({'success': True})
+
+@app.route('/toggle_dark_mode', methods=['POST'])
+def toggle_dark_mode():
+    data = request.json
+    dark_mode = data.get('darkMode', False)
+    # Here you would save the dark mode preference to the user profile or session
+    return jsonify({'success': True})
 
 @app.route('/login', methods=['POST'])
 def login():
@@ -153,9 +149,11 @@ def login():
     else:
         return 'Invalid email or password'
 
+
+
 if __name__ == '__main__':
     with app.app_context():
-        db.create_all()  
+        db.create_all()
     HOST = os.environ.get('SERVER_HOST', 'localhost')
     try:
         PORT = int(os.environ.get('SERVER_PORT', '5555'))

@@ -3,12 +3,12 @@
   "WorkspaceRootPath": "C:\\Yoobee\\2024\\203\\.2\\203Project\\Duolingo Flask Project\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{BB94A4AE-9D06-4FF2-A444-4E66D91857B1}|Duolingo Flask Project.pyproj|C:\\Yoobee\\2024\\203\\.2\\203Project\\Duolingo Flask Project\\static\\shop.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
-      "RelativeMoniker": "D:0:0:{BB94A4AE-9D06-4FF2-A444-4E66D91857B1}|Duolingo Flask Project.pyproj|solutionrelative:static\\shop.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+      "AbsoluteMoniker": "D:0:0:{BB94A4AE-9D06-4FF2-A444-4E66D91857B1}|Duolingo Flask Project.pyproj|C:\\Yoobee\\2024\\203\\.2\\203Project\\Duolingo Flask Project\\static\\settings.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{BB94A4AE-9D06-4FF2-A444-4E66D91857B1}|Duolingo Flask Project.pyproj|solutionrelative:static\\settings.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{BB94A4AE-9D06-4FF2-A444-4E66D91857B1}|Duolingo Flask Project.pyproj|C:\\Yoobee\\2024\\203\\.2\\203Project\\Duolingo Flask Project\\templates\\shop.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{BB94A4AE-9D06-4FF2-A444-4E66D91857B1}|Duolingo Flask Project.pyproj|solutionrelative:templates\\shop.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{BB94A4AE-9D06-4FF2-A444-4E66D91857B1}|Duolingo Flask Project.pyproj|C:\\Yoobee\\2024\\203\\.2\\203Project\\Duolingo Flask Project\\templates\\settings.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{BB94A4AE-9D06-4FF2-A444-4E66D91857B1}|Duolingo Flask Project.pyproj|solutionrelative:templates\\settings.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     }
   ],
   "DocumentGroupContainers": [
@@ -27,27 +27,27 @@
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "shop.html",
-              "DocumentMoniker": "C:\\Yoobee\\2024\\203\\.2\\203Project\\Duolingo Flask Project\\templates\\shop.html",
-              "RelativeDocumentMoniker": "templates\\shop.html",
-              "ToolTip": "C:\\Yoobee\\2024\\203\\.2\\203Project\\Duolingo Flask Project\\templates\\shop.html",
-              "RelativeToolTip": "templates\\shop.html",
-              "ViewState": "AQIAAEgAAAAAAAAAAAAqwFoAAAAhAAAA",
+              "Title": "settings.html",
+              "DocumentMoniker": "C:\\Yoobee\\2024\\203\\.2\\203Project\\Duolingo Flask Project\\templates\\settings.html",
+              "RelativeDocumentMoniker": "templates\\settings.html",
+              "ToolTip": "C:\\Yoobee\\2024\\203\\.2\\203Project\\Duolingo Flask Project\\templates\\settings.html",
+              "RelativeToolTip": "templates\\settings.html",
+              "ViewState": "AQIAAFgAAAAAAAAAAAAowGEAAAAoAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
-              "WhenOpened": "2024-05-23T04:27:32.048Z",
+              "WhenOpened": "2024-05-24T03:43:50.681Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "shop.css",
-              "DocumentMoniker": "C:\\Yoobee\\2024\\203\\.2\\203Project\\Duolingo Flask Project\\static\\shop.css",
-              "RelativeDocumentMoniker": "static\\shop.css",
-              "ToolTip": "C:\\Yoobee\\2024\\203\\.2\\203Project\\Duolingo Flask Project\\static\\shop.css",
-              "RelativeToolTip": "static\\shop.css",
-              "ViewState": "AQIAACkBAAAAAAAAAAAtwDoBAAARAAAA",
+              "Title": "settings.css",
+              "DocumentMoniker": "C:\\Yoobee\\2024\\203\\.2\\203Project\\Duolingo Flask Project\\static\\settings.css",
+              "RelativeDocumentMoniker": "static\\settings.css",
+              "ToolTip": "C:\\Yoobee\\2024\\203\\.2\\203Project\\Duolingo Flask Project\\static\\settings.css",
+              "RelativeToolTip": "static\\settings.css",
+              "ViewState": "AQIAAE0BAAAAAAAAAAAIwFgBAAAcAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
-              "WhenOpened": "2024-05-21T04:13:56.044Z",
+              "WhenOpened": "2024-05-24T03:43:40.87Z",
               "EditorCaption": ""
             }
           ]

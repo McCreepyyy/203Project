@@ -1,4 +1,3 @@
-HTML:
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -25,7 +24,7 @@ HTML:
         </a>
         <a href="{{ url_for('leaderboards') }}" class="sidebar-link">
             <img src="{{ url_for('static', filename='images/leaderboards.png') }}" alt="Leaderboards" style="width: 35px; height: 35px;" draggable="false" />
-            <b>Leaderboards</b>
+            <b>Leaderboard</b>
         </a>
         <a href="{{ url_for('quests') }}" class="sidebar-link">
             <img src="{{ url_for('static', filename='images/quests.png') }}" alt="Quests" style="width: 35px; height: 35px;" draggable="false" />
@@ -36,7 +35,7 @@ HTML:
             <b>Shop</b>
         </a>
         <a href="{{ url_for('profile') }}" class="sidebar-link">
-            <img src="{{ url_for('static', filename='images/profile.png') }}" alt="Profile" class="profile-image" style="width: 35px; height: 35px;" draggable="false" />
+            <img src="{{ url_for('static', filename='images/profile.png') }}" alt="Profile" style="width: 35px; height: 35px;" draggable="false" />
             <b>Profile</b>
         </a>
         <a href="{{ url_for('settings') }}" class="sidebar-link">
@@ -45,144 +44,118 @@ HTML:
         </a>
         <a href="{{ url_for('index') }}" class="sidebar-link">
             <img src="{{ url_for('static', filename='images/signout.png') }}" alt="Sign Out" style="width: 35px; height: 35px;" draggable="false" />
-            <b>Sign out</b>
+            <b>Sign Out</b>
         </a>
     </div>
 
     <!-- Content -->
     <div class="content">
-        <!-- Navigation Bar -->
-        <nav class="menu">
-            <div style="position:relative; left: 50px; bottom: 15px;"></div>
-
-            <ul>
-                <li class="language">
-                    <div class="dropdown">
-                        <button class="dropbtn" onclick="toggleDropdown()"><b>SITE LANGUAGE: ENGLISH</b><span class="arrow">&#9662;</span></button>
-                        <div class="dropdown-content" id="dropdownContent">
-                            <a href="{{ url_for('lessonhub') }}"><img src="{{ url_for('static', filename='images/flag_en.png') }}" alt="English" class="flag" draggable="false" />English</a>
-                            <a href="{{ url_for('lessonhubjp') }}"><img src="{{ url_for('static', filename='images/flag_jp.png') }}" alt="Japanese" class="flag" draggable="false" />日本語</a>
-                            <a href="{{ url_for('lessonhubfr') }}"><img src="{{ url_for('static', filename='images/flag_fr.png') }}" alt="French" class="flag" draggable="false" />Français</a>
-                        </div>
-                    </div>
-                </li>
-            </ul>
-        </nav>
-
-        <!-- Main Content Area -->
-        <div class="main-content">
-            <!-- Hearts, Day Streak, Gems -->
-            <div class="header-icons">
-                <div class="hearts">
-                    <img src="{{ url_for('static', filename='images/hearts.png') }}" alt="Hearts" draggable="false" />
-                    <span id="heartsCount">5</span>
+        <div class="container">
+            <h2 class="profile-text">PROFILE</h2>
+            <form id="profileForm">
+                <div class="form-group">
+                    <label for="username"><b>Username</b></label>
+                    <input type="text" id="username" name="username" value="{{ user.username }}" placeholder="Username" required>
                 </div>
-                <div class="day-streak">
-                    <img src="{{ url_for('static', filename='images/daystreak.png') }}" alt="Day Streak" draggable="false" />
-                    <span id="streakCount">0</span>
+                <div class="form-group">
+                    <label for="email"><b>Email</b></label>
+                    <input type="email" id="email" name="email" value="{{ user.email }}" placeholder="Email" required>
                 </div>
-                <div class="gems">
-                    <img src="{{ url_for('static', filename='images/gems.png') }}" alt="Gems" draggable="false" />
-                    <span id="gemsCount">0</span>
+                <div class="form-group">
+                    <label for="password"><b>Password</b></label>
+                    <input type="password" id="password" name="password" placeholder="Password">
                 </div>
-            </div>
-
-            <!-- Leaderboard -->
-            <div class="leaderboard">
-                <h2 class="leaderboard-text"><b>LEADERBOARD</b></h2>
-                <!-- Leaderboard content here -->
-                <div class="user-info">
-                    <p class="user-info">Rank: <span id="userRank">-</span></p>
-                    <p class="user-info">XP: <span id="userXP">-</span></p>
-                </div>
-            </div>
-
-            <!-- Daily Quests -->
-            <div class="daily-quests">
-                <h2 class="daily-quests-text"><b>DAILY QUESTS</b></h2>
-                <div class="quest-info">
-                    <p class="quest-info">Earn 30 XP</p>
-                    <p class="quest-info">Earn 10 Combo Bonus XP</p>
-                    <p class="quest-info">Spend 15 minutes learning</p>
-                </div>
-            </div>
-
-
-            <!-- Main Content -->
-            <div class="characters">
-                <div class="scripts">
-                    <a href="{{ url_for('characters') }}" class="characters-link"><b>HIRAGANA</b></a>
-                    <a href="{{ url_for('katakana') }}" class="characters-link"><b>KATAKANA</b></a>
-                </div>
-                <div class="katakana">
-                    <p class="katakana-text1">Practice characters used for loanwords</p>
-                    <img src="{{ url_for('static', filename='images/katakana.png') }}" alt="katakana" class="katakana" style="width: 371px; height: 690px;" draggable="false" />
-                    <h3>Dakuon</h3>
-                    <p>Add a symbol to change the sound</p>
-                    <img src="{{ url_for('static', filename='images/katakanadakuon.png') }}" alt="Katakana - Dakuon" class="katakana" style="width: 390px; height:325px;" draggable=false />
-                    <h3>Combo</h3>
-                    <p>Add small characters to make new syllables</p>
-                    <img src="{{ url_for('static', filename='images/katakanacombo.png') }}" alt="Katakana - Combo" class="katakana" style="width: 390px; height:750px;" draggable="false" />
-                </div>
-
-            </div>
+                <button type="submit" class="save-button">Save Changes</button>
+            </form>
         </div>
+    </div>
 
-        <!-- JavaScript -->
-        <script>
-            // Function to update user's rank and XP
-            function updateUserInfo(rank, xp) {
-                document.getElementById("userRank").innerText = rank;
-                document.getElementById("userXP").innerText = xp;
-            }
+    <!-- Notifications -->
+    <div class="container notifications">
+        <h2 class="profile-text">NOTIFICATIONS</h2>
+        <form id="notificationsForm">
+            <div class="form-group">
+                <label for="product_updates">Product updates + learning tips</label>
+                <input type="checkbox" id="product_updates" name="product_updates">
+            </div>
+            <div class="form-group">
+                <label for="new_follower">New follower</label>
+                <input type="checkbox" id="new_follower" name="new_follower">
+            </div>
+            <div class="form-group">
+                <label for="friend_activity">Friend activity</label>
+                <input type="checkbox" id="friend_activity" name="friend_activity">
+            </div>
+            <div class="form-group">
+                <label for="weekly_progress">Weekly progress</label>
+                <input type="checkbox" id="weekly_progress" name="weekly_progress">
+            </div>
+            <div class="form-group">
+                <label for="special_promotions">Special promotions</label>
+                <input type="checkbox" id="special_promotions" name="special_promotions">
+            </div>
+            <div class="form-group">
+                <label for="research_participation">Research participation opportunities</label>
+                <input type="checkbox" id="research_participation" name="research_participation">
+            </div>
+            <!-- You can add more notifications if needed -->
+        </form>
+    </div>
 
-            // Function to update quests
-            function updateQuestsInfo(quest1XP, quest2XP, quest3XP) {
-                document.getElementById("quest1XP").innerText = quest1XP;
-                document.getElementById("quest2XP").innerText = quest2XP;
-                document.getElementById("quest3XP").innerText = quest3XP;
-            }
 
-            // Placeholder Values
-            var userRankPlaceholder = 10;
-            var userXPPlaceholder = 500;
+    <!-- Hearts, Gems, Day Streak -->
+    <div class="header-icons">
+        <div class="hearts">
+            <img src="{{ url_for('static', filename='images/hearts.png') }}" alt="Hearts" draggable="false" />
+            <span id="heartsCount">{{ user.hearts }}</span>
+        </div>
+        <div class="day-streak">
+            <img src="{{ url_for('static', filename='images/daystreak.png') }}" alt="Day Streak" draggable="false" />
+            <span id="streakCount">{{ user.day_streak }}</span>
+        </div>
+        <div class="gems">
+            <img src="{{ url_for('static', filename='images/gems.png') }}" alt="Gems" draggable="false" />
+            <span id="gemsCount">{{ user.gems }}</span>
+        </div>
+    </div>
+    <!-- JavaScript -->
+    <script>
+        function toggleDarkMode() {
+            document.body.classList.toggle('dark-mode');
+            fetch('/toggle_dark_mode', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ darkMode: document.getElementById('darkModeToggle').checked })
+            }).then(response => response.json())
+                .then(data => {
+                    if (!data.success) {
+                        alert('Error toggling dark mode');
+                    }
+                });
+        }
 
-            var quest1XPPlaceholder = 30;
-            var quest2XPPlaceholder = 10;
-            var quest3XPPlaceholder = 15;
+        document.getElementById('profileForm').addEventListener('submit', function (event) {
+            event.preventDefault();
+            const formData = new FormData(this);
+            const data = Object.fromEntries(formData.entries());
 
-            function toggleDropdown() {
-                var dropdown = document.getElementById("dropdownContent");
-                dropdown.classList.toggle("active");
-            }
-
-            // Initialize hearts count
-            var heartsCount = 5;
-
-            function updateHearts() {
-                document.getElementById("heartsCount").innerText = heartsCount;
-            }
-
-            function loseHeart() {
-                if (heartsCount > 0) {
-                    heartsCount--;
-                    updateHearts();
-                }
-            }
-
-            function regenerateHeart() {
-                if (heartsCount < 5) {
-                    heartsCount++;
-                    updateHearts();
-                }
-            }
-
-            // Call function to initialize hearts count
-            updateHearts();
-            updateUserInfo(userRankPlaceholder, userXPPlaceholder);
-            updateQuestsInfo(quest1XPPlaceholder, quest2XPPlaceholder, quest3XPPlaceholder);
-
-        </script>
-
+            fetch('/update_user_info', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            }).then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        alert('Profile updated successfully');
+                    } else {
+                        alert('Error updating profile');
+                    }
+                });
+        });
+    </script>
 </body>
 </html>

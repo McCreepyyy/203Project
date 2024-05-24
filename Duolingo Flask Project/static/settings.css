@@ -69,9 +69,11 @@ body {
 
 /* Content styles */
 .content {
-    margin-left: 200px;
-    padding: 20px;
-    flex-grow: 1;
+    font-family: 'Varela Round', sans-serif;
+    margin-top: 50px;
+    display: flex;
+    justify-content: center;
+    margin-left: 300px;
 }
 
 /* Navigation Bar styles */
@@ -252,51 +254,103 @@ body {
             padding-right: 30px;
         }
 
-/* Leaderboard and Daily Quests styles */
-.leaderboard,
-.daily-quests {
-    background-color: #1e2b30;
+.header-icons {
+    position: absolute;
+    top: 100px;
+    right: 20px;
+    display: flex;
+    align-items: center;
     color: white;
+}
+
+.hearts,
+.day-streak,
+.gems {
+    display: flex;
+    align-items: center;
+    margin-right: 20px;
+}
+
+    .hearts img,
+    .gems img,
+    .day-streak img {
+        width: 25px;
+        height: 25px;
+        margin-right: 5px;
+    }
+
+.container {
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    width: 300px;
     padding: 20px;
-    margin-top: 20px;
+    font-family: 'Varela Round', sans-serif;
+}
+
+.profile-text {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+label {
+    color: white;
+    font-family: 'Varela Round', sans-serif;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
     border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    position: fixed;
+    box-sizing: border-box;
+    background-color: #202f36;
+    color: white;
+    font-weight: 600;
+    font-family: 'Varela Round', sans-serif;
 }
 
-    .leaderboard h2,
-    .daily-quests h2 {
+button {
+    width: 100%;
+    padding: 10px;
+    background-color: #49c0f8;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    color: #202f36;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    font-family: 'Varela Round', sans-serif;
+}
+
+    button:hover {
+        background-color: #0078a0;
+        transform: translateY(-2px);
+        border-color: #ccc;
+    }
+
+.notifications {
+    margin-top: 50px;
+}
+
+    .notifications .form-group {
+        display: flex;
+        align-items: center;
         margin-bottom: 10px;
-        font-size: 20px;
     }
 
-/* Positioning of Leaderboard and Daily Quests */
-.leaderboard {
-    top: 180px;
-    right: 20px;
-    width: 250px;
-}
-
-    .leaderboard .leaderboard-text {
-        text-align: center;
+    .notifications label {
+        color: white;
+        font-family: 'Varela Round', sans-serif;
     }
 
-    .leaderboard .user-info {
-        padding-left: 10px;
+    .notifications input[type="checkbox"] {
+        margin-left: auto;
+        margin-right: -15px; /* Adjust the space between checkbox and text */
     }
-
-.daily-quests {
-    top: 300px; /* Adjust the top position as needed */
-    right: 20px;
-    width: 250px;
-    margin-top: 90px; /* Increase the margin-top value to add space */
-}
-
-    .daily-quests .daily-quests-text {
-        text-align: center;
-    }
-
-    .daily-quests .quest-info {
-        padding-left: 10px;
-    }
-}
