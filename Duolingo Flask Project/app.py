@@ -2,8 +2,7 @@ from flask import Flask, render_template, request, redirect, url_for
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime, timedelta
 import os
-from flask import request
-from flask import redirect, render_template
+
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + os.path.join(os.path.abspath(os.path.dirname(__file__)), 'test.db')
@@ -49,39 +48,34 @@ def indexfr():
 @app.route('/lessonhub')
 def lessonhub():
     user = User.query.first()
-    
-    # Print user object and its attributes
-    print(user)
-    if user is not None:
-        print(user.hearts, user.day_streak, user.gems)
-    
     return render_template('lessonhub.html', user=user)
 
 @app.route('/katakana')
 def katakana():
-    return render_template('katakana.html')
-# Add this new route
+    user = User.query.first()
+    return render_template('katakana.html', user=user)
+
 @app.route('/characters')
 def characters():
-    # You'll need to create a 'characters.html' template and add your logic here
-    return render_template('characters.html')
+    user = User.query.first()
+    return render_template('characters.html', user=user)
 
 @app.route('/leaderboards')
 def leaderboards():
-    # You'll need to create a 'leaderboards.html' template and add your logic here
-    return render_template('leaderboards.html')
+    user = User.query.first()
+    return render_template('leaderboards.html', user=user)
 
 @app.route('/quests')
 def quests():
-    # You'll need to create a 'quests.html' template and add your logic here
-    return render_template('quests.html')
+    user = User.query.first()
+    return render_template('quests.html', user=user)
 
 @app.route('/shop', methods=['GET', 'POST'])
 def shop():
+    user = User.query.first()  # Query the User object
     if request.method == 'POST':
         # Check which item is being purchased
         item_id = request.form['item_id']
-        user = User.query.first()  # Assuming there's only one user for simplicity
         if item_id == 'hearts':
             if user.gems >= 350:
                 user.gems -= 350
@@ -100,27 +94,27 @@ def shop():
             return 'Invalid item ID.'
 
     # Render the shop page with available items
-    return render_template('shop.html')
+    return render_template('shop.html', user=user)  # Pass the User object to the template
 
 @app.route('/settings')
 def settings():
-    # You'll need to create a 'settings.html' template and add your logic here
-    return render_template('settings.html')
+    user = User.query.first()
+    return render_template('settings.html', user=user)
 
 @app.route('/profile')
 def profile():
-    # Your logic here
-    return render_template('profile.html')
+    user = User.query.first()
+    return render_template('profile.html', user=user)
 
 @app.route('/lessonhubjp')
 def lessonhubjp():
-    # Your logic here
-    return render_template('lessonhubjp.html')
+    user = User.query.first()
+    return render_template('lessonhubjp.html', user=user)
 
 @app.route('/lessonhubfr')
 def lessonhubfr():
-    # Your logic here
-    return render_template('lessonhubfr.html')
+    user = User.query.first()
+    return render_template('lessonhubfr.html', user=user)
 
 
 
@@ -143,16 +137,21 @@ def login():
     user = User.query.filter_by(email=email).first()
     if user and user.password == password:
         hours_since_last_login = (datetime.utcnow() - user.last_login).total_seconds() / 3600
-        new_hearts = min(20, user.hearts + int(hours_since_last_login / 4))
-        user.hearts = new_hearts
-        if user.last_login < datetime.utcnow() - timedelta(days=1):
-            user.day_streak += 1
+        if hours_since_last_login >= 6:
+            user.hearts = 5  # Reset hearts every 6 hours
+        else:
+            new_hearts = min(5, user.hearts + int(hours_since_last_login / 4))
+            user.hearts = new_hearts
+        if user.last_login < datetime.utcnow() - timedelta(days=2):  # Check if 48 hours have passed
+            user.day_streak = 0  # Reset streak if 48 hours have passed
+        elif user.last_login < datetime.utcnow() - timedelta(days=1):
+            user.day_streak += 1  # Increment streak if 24 hours have passed
         user.last_login = datetime.utcnow()
         db.session.commit()
         return redirect(url_for('lessonhub'))  
     else:
-        return 'Invalid email or password'
-
+        return 'Invalid email or password'    
+    
 if __name__ == '__main__':
     with app.app_context():
         db.create_all()  

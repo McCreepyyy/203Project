@@ -87,23 +87,6 @@
                 </div>
             </div>
 
-            <!-- Main Content Area -->
-            <div class="main-content">
-                <!-- Hearts, Day Streak, Gems -->
-                <div class="header-icons">
-                    <div class="hearts">
-                        <img src="images/hearts.png" alt="Hearts" draggable="false" />
-                        <span id="heartsCount">5</span>
-                    </div>
-                    <div class="day-streak">
-                        <img src="images/daystreak.png" alt="Day Streak" draggable="false" />
-                        <span id="streakCount">0</span>
-                    </div>
-                    <div class="gems">
-                        <img src="images/gems.png" alt="Gems" draggable="false" />
-                        <span id="gemsCount">0</span>
-                    </div>
-                </div>
 
                 <!-- Leaderboard -->
                 <div class="leaderboard">
@@ -134,13 +117,13 @@
                     </div>
                     <div class="hiragana">
                         <p>Get to know the main writing system in Japanese</p>
-                        <img src="images/hiragana.png" alt="Hiragana" class="hiragana" style="width: 371px; height: 690px;" draggable="false" />
+                        <img src="{{ url_for('static', filename='images/hiragana.png') }}" alt="Hiragana" class="hiragana" style="width: 371px; height: 690px;" draggable="false" />
                         <h3>Dakuon</h3>
                         <p>Add a symbol to change the sound</p>
-                        <img src="images/hiraganadakuon.png" alt="Hiragana - Dakuon" class="hiragana" style="width: 390px; height:325px;" draggable="false" />
+                        <img src="{{ url_for('static', filename='images/hiraganadakuon.png') }}" alt="Hiragana - Dakuon" class="hiragana" style="width: 390px; height:325px;" draggable="false" />
                         <h3>Combo</h3>
                         <p>Add small characters to make new syllables</p>
-                        <img src="images/hiraganacombo.png" alt="Hiragana - Combo" class="hiragana" style="width: 390px; height:750px;" draggable="false" />
+                        <img src="{{ url_for('static', filename='images/hiraganacombo.png') }}" alt="Hiragana - Combo" class="hiragana" style="width: 390px; height:750px;" draggable="false" />
                     </div>
                 </div>
             </div>
@@ -175,7 +158,7 @@
                 }
 
                 // Initialize hearts count
-                var heartsCount = 5;
+                var heartsCount = {{ user.hearts }};
 
                 function updateHearts() {
                     document.getElementById("heartsCount").innerText = heartsCount;

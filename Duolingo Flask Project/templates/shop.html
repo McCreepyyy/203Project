@@ -1,3 +1,4 @@
+HTML:
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -102,7 +103,7 @@
                 <h2 class="powerups-text"><b>Power Ups</b></h2>
                 <form method="post" action="{{ url_for('shop') }}">
                     <input type="hidden" name="item_id" value="streak_freeze">
-                    <img src="{{ url_for('static', filename='images/streakfreeze.png') }}" alt="Streak Freeze" style="width: 100px; height:100px;"draggable="false" />
+                    <img src="{{ url_for('static', filename='images/streakfreeze.png') }}" alt="Streak Freeze" style="width: 100px; height:100px;" draggable="false" />
                     <div class="streak-freeze">
                         <h3><b>Streak Freeze</b></h3>
                         <p>Streak freeze allows your streak to remain in place.</p>
@@ -113,60 +114,59 @@
         </div>
     </div>
 
-
     <!-- JavaScript -->
     <script>
-        // Function to update user's rank and XP
-        function updateUserInfo(rank, xp) {
-            document.getElementById("userRank").innerText = rank;
-            document.getElementById("userXP").innerText = xp;
-        }
-
-        // Function to update quests
-        function updateQuestsInfo(quest1XP, quest2XP, quest3XP) {
-            document.getElementById("quest1XP").innerText = quest1XP;
-            document.getElementById("quest2XP").innerText = quest2XP;
-            document.getElementById("quest3XP").innerText = quest3XP;
-        }
-
-        // Placeholder Values
-        var userRankPlaceholder = 10;
-        var userXPPlaceholder = 500;
-
-        var quest1XPPlaceholder = 30;
-        var quest2XPPlaceholder = 10;
-        var quest3XPPlaceholder = 15;
-
-        function toggleDropdown() {
-            var dropdown = document.getElementById("dropdownContent");
-            dropdown.classList.toggle("active");
-        }
-
-        // Initialize hearts count
-        var heartsCount = 5;
-
-        function updateHearts() {
-            document.getElementById("heartsCount").innerText = heartsCount;
-        }
-
-        function loseHeart() {
-            if (heartsCount > 0) {
-                heartsCount--;
-                updateHearts();
+            // Function to update user's rank and XP
+            function updateUserInfo(rank, xp) {
+                document.getElementById("userRank").innerText = rank;
+                document.getElementById("userXP").innerText = xp;
             }
-        }
 
-        function regenerateHeart() {
-            if (heartsCount < 5) {
-                heartsCount++;
-                updateHearts();
+            // Function to update quests
+            function updateQuestsInfo(quest1XP, quest2XP, quest3XP) {
+                document.getElementById("quest1XP").innerText = quest1XP;
+                document.getElementById("quest2XP").innerText = quest2XP;
+                document.getElementById("quest3XP").innerText = quest3XP;
             }
-        }
 
-        // Call function to initialize hearts count
-        updateHearts();
-        updateUserInfo(userRankPlaceholder, userXPPlaceholder);
-        updateQuestsInfo(quest1XPPlaceholder, quest2XPPlaceholder, quest3XPPlaceholder);
+            // Placeholder Values
+            var userRankPlaceholder = 10;
+            var userXPPlaceholder = 500;
+
+            var quest1XPPlaceholder = 30;
+            var quest2XPPlaceholder = 10;
+            var quest3XPPlaceholder = 15;
+
+            function toggleDropdown() {
+                var dropdown = document.getElementById("dropdownContent");
+                dropdown.classList.toggle("active");
+            }
+
+            // Initialize hearts count
+            var heartsCount = {{ user.hearts }};
+
+            function updateHearts() {
+                document.getElementById("heartsCount").innerText = heartsCount;
+            }
+
+            function loseHeart() {
+                if (heartsCount > 0) {
+                    heartsCount--;
+                    updateHearts();
+                }
+            }
+
+            function regenerateHeart() {
+                if (heartsCount < 5) {
+                    heartsCount++;
+                    updateHearts();
+                }
+            }
+
+            // Call function to initialize hearts count
+            updateHearts();
+            updateUserInfo(userRankPlaceholder, userXPPlaceholder);
+            updateQuestsInfo(quest1XPPlaceholder, quest2XPPlaceholder, quest3XPPlaceholder);
 
     </script>
 

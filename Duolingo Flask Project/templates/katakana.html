@@ -157,7 +157,9 @@ HTML:
             }
 
             // Initialize hearts count
-            var heartsCount = 5;
+            var heartsCount = {{ user.hearts }};
+
+            var heartsCount = {{ user.hearts }};
 
             function updateHearts() {
                 document.getElementById("heartsCount").innerText = heartsCount;
