@@ -94,29 +94,34 @@
 
     <!-- JavaScript -->
     <script>
-    // Initialize hearts count with the value from the server
-    var heartsCount = {{ user.hearts }};
-
-    function updateHearts() {
-        document.getElementById("heartsCount").innerText = heartsCount;
-    }
-
-    function loseHeart() {
-        if (heartsCount > 0) {
-            heartsCount--;
-            updateHearts();
+        function toggleDropdown() {
+            var dropdown = document.getElementById("dropdownContent");
+            dropdown.classList.toggle("active");
         }
-    }
 
-    function regenerateHeart() {
-        if (heartsCount < 5) {
-            heartsCount++;
-            updateHearts();
+        // Initialize hearts count
+        var heartsCount = 5;
+
+        function updateHearts() {
+            document.getElementById("heartsCount").innerText = heartsCount;
         }
-    }
 
-    // Call function to initialize hearts count
-    updateHearts();
+        function loseHeart() {
+            if (heartsCount > 0) {
+                heartsCount--;
+                updateHearts();
+            }
+        }
+
+        function regenerateHeart() {
+            if (heartsCount < 5) {
+                heartsCount++;
+                updateHearts();
+            }
+        }
+
+        // Call function to initialize hearts count
+        updateHearts();
     </script>
 
 </body>
