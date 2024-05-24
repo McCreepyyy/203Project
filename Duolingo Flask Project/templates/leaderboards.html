@@ -1,3 +1,4 @@
+HTML:
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,38 +12,38 @@
 <body>
     <!-- Sidebar -->
     <div class="sidebar">
-        <a href="lessonhub.html" class="logo-link">
+        <a href="{{ url_for('lessonhub') }}" class="logo-link">
             <img src="{{ url_for('static', filename='images/duolingo2.png') }}" alt="Duolingo" class="logo-image" style="width:120px;height:30px;" draggable="false" />
         </a>
-        <a href="lessonhub.html" class="sidebar-link">
+        <a href="{{ url_for('lessonhub') }}" class="sidebar-link">
             <img src="{{ url_for('static', filename='images/learn.png') }}" alt="Learn" style="width: 35px; height: 35px;" draggable="false" />
             <b>Learn</b>
         </a>
-        <a href="characters.html" class="sidebar-link">
+        <a href="{{ url_for('characters') }}" class="sidebar-link">
             <img src="{{ url_for('static', filename='images/characters.png') }}" alt="Characters" style="width: 35px; height: 35px;" draggable="false" />
             <b>Characters</b>
         </a>
-        <a href="leaderboards.html" class="sidebar-link">
+        <a href="{{ url_for('leaderboards') }}" class="sidebar-link">
             <img src="{{ url_for('static', filename='images/leaderboards.png') }}" alt="Leaderboards" style="width: 35px; height: 35px;" draggable="false" />
             <b>Leaderboards</b>
         </a>
-        <a href="quests.html" class="sidebar-link">
+        <a href="{{ url_for('quests') }}" class="sidebar-link">
             <img src="{{ url_for('static', filename='images/quests.png') }}" alt="Quests" style="width: 35px; height: 35px;" draggable="false" />
             <b>Quests</b>
         </a>
-        <a href="shop.html" class="sidebar-link">
+        <a href="{{ url_for('shop') }}" class="sidebar-link">
             <img src="{{ url_for('static', filename='images/shop.png') }}" alt="Shop" style="width: 35px; height: 35px;" draggable="false" />
             <b>Shop</b>
         </a>
-        <a href="profile.html" class="sidebar-link">
+        <a href="{{ url_for('profile') }}" class="sidebar-link">
             <img src="{{ url_for('static', filename='images/profile.png') }}" alt="Profile" class="profile-image" style="width: 35px; height: 35px;" draggable="false" />
             <b>Profile</b>
         </a>
-        <a href="settings.html" class="sidebar-link">
+        <a href="{{ url_for('settings') }}" class="sidebar-link">
             <img src="{{ url_for('static', filename='images/settings.png') }}" alt="Settings" style="width: 35px; height: 35px;" draggable="false" />
             <b>Settings</b>
         </a>
-        <a href="index.html" class="sidebar-link">
+        <a href="{{ url_for('index') }}" class="sidebar-link">
             <img src="{{ url_for('static', filename='images/signout.png') }}" alt="Sign Out" style="width: 35px; height: 35px;" draggable="false" />
             <b>Sign out</b>
         </a>
@@ -156,7 +157,7 @@
             }
 
             // Initialize hearts count
-            var heartsCount = 5;
+            var heartsCount = {{ user.hearts }};
 
             function updateHearts() {
                 document.getElementById("heartsCount").innerText = heartsCount;
