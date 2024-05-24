@@ -55,7 +55,8 @@ def katakana():
 
 @app.route('/characters')
 def characters():
-    return render_template('characters.html')
+    user = User.query.first()
+    return render_template('characters.html', user=user)
 
 @app.route('/leaderboards')
 def leaderboards():
