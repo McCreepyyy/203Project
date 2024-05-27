@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, render_template, request, redirect, session, url_for
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime, timedelta
 from flask import Flask, render_template, request, redirect, url_for, jsonify
@@ -6,6 +6,7 @@ import os
 
 
 app = Flask(__name__)
+app.secret_key = '6969'  # Set a secret key
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + os.path.join(os.path.abspath(os.path.dirname(__file__)), 'test.db')
 db = SQLAlchemy(app)
 
@@ -18,9 +19,15 @@ class User(db.Model):
     gems = db.Column(db.Integer, default=0)
     day_streak = db.Column(db.Integer, default=0)
     last_login = db.Column(db.DateTime, default=datetime.utcnow)
+    xp = db.Column(db.Integer, default=0)  # Add this line
 
     def __repr__(self):
         return '<User %r>' % self.username
+    
+    def __repr__(self):
+        return '<User %r>' % self.username
+    
+
 
 @app.route('/')
 def index():
@@ -48,32 +55,32 @@ def indexfr():
 
 @app.route('/lessonhub')
 def lessonhub():
-    user = User.query.first()
+    user = User.query.get(session['user_id'])  # Get the current user
     return render_template('lessonhub.html', user=user)
 
 @app.route('/katakana')
 def katakana():
-    user = User.query.first()
+    user = User.query.get(session['user_id'])  # Get the current user
     return render_template('katakana.html', user=user)
 
 @app.route('/characters')
 def characters():
-    user = User.query.first()
+    user = User.query.get(session['user_id'])  # Get the current user
     return render_template('characters.html', user=user)
 
 @app.route('/leaderboards')
 def leaderboards():
-    user = User.query.first()
+    user = User.query.get(session['user_id'])  # Get the current user
     return render_template('leaderboards.html', user=user)
 
 @app.route('/quests')
 def quests():
-    user = User.query.first()
+    user = User.query.get(session['user_id'])  # Get the current user
     return render_template('quests.html', user=user)
 
 @app.route('/shop', methods=['GET', 'POST'])
 def shop():
-    user = User.query.first()  # Query the User object
+    user = User.query.get(session['user_id'])  # Get the current user
     if request.method == 'POST':
         # Check which item is being purchased
         item_id = request.form['item_id']
@@ -99,22 +106,22 @@ def shop():
 
 @app.route('/settings')
 def settings():
-    user = User.query.first()
+    user = User.query.get(session['user_id'])  # Get the current user
     return render_template('settings.html', user=user)
 
 @app.route('/profile')
 def profile():
-    user = User.query.first()
+    user = User.query.get(session['user_id'])  # Get the current user
     return render_template('profile.html', user=user)
 
 @app.route('/lessonhubjp')
 def lessonhubjp():
-    user = User.query.first()
+    user = User.query.get(session['user_id'])  # Get the current user
     return render_template('lessonhubjp.html', user=user)
 
 @app.route('/lessonhubfr')
 def lessonhubfr():
-    user = User.query.first()
+    user = User.query.get(session['user_id'])  # Get the current user
     return render_template('lessonhubfr.html', user=user)
 
 
@@ -149,6 +156,7 @@ def login():
             user.day_streak += 1  # Increment streak if 24 hours have passed
         user.last_login = datetime.utcnow()
         db.session.commit()
+        session['user_id'] = user.id  # Set the user id in the session
         return redirect(url_for('lessonhub'))  
     else:
         return 'Invalid email or password'   
@@ -156,7 +164,7 @@ def login():
 @app.route('/update_user_info', methods=['POST'])
 def update_user_info():
     data = request.json
-    user = User.query.first()  # Update this to get the current logged-in user
+    user = User.query.get(session['user_id'])  # Get the current logged-in user
     user.username = data.get('username', user.username)
     user.email = data.get('email', user.email)
     if data.get('password'):
@@ -164,14 +172,12 @@ def update_user_info():
     db.session.commit()
     return jsonify({'success': True})
 
-
 @app.route('/toggle_dark_mode', methods=['POST'])
 def toggle_dark_mode():
     data = request.json
     dark_mode = data.get('darkMode', False)
     # Here you would save the dark mode preference to the user profile or session
     return jsonify({'success': True})
-
 
 if __name__ == '__main__':
     with app.app_context():
