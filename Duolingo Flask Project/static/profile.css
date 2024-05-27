@@ -69,9 +69,13 @@ body {
 
 /* Content styles */
 .content {
-    margin-left: 200px;
     padding: 20px;
     flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    width: calc(100% - 200px); /* Subtracting the width of the sidebar */
+    margin-left: 150px; /* Aligning the content to the left side */
+    overflow-x: hidden; /* Preventing horizontal overflow */
 }
 
 /* Navigation Bar styles */
@@ -155,6 +159,7 @@ body {
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    display: flex;
 }
 
 /* Hearts, Gems, Day Streak Styling */
@@ -189,114 +194,118 @@ body {
     margin-right: 20px;
 }
 
-/* Characters section styles */
-.main-content .characters {
-    position: relative;
-    color: white;
-    text-align: center;
-    font-weight: 600;
-    margin-top: 20px; /* Adjust as needed for positioning */
+/* Profile Header and Statistics */
+.profile-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
 }
 
-    .main-content .characters .scripts {
-        display: flex;
-        justify-content: center;
-        gap: 50px; /* Adjust gap between links */
-        margin-right: 51px;
-        padding-top: 20px;
+.profile-image-container {
+    flex: 0 0 100px;
+    margin-right: 20px;
+}
+
+.profile-image {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.profile-details {
+    flex-grow: 1;
+}
+
+    .profile-details h1 {
+        font-size: 24px;
+        margin: 0;
     }
 
-    .main-content .characters .characters-link {
-        color: white;
-        text-decoration: none;
-        font-weight: 600;
-        font-size: 18px;
-        position: relative;
-        padding-bottom: 30px;
+    .profile-details p {
+        margin: 5px 0;
     }
 
-        .main-content .characters .characters-link::after {
-            content: '';
-            position: absolute;
-            bottom: -3px;
-            left: 0;
-            width: 0; /* Set width to 0 to remove the border */
-            height: 1px;
-            background-color: transparent; /* Set background color to transparent */
-            z-index: -1;
-        }
+.statistics {
+    flex: 2;
+    margin-right: 20px;
+}
 
-        .main-content .characters .characters-link:hover {
-            color: #009af4;
-            border-color: #009af4;
-        }
-
-        .main-content .characters .characters-link:hover {
-            color: #009af4;
-            border-color: #009af4;
-        }
-
-    .main-content .characters .hiragana {
-        margin-top: 15px;
-        font-weight: 300;
+    .statistics h2 {
+        font-size: 20px;
+        margin-bottom: 10px;
     }
 
-    .main-content .characters .katakana {
-        margin-top: 15px;
-        font-weight: 300;
-        align-content: center;
-        padding-right: 30px;
-    }
+.stats-grid {
+    display: flex;
+    gap: 50px;
+}
 
-        .main-content .characters .katakana .katakana-text1 {
-            padding-right: 30px;
-        }
-
-/* Leaderboard and Daily Quests styles */
-.leaderboard,
-.daily-quests {
+.stat-item {
     background-color: #1e2b30;
-    color: white;
+    padding: 10px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    min-width: 200px; /* Set minimum width */
+}
+
+.stat-icon {
+    width: 20px; /* Set width for the icon */
+    height: 25px; /* Set height for the icon */
+    margin-right: 20px; /* Adjust margin as needed */
+}
+
+.stat-item div {
+    flex-grow: 1; /* Allow the content to take up remaining space */
+}
+
+/* Adjust text size and spacing as needed */
+.stat-item p {
+    font-size: 16px;
+    margin: 0;
+}
+
+.sidebar-right {
+    width: 250px;
+    background-color: #1e2b30;
     padding: 20px;
-    margin-top: 20px;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     position: fixed;
-}
-
-    .leaderboard h2,
-    .daily-quests h2 {
-        margin-bottom: 10px;
-        font-size: 20px;
-    }
-
-/* Positioning of Leaderboard and Daily Quests */
-.leaderboard {
     top: 180px;
-    right: 20px;
-    width: 250px;
+    right: 50px;
 }
 
-    .leaderboard .leaderboard-text {
-        text-align: center;
-    }
-
-    .leaderboard .user-info {
-        padding-left: 10px;
-    }
-
-.daily-quests {
-    top: 300px; /* Adjust the top position as needed */
-    right: 20px;
-    width: 250px;
-    margin-top: 90px; /* Increase the margin-top value to add space */
+.following-followers-tabs {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
 }
 
-    .daily-quests .daily-quests-text {
-        text-align: center;
+.tab {
+    flex: 1;
+    margin-right: 10px;
+    padding: 10px;
+    background-color: #1e2b30;
+    border: none;
+    border-radius: 8px;
+    color: white;
+    cursor: pointer;
+}
+
+    .tab:last-child {
+        margin-right: 0;
     }
 
-    .daily-quests .quest-info {
-        padding-left: 10px;
+    .tab.active {
+        background-color: #29343a;
     }
+
+.tab-content {
+    background-color: #1e2b30;
+    padding: 15px;
+    border-radius: 8px;
+    display: none;
+    margin-bottom: 10px;
 }

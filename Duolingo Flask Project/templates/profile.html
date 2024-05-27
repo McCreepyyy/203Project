@@ -1,4 +1,3 @@
-HTML:
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -86,50 +85,69 @@ HTML:
                     <span id="gemsCount">0</span>
                 </div>
             </div>
+        </div>
 
-            <!-- Leaderboard -->
-            <div class="leaderboard">
-                <h2 class="leaderboard-text"><b>LEADERBOARD</b></h2>
-                <!-- Leaderboard content here -->
-                <div class="user-info">
-                    <p class="user-info">Rank: <span id="userRank">-</span></p>
-                    <p class="user-info">XP: <span id="userXP">-</span></p>
+        <div class="content">
+            <div class="profile-header">
+                <div class="profile-image-container">
+                    <img src="{{ url_for('static', filename='images/profile.png') }}" alt="Profile Image" class="profile-image" />
+                </div>
+                <div class="profile-details">
+                    <h1>{{ user.username }}</h1>
                 </div>
             </div>
-
-            <!-- Daily Quests -->
-            <div class="daily-quests">
-                <h2 class="daily-quests-text"><b>DAILY QUESTS</b></h2>
-                <div class="quest-info">
-                    <p class="quest-info">Earn 30 XP</p>
-                    <p class="quest-info">Earn 10 Combo Bonus XP</p>
-                    <p class="quest-info">Spend 15 minutes learning</p>
+            <div class="stats-content">
+                <div class="statistics">
+                    <h2>Statistics</h2>
+                    <div class="stats-grid">
+                        <div class="stat-item">
+                            <img src="{{ url_for('static', filename='images/daystreak.png') }}" alt="Streak" class="stat-icon" draggale="false" />
+                            <div>
+                                <p><b>{{ user.day_streak }}</b></p>
+                            </div>
+                        </div>
+                        <div class="stat-item">
+                            <img src="{{ url_for('static', filename='images/xp.png') }}" alt="XP" class="stat-icon" draggable="false" />
+                            <div>
+                                <p>Total XP: {{ user.total_xp }}</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-
-
-            <!-- Main Content -->
-            <div class="characters">
-                <div class="scripts">
-                    <a href="{{ url_for('characters') }}" class="characters-link"><b>HIRAGANA</b></a>
-                    <a href="{{ url_for('katakana') }}" class="characters-link"><b>KATAKANA</b></a>
+            <!-- Sidebar Right -->
+            <div class="sidebar-right">
+                <!-- Following/Followers Tabs -->
+                <div class="following-followers-tabs">
+                    <button class="tab active" onclick="showTab('following')">Following</button>
+                    <button class="tab" onclick="showTab('followers')">Followers</button>
                 </div>
-                <div class="katakana">
-                    <p class="katakana-text1">Practice characters used for loanwords</p>
-                    <img src="{{ url_for('static', filename='images/katakana.png') }}" alt="katakana" class="katakana" style="width: 371px; height: 690px;" draggable="false" />
-                    <h3>Dakuon</h3>
-                    <p>Add a symbol to change the sound</p>
-                    <img src="{{ url_for('static', filename='images/katakanadakuon.png') }}" alt="Katakana - Dakuon" class="katakana" style="width: 390px; height:325px;" draggable=false />
-                    <h3>Combo</h3>
-                    <p>Add small characters to make new syllables</p>
-                    <img src="{{ url_for('static', filename='images/katakanacombo.png') }}" alt="Katakana - Combo" class="katakana" style="width: 390px; height:750px;" draggable="false" />
+                <!-- Following/Followers Tab Content -->
+                <div id="following" class="tab-content">
+                    <p>You are not following anyone yet.</p>
                 </div>
-
+                <div id="followers" class="tab-content" style="display:none;">
+                    <p>You currently have no followers.</p>
+                </div>
             </div>
         </div>
+    </div>
+
+
 
         <!-- JavaScript -->
         <script>
+
+            function showTab(tabName) {
+                var i;
+                var tabs = document.getElementsByClassName('tab-content');
+                for (i = 0; i < tabs.length; i++) {
+                    tabs[i].style.display = 'none';
+                }
+                var activeTab = document.getElementById(tabName);
+                activeTab.style.display = 'block';
+            }
+
             // Function to update user's rank and XP
             function updateUserInfo(rank, xp) {
                 document.getElementById("userRank").innerText = rank;
@@ -160,7 +178,8 @@ HTML:
             var heartsCount = 5;
 
             function updateHearts() {
-                document.getElementById("heartsCount").innerText = heartsCount;            }
+                document.getElementById("heartsCount").innerText = heartsCount;
+            }
 
             function loseHeart() {
                 if (heartsCount > 0) {
