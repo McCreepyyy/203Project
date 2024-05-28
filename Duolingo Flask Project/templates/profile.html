@@ -119,8 +119,8 @@
             <div class="sidebar-right">
                 <!-- Following/Followers Tabs -->
                 <div class="following-followers-tabs">
-                    <button class="tab active" onclick="showTab('following')">Following</button>
-                    <button class="tab" onclick="showTab('followers')">Followers</button>
+                    <button class="tab active" onclick="showTab('following', this)">Following</button>
+                    <button class="tab" onclick="showTab('followers', this)">Followers</button>
                 </div>
                 <!-- Following/Followers Tab Content -->
                 <div id="following" class="tab-content">
@@ -137,15 +137,19 @@
 
         <!-- JavaScript -->
     <script>
-    function showTab(tabName) {
-        var i;
-        var tabs = document.getElementsByClassName('tab-content');
-        for (i = 0; i < tabs.length; i++) {
-            tabs[i].style.display = 'none';
+        function showTab(tabName, element) {
+            var tabs = document.getElementsByClassName('tab-content');
+            for (var i = 0; i < tabs.length; i++) {
+                tabs[i].style.display = 'none';
+            }
+            document.getElementById(tabName).style.display = 'block';
+
+            var tabButtons = document.getElementsByClassName('tab');
+            for (var i = 0; i < tabButtons.length; i++) {
+                tabButtons[i].classList.remove('active');
+            }
+            element.classList.add('active');
         }
-        var activeTab = document.getElementById(tabName);
-        activeTab.style.display = 'block';
-    }
 
     // Function to update user's rank and XP
     function updateUserInfo(rank, xp) {

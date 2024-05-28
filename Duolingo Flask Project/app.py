@@ -33,6 +33,30 @@ class User(db.Model):
 def index():
     return render_template('index.html')
 
+@app.route('/lesson1')
+def lesson1():
+    return render_template('lesson1.html')
+
+@app.route('/lesson2')
+def lesson2():
+    return render_template('lesson1.html')
+
+@app.route('/lesson3')
+def lesson3():
+    return render_template('lesson1.html')
+
+@app.route('/lesson4')
+def lesson4():
+    return render_template('lesson1.html')
+
+@app.route('/lesson5')
+def lesson5():
+    return render_template('lesson1.html')
+
+@app.route('/lesson6')
+def lesson6():
+    return render_template('lesson1.html')
+
 @app.route('/signin')
 def signin():
     return render_template('signin.html')
@@ -188,3 +212,4 @@ if __name__ == '__main__':
     except ValueError:
         PORT = 5555
     app.run(HOST, PORT)
+

@@ -309,3 +309,7 @@ body {
     display: none;
     margin-bottom: 10px;
 }
+
+    .tab-content.active {
+        display: block;
+    }
