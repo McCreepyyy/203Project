@@ -5,11 +5,11 @@ body {
     font-style: normal;
     margin: 0;
     padding: 0;
+    background-color: #131f24;
+    color: white;
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: #131f24;
-    color: white;
 }
 
 /* Sidebar styles */
@@ -64,6 +64,7 @@ body {
         margin: 0 auto;
     }
 
+/* Specific style for the profile image to make it circular */
 .profile-image {
     border-radius: 50%;
 }
@@ -77,16 +78,21 @@ body {
 
 /* Navigation Bar styles */
 .menu {
-    margin-left: 1200px;
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-end; /* Align to the right */
     align-items: center;
-    margin-bottom: 20px;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 10px;
+    background-color: #131f24;
 }
 
 .language {
     list-style: none;
     color: #c0c0c0;
+    margin: 0;
 }
 
 .flag {
@@ -100,7 +106,7 @@ body {
 .dropbtn {
     background-color: transparent;
     color: white;
-    padding: 10px 30px 10px 15px;
+    padding: 10px 15px;
     font-size: 16px;
     border: none;
     cursor: pointer;
@@ -153,62 +159,31 @@ body {
 
 /* Main Content styles */
 .main-content {
-    position: relative;
     color: white;
-    display: flex;
     padding: 20px;
-    padding-left: 1250px;
-    width: 80%;
     border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-/* Leaderboard styles */
-.leaderboard {
-    background-color: #333842;
-    padding: 20px;
-    border-radius: 10px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 80%;
-    max-width: 1125px;
-    margin: 20px auto;
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
-/* Leaderboard List styles */
-.leaderboard-list {
-    list-style: none;
-    padding: 0;
-    width: 100%;
-}
-
-.leaderboard-item {
+/* Hearts, Gems, Day Streak Styling */
+.hearts,
+.gems,
+.day-streak {
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    padding: 10px 0;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    margin-right: 20px;
 }
 
-.rank {
-    font-weight: bold;
-    margin-right: 10px;
-}
+    .hearts img,
+    .gems img,
+    .day-streak img {
+        width: 25px;
+        height: 25px;
+        margin-right: 5px;
+    }
 
-.username {
-    flex-grow: 1;
-    text-align: left;
-}
-
-.xp {
-    font-weight: bold;
-}
-
-/* Positioning of Daily Quests */
 .header-icons {
-    position: fixed;
+    position: absolute;
     top: 100px;
     right: 20px;
     display: flex;
@@ -216,41 +191,40 @@ body {
     color: white;
 }
 
-.daily-quests {
-    position: fixed;
-    top: 200px;
-    right: 20px;
-    width: 250px;
-    background-color: #1e2b30;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    border: 2px solid white;
-}
-
-    .daily-quests .daily-quests-text {
-        text-align: center;
-        margin-bottom: 10px;
-    }
-
-    .daily-quests .quest-info {
-        padding-left: 10px;
-    }
-
-.hearts {
-    margin-right: 15px;
-}
-
-.day-streak {
+.hearts,
+.day-streak,
+.gems {
     margin-right: 20px;
 }
 
-.gems {
-    margin-right: 35px;
+/* Leaderboard and Quests Container styles */
+.leaderboard-container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; /* Align to the top */
+    height: 100vh;
+    width: 100%; /* Ensure it takes full width of the viewport */
+    padding-top: 60px; /* Adjust to move it closer to the top */
 }
 
-.heartsCount,
-.streakCount,
-.gemsCount {
-    bottom: 15px;
+.leaderboard {
+    background-color: #1e2b30;
+    color: white;
+    padding: 30px; /* Increased padding for a bigger size */
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    width: 300px; /* Increased width for a bigger size */
+}
+
+.daily-quests {
+    background-color: #1e2b30;
+    color: white;
+    padding: 20px;
+    margin-top: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    width: 250px;
+    position: absolute;
+    top: 160px; /* Adjust this value to position correctly under the header-icons */
+    right: 20px;
 }
