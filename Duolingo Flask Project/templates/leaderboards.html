@@ -11,38 +11,38 @@
 <body>
     <!-- Sidebar -->
     <div class="sidebar">
-        <a href="lessonhub.html" class="logo-link">
+        <a href="{{ url_for('lessonhub') }}" class="logo-link">
             <img src="{{ url_for('static', filename='images/duolingo2.png') }}" alt="Duolingo" class="logo-image" style="width:120px;height:30px;" draggable="false" />
         </a>
-        <a href="lessonhub.html" class="sidebar-link">
+        <a href="{{ url_for('lessonhub') }}" class="sidebar-link">
             <img src="{{ url_for('static', filename='images/learn.png') }}" alt="Learn" style="width: 35px; height: 35px;" draggable="false" />
             <b>Learn</b>
         </a>
-        <a href="characters.html" class="sidebar-link">
+        <a href="{{ url_for('characters') }}" class="sidebar-link">
             <img src="{{ url_for('static', filename='images/characters.png') }}" alt="Characters" style="width: 35px; height: 35px;" draggable="false" />
             <b>Characters</b>
         </a>
-        <a href="leaderboards.html" class="sidebar-link">
+        <a href="{{ url_for('leaderboards') }}" class="sidebar-link">
             <img src="{{ url_for('static', filename='images/leaderboards.png') }}" alt="Leaderboards" style="width: 35px; height: 35px;" draggable="false" />
             <b>Leaderboards</b>
         </a>
-        <a href="quests.html" class="sidebar-link">
+        <a href="{{ url_for('quests') }}" class="sidebar-link">
             <img src="{{ url_for('static', filename='images/quests.png') }}" alt="Quests" style="width: 35px; height: 35px;" draggable="false" />
             <b>Quests</b>
         </a>
-        <a href="shop.html" class="sidebar-link">
+        <a href="{{ url_for('shop') }}" class="sidebar-link">
             <img src="{{ url_for('static', filename='images/shop.png') }}" alt="Shop" style="width: 35px; height: 35px;" draggable="false" />
             <b>Shop</b>
         </a>
-        <a href="profile.html" class="sidebar-link">
+        <a href="{{ url_for('profile') }}" class="sidebar-link">
             <img src="{{ url_for('static', filename='images/profile.png') }}" alt="Profile" class="profile-image" style="width: 35px; height: 35px;" draggable="false" />
             <b>Profile</b>
         </a>
-        <a href="settings.html" class="sidebar-link">
+        <a href="{{ url_for('settings') }}" class="sidebar-link">
             <img src="{{ url_for('static', filename='images/settings.png') }}" alt="Settings" style="width: 35px; height: 35px;" draggable="false" />
             <b>Settings</b>
         </a>
-        <a href="index.html" class="sidebar-link">
+        <a href="{{ url_for('index') }}" class="sidebar-link">
             <img src="{{ url_for('static', filename='images/signout.png') }}" alt="Sign Out" style="width: 35px; height: 35px;" draggable="false" />
             <b>Sign out</b>
         </a>
@@ -86,13 +86,19 @@
                 </div>
             </div>
 
-            <!-- Leaderboard -->
-            <div class="leaderboard">
-                <h2 class="leaderboard-text"><b>LEADERBOARD</b></h2>
-                <!-- Leaderboard content here -->
-                <div class="user-info">
-                    <p class="user-info">Rank: <span id="userRank">-</span></p>
-                    <p class="user-info">XP: <span id="userXP">-</span></p>
+            <!-- Leaderboard Content -->
+            <div class="leaderboard-container">
+                <div class="leaderboard">
+                    <h2 class="leaderboard-title"><b>LEADERBOARD</b></h2>
+                    <ol class="leaderboard-list">
+                        {% for user in users %}
+                        <li class="leaderboard-item">
+                            <span class="rank">{{ loop.index }}</span>
+                            <span class="username">{{ user.username }}</span>
+                            <span class="xp">{{ user.xp }} XP</span>
+                        </li>
+                        {% endfor %}
+                    </ol>
                 </div>
             </div>
 
@@ -107,81 +113,62 @@
             </div>
 
 
-            <!-- Main Content -->
-            <div class="characters">
-                <div class="scripts">
-                    <a href="characters.html" class="characters-link"><b>HIRAGANA</b></a>
-                    <a href="katakana.html" class="characters-link"><b>KATAKANA</b></a>
-                </div>
-                <div class="katakana">
-                    <p class="katakana-text1">Practice characters used for loanwords</p>
-                    <img src="{{ url_for('static', filename='images/katakana.png') }}" alt="katakana" class="katakana" style="width: 371px; height: 690px;" draggable="false" />
-                    <h3>Dakuon</h3>
-                    <p>Add a symbol to change the sound</p>
-                    <img src="{{ url_for('static', filename='images/katakanadakuon.png') }}" alt="Katakana - Dakuon" class="katakana" style="width: 390px; height:325px;" draggable=false />
-                    <h3>Combo</h3>
-                    <p>Add small characters to make new syllables</p>
-                    <img src="{{ url_for('static', filename='images/katakanacombo.png') }}" alt="Katakana - Combo" class="katakana" style="width: 390px; height:750px;" draggable="false" />
-                </div>
 
-            </div>
-        </div>
-
-        <!-- JavaScript -->
-        <script>
-            // Function to update user's rank and XP
-            function updateUserInfo(rank, xp) {
-                document.getElementById("userRank").innerText = rank;
-                document.getElementById("userXP").innerText = xp;
-            }
-
-            // Function to update quests
-            function updateQuestsInfo(quest1XP, quest2XP, quest3XP) {
-                document.getElementById("quest1XP").innerText = quest1XP;
-                document.getElementById("quest2XP").innerText = quest2XP;
-                document.getElementById("quest3XP").innerText = quest3XP;
-            }
-
-            // Placeholder Values
-            var userRankPlaceholder = 10;
-            var userXPPlaceholder = 500;
-
-            var quest1XPPlaceholder = 30;
-            var quest2XPPlaceholder = 10;
-            var quest3XPPlaceholder = 15;
-
-            function toggleDropdown() {
-                var dropdown = document.getElementById("dropdownContent");
-                dropdown.classList.toggle("active");
-            }
-
-            // Initialize hearts count
-            var heartsCount = 5;
-
-            function updateHearts() {
-                document.getElementById("heartsCount").innerText = heartsCount;
-            }
-
-            function loseHeart() {
-                if (heartsCount > 0) {
-                    heartsCount--;
-                    updateHearts();
+            <!-- JavaScript -->
+            <script>
+                // Function to update user's rank and XP
+                function updateUserInfo(rank, xp) {
+                    document.getElementById("userRank").innerText = rank;
+                    document.getElementById("userXP").innerText = xp;
                 }
-            }
 
-            function regenerateHeart() {
-                if (heartsCount < 5) {
-                    heartsCount++;
-                    updateHearts();
+                // Function to update quests
+                function updateQuestsInfo(quest1XP, quest2XP, quest3XP) {
+                    document.getElementById("quest1XP").innerText = quest1XP;
+                    document.getElementById("quest2XP").innerText = quest2XP;
+                    document.getElementById("quest3XP").innerText = quest3XP;
                 }
-            }
 
-            // Call function to initialize hearts count
-            updateHearts();
-            updateUserInfo(userRankPlaceholder, userXPPlaceholder);
-            updateQuestsInfo(quest1XPPlaceholder, quest2XPPlaceholder, quest3XPPlaceholder);
+                // Placeholder Values
+                var userRankPlaceholder = 10;
+                var userXPPlaceholder = 500;
 
-        </script>
+                var quest1XPPlaceholder = 30;
+                var quest2XPPlaceholder = 10;
+                var quest3XPPlaceholder = 15;
+
+                function toggleDropdown() {
+                    var dropdown = document.getElementById("dropdownContent");
+                    dropdown.classList.toggle("active");
+                }
+
+                // Initialize hearts count
+                var heartsCount = 5;
+
+                function updateHearts() {
+                    document.getElementById("heartsCount").innerText = heartsCount;
+                }
+
+                function loseHeart() {
+                    if (heartsCount > 0) {
+                        heartsCount--;
+                        updateHearts();
+                    }
+                }
+
+                function regenerateHeart() {
+                    if (heartsCount < 5) {
+                        heartsCount++;
+                        updateHearts();
+                    }
+                }
+
+                // Call function to initialize hearts count
+                updateHearts();
+                updateUserInfo(userRankPlaceholder, userXPPlaceholder);
+                updateQuestsInfo(quest1XPPlaceholder, quest2XPPlaceholder, quest3XPPlaceholder);
+
+            </script>
 
 </body>
 </html>

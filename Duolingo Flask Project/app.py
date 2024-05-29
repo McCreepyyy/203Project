@@ -80,7 +80,8 @@ def indexfr():
 @app.route('/lessonhub')
 def lessonhub():
     user = User.query.get(session['user_id'])  # Get the current user
-    return render_template('lessonhub.html', user=user)
+    top_users = User.query.order_by(User.xp.desc()).limit(3).all()  # Get top 3 users
+    return render_template('lessonhub.html', user=user, top_users=top_users)
 
 @app.route('/katakana')
 def katakana():
@@ -94,8 +95,9 @@ def characters():
 
 @app.route('/leaderboards')
 def leaderboards():
-    user = User.query.get(session['user_id'])  # Get the current user
-    return render_template('leaderboards.html', user=user)
+    # Fetch all users and sort them by XP in descending order
+    all_users = User.query.order_by(User.xp.desc()).limit(10).all()
+    return render_template('leaderboards.html', users=all_users)
 
 @app.route('/quests')
 def quests():
