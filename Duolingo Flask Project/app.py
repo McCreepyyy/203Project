@@ -1,9 +1,15 @@
 from flask import Flask, render_template, request, redirect, session, url_for
 from flask_sqlalchemy import SQLAlchemy
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, date
 from flask import Flask, render_template, request, redirect, url_for, jsonify
+import random
 import os
 
+
+app = Flask(__name__)
+app.secret_key = '6969'  # Set a secret key
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + os.path.join(os.path.abspath(os.path.dirname(__file__)), 'test.db')
+db = SQLAlchemy(app)
 
 app = Flask(__name__)
 app.secret_key = '6969'  # Set a secret key
@@ -23,10 +29,38 @@ class User(db.Model):
 
     def __repr__(self):
         return '<User %r>' % self.username
-    
-    def __repr__(self):
-        return '<User %r>' % self.username
-    
+
+class DailyQuest(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
+    description = db.Column(db.String(255), nullable=False)
+    reward = db.Column(db.Integer, nullable=False)
+    completed = db.Column(db.Boolean, default=False)
+    date_assigned = db.Column(db.Date, default=date.today)
+
+    user = db.relationship('User', backref=db.backref('quests', lazy=True))
+
+def generate_daily_quests(user):
+    today = date.today()
+    if DailyQuest.query.filter_by(user_id=user.id, date_assigned=today).count() > 0:
+        return
+
+    quests_descriptions = [
+        "Earn 100 XP",
+        "Buy an item from the shop",
+        "Complete a lesson",
+        "Win a game",
+        "Log in two times today"
+    ]
+
+    for _ in range(3):
+        description = random.choice(quests_descriptions)
+        reward = random.randint(10, 50) // 10 * 10  # Ensure reward is a multiple of 10
+        quest = DailyQuest(user_id=user.id, description=description, reward=reward, date_assigned=today)
+        db.session.add(quest)
+    db.session.commit()
+
+
 
 
 @app.route('/')
@@ -102,7 +136,21 @@ def leaderboards():
 @app.route('/quests')
 def quests():
     user = User.query.get(session['user_id'])  # Get the current user
-    return render_template('quests.html', user=user)
+    generate_daily_quests(user)  # Ensure the user has quests for today
+    quests = DailyQuest.query.filter_by(user_id=user.id, date_assigned=date.today()).all()
+    return render_template('quests.html', user=user, quests=quests)
+
+
+@app.route('/complete-quest/<int:quest_id>', methods=['POST'])
+def complete_quest(quest_id):
+    quest = DailyQuest.query.get(quest_id)
+    if quest and quest.user_id == session['user_id'] and not quest.completed:
+        quest.completed = True
+        user = User.query.get(session['user_id'])
+        user.gems += quest.reward
+        db.session.commit()
+    return redirect(url_for('quests'))
+
 
 @app.route('/shop', methods=['GET', 'POST'])
 def shop():

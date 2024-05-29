@@ -231,11 +231,6 @@ body {
             border-color: #009af4;
         }
 
-        .main-content .characters .characters-link:hover {
-            color: #009af4;
-            border-color: #009af4;
-        }
-
     .main-content .characters .hiragana {
         margin-top: 15px;
         font-weight: 300;
@@ -285,11 +280,18 @@ body {
         padding-left: 10px;
     }
 
+/* Daily Quests */
 .daily-quests {
-    top: 300px; /* Adjust the top position as needed */
-    right: 20px;
-    width: 250px;
-    margin-top: 90px; /* Increase the margin-top value to add space */
+    position: relative; /* Remove 'fixed' positioning */
+    margin: 0 auto; /* Center horizontally */
+    width: 250px; /* Set a fixed width */
+    text-align: center; /* Center text */
+    background-color: #1e2b30;
+    color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    margin-top: 20px; /* Adjust as needed for spacing */
 }
 
     .daily-quests .daily-quests-text {
@@ -299,4 +301,25 @@ body {
     .daily-quests .quest-info {
         padding-left: 10px;
     }
-}
+
+    .daily-quests .quest {
+        margin-bottom: 10px;
+    }
+
+    .daily-quests .completed {
+        color: lightgreen;
+    }
+
+    .daily-quests button {
+        background-color: #009af4;
+        color: white;
+        border: none;
+        padding: 5px 10px;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+        .daily-quests button:hover {
+            background-color: #007bbd;
+        }

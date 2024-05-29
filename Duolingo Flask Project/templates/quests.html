@@ -1,4 +1,3 @@
-HTML:
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -54,7 +53,6 @@ HTML:
         <!-- Navigation Bar -->
         <nav class="menu">
             <div style="position:relative; left: 50px; bottom: 15px;"></div>
-
             <ul>
                 <li class="language">
                     <div class="dropdown">
@@ -75,15 +73,15 @@ HTML:
             <div class="header-icons">
                 <div class="hearts">
                     <img src="{{ url_for('static', filename='images/hearts.png') }}" alt="Hearts" draggable="false" />
-                    <span id="heartsCount">5</span>
+                    <span id="heartsCount">{{ user.hearts }}</span>
                 </div>
                 <div class="day-streak">
                     <img src="{{ url_for('static', filename='images/daystreak.png') }}" alt="Day Streak" draggable="false" />
-                    <span id="streakCount">0</span>
+                    <span id="streakCount">{{ user.day_streak }}</span>
                 </div>
                 <div class="gems">
                     <img src="{{ url_for('static', filename='images/gems.png') }}" alt="Gems" draggable="false" />
-                    <span id="gemsCount">0</span>
+                    <span id="gemsCount">{{ user.gems }}</span>
                 </div>
             </div>
 
@@ -92,8 +90,8 @@ HTML:
                 <h2 class="leaderboard-text"><b>LEADERBOARD</b></h2>
                 <!-- Leaderboard content here -->
                 <div class="user-info">
-                    <p class="user-info">Rank: <span id="userRank">-</span></p>
-                    <p class="user-info">XP: <span id="userXP">-</span></p>
+                    <p class="user-info">Rank: <span id="userRank">{{ user.rank }}</span></p>
+                    <p class="user-info">XP: <span id="userXP">{{ user.xp }}</span></p>
                 </div>
             </div>
 
@@ -101,87 +99,59 @@ HTML:
             <div class="daily-quests">
                 <h2 class="daily-quests-text"><b>DAILY QUESTS</b></h2>
                 <div class="quest-info">
-                    <p class="quest-info">Earn 30 XP</p>
-                    <p class="quest-info">Earn 10 Combo Bonus XP</p>
-                    <p class="quest-info">Spend 15 minutes learning</p>
+                    {% for quest in quests %}
+                    <div class="quest">
+                        <p class="quest-info">{{ quest.description }} - {{ quest.reward }} Gems</p>
+                        {% if quest.completed %}
+                        <span class="completed">(Completed)</span>
+                        {% else %}
+                        <form method="post" action="{{ url_for('complete_quest', quest_id=quest.id) }}">
+                            <button type="submit">Complete</button>
+                        </form>
+                        {% endif %}
+                    </div>
+                    {% endfor %}
                 </div>
-            </div>
-
-
-            <!-- Main Content -->
-            <div class="characters">
-                <div class="scripts">
-                    <a href="{{ url_for('characters') }}" class="characters-link"><b>HIRAGANA</b></a>
-                    <a href="{{ url_for('katakana') }}" class="characters-link"><b>KATAKANA</b></a>
-                </div>
-                <div class="katakana">
-                    <p class="katakana-text1">Practice characters used for loanwords</p>
-                    <img src="{{ url_for('static', filename='images/katakana.png') }}" alt="katakana" class="katakana" style="width: 371px; height: 690px;" draggable="false" />
-                    <h3>Dakuon</h3>
-                    <p>Add a symbol to change the sound</p>
-                    <img src="{{ url_for('static', filename='images/katakanadakuon.png') }}" alt="Katakana - Dakuon" class="katakana" style="width: 390px; height:325px;" draggable=false />
-                    <h3>Combo</h3>
-                    <p>Add small characters to make new syllables</p>
-                    <img src="{{ url_for('static', filename='images/katakanacombo.png') }}" alt="Katakana - Combo" class="katakana" style="width: 390px; height:750px;" draggable="false" />
-                </div>
-
             </div>
         </div>
+    </div>
 
-        <!-- JavaScript -->
-        <script>
-            // Function to update user's rank and XP
-            function updateUserInfo(rank, xp) {
-                document.getElementById("userRank").innerText = rank;
-                document.getElementById("userXP").innerText = xp;
+    <!-- JavaScript -->
+    <script>
+        // Function to update user's rank and XP
+        function updateUserInfo(rank, xp) {
+            document.getElementById("userRank").innerText = rank;
+            document.getElementById("userXP").innerText = xp;
+        }
+
+        function toggleDropdown() {
+            var dropdown = document.getElementById("dropdownContent");
+            dropdown.classList.toggle("active");
+        }
+
+        // Initialize hearts count
+        var heartsCount = {{ user.hearts }};
+
+        function updateHearts() {
+            document.getElementById("heartsCount").innerText = heartsCount;
+        }
+
+        function loseHeart() {
+            if (heartsCount > 0) {
+                heartsCount--;
+                updateHearts();
             }
+        }
 
-            // Function to update quests
-            function updateQuestsInfo(quest1XP, quest2XP, quest3XP) {
-                document.getElementById("quest1XP").innerText = quest1XP;
-                document.getElementById("quest2XP").innerText = quest2XP;
-                document.getElementById("quest3XP").innerText = quest3XP;
+        function regenerateHeart() {
+            if (heartsCount < 5) {
+                heartsCount++;
+                updateHearts();
             }
+        }
 
-            // Placeholder Values
-            var userRankPlaceholder = 10;
-            var userXPPlaceholder = 500;
-
-            var quest1XPPlaceholder = 30;
-            var quest2XPPlaceholder = 10;
-            var quest3XPPlaceholder = 15;
-
-            function toggleDropdown() {
-                var dropdown = document.getElementById("dropdownContent");
-                dropdown.classList.toggle("active");
-            }
-
-            // Initialize hearts count
-            var heartsCount = 5;
-
-            function updateHearts() {
-                document.getElementById("heartsCount").innerText = heartsCount;            }
-
-            function loseHeart() {
-                if (heartsCount > 0) {
-                    heartsCount--;
-                    updateHearts();
-                }
-            }
-
-            function regenerateHeart() {
-                if (heartsCount < 5) {
-                    heartsCount++;
-                    updateHearts();
-                }
-            }
-
-            // Call function to initialize hearts count
-            updateHearts();
-            updateUserInfo(userRankPlaceholder, userXPPlaceholder);
-            updateQuestsInfo(quest1XPPlaceholder, quest2XPPlaceholder, quest3XPPlaceholder);
-
-        </script>
-
+        // Call function to initialize hearts count
+        updateHearts();
+    </script>
 </body>
 </html>
