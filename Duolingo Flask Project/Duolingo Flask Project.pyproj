@@ -52,6 +52,7 @@
     <Content Include="static\images\profile.png" />
     <Content Include="static\images\quests.png" />
     <Content Include="static\images\settings.png" />
+    <Content Include="static\leaderboards - Copy.css" />
     <Content Include="static\leaderboards.css" />
     <Content Include="static\profile.css" />
     <Content Include="static\quests.css" />
@@ -71,6 +72,7 @@
     <Content Include="templates\indexfr.html" />
     <Content Include="templates\indexjp.html" />
     <Content Include="templates\katakana.html" />
+    <Content Include="templates\leaderboards - Copy.html" />
     <Content Include="templates\leaderboards.html" />
     <Content Include="templates\lesson1.html" />
     <Content Include="templates\lesson2.html" />
