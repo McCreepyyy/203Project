@@ -62,6 +62,7 @@ body {
 
     .logo-link img {
         margin: 0 auto;
+        display: block;
     }
 
 /* Specific style for the profile image to make it circular */
@@ -81,12 +82,13 @@ body {
     display: flex;
     justify-content: flex-end; /* Align to the right */
     align-items: center;
-    width: 100%;
-    position: absolute;
-    top: 0;
-    right: 0;
+    width: calc(100% - 200px); /* Adjust width to account for sidebar width */
+    margin-left: 200px; /* Align properly with the sidebar */
     padding: 10px;
     background-color: #131f24;
+    position: fixed; /* Ensure it stays at the top */
+    top: 0;
+    z-index: 1000; /* Ensure it stays on top of other elements */
 }
 
 .language {
@@ -116,7 +118,6 @@ body {
 
 .arrow {
     position: absolute;
-    right: 10px;
     top: 50%;
     transform: translateY(-50%);
 }
@@ -136,6 +137,7 @@ body {
 .dropdown {
     position: relative;
     font-family: 'Varela Round', sans-serif;
+    right: 10px;
 }
 
 .dropdown-content a {
