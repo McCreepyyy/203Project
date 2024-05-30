@@ -88,30 +88,30 @@
 
             <!-- Main Content -->
             <section class="lessons">
-                <h2>Section 1, Unit 1</h2>
-                <h3>Order food</h3>
+                <h2><b>SECTION 1, UNIT 1</b></h2>
+                <h3>Order Food & Describe People</h3>
                 <div class="lesson complete">
                     <a href="{{ url_for('lesson1') }}" class="lesson-link">
                         <div class="circle complete"></div>
-                        <p>Lesson 1</p>
+                        <p>Lesson 1 ー Order Food</p>
                     </a>
                 </div>
                 <div class="lesson complete">
                     <a href="{{ url_for('lesson2') }}" class="lesson-link">
                         <div class="circle complete"></div>
-                        <p>Lesson 2</p>
+                        <p>Lesson 2 ー Order Food</p>
                     </a>
                 </div>
                 <div class="lesson complete">
                     <a href="{{ url_for('lesson3') }}" class="lesson-link">
                         <div class="circle complete"></div>
-                        <p>Lesson 3</p>
+                        <p>Lesson 3 ー Describe People</p>
                     </a>
                 </div>
                 <div class="lesson complete">
                     <a href="{{ url_for('lesson4') }}" class="lesson-link">
                         <div class="circle complete"></div>
-                        <p>Lesson 4</p>
+                        <p>Lesson 4 ー Describe People</p>
                     </a>
                 </div>
                 <div class="lesson complete">
@@ -126,44 +126,43 @@
                         <p>Lesson 6</p>
                     </a>
                 </div>
-            </div>
-        </section>
-    </div>
-    <aside class="sidebar-right">
-        <div class="league">
-            <h3>LEADERBOARD</h3>
-            <!-- Leaderboard List -->
-            <ol>
-                {% for user in top_users %}
-                <li>{{ user.username }} - {{ user.xp }} XP</li>
-                {% endfor %}
-            </ol>
-            <a href="{{ url_for('leaderboards') }}" class="leaderboard-link"><b>View League</b></a>
-        </div>
-        <div class="daily-quests">
-            <h3>DAILY QUESTS</h3>
-            <div class="quest">
-                <p>Earn 50 XP</p>
-                <div class="progress">
-                    <div class="progress-bar"></div>
-                </div>
-            </div>
-            <div class="quest">
-                <p>Complete 2 perfect lessons</p>
-                <div class="progress">
-                    <div class="progress-bar"></div>
-                </div>
-            </div>
-            <div class="quest">
-                <p>Get 10 in a row correct in 4 lessons</p>
-                <div class="progress">
-                    <div class="progress-bar"></div>
-                </div>
-            </div>
-        </div>
-    </aside>
-    </div>
+            </section> <!-- Closing the section tag properly here -->
 
+            <aside class="sidebar-right">
+                <div class="league">
+                    <h3>LEADERBOARD</h3>
+                    <!-- Leaderboard List -->
+                    <ol>
+                        {% for user in top_users %}
+                        <li>{{ user.username }} - {{ user.xp }} XP</li>
+                        {% endfor %}
+                    </ol>
+                    <a href="{{ url_for('leaderboards') }}" class="leaderboard-link"><b>View League</b></a>
+                </div>
+                <div class="daily-quests">
+                    <h3>DAILY QUESTS</h3>
+                    <div class="quest">
+                        <p>Earn 50 XP</p>
+                        <div class="progress">
+                            <div class="progress-bar"></div>
+                        </div>
+                    </div>
+                    <div class="quest">
+                        <p>Complete 2 perfect lessons</p>
+                        <div class="progress">
+                            <div class="progress-bar"></div>
+                        </div>
+                    </div>
+                    <div class="quest">
+                        <p>Get 10 in a row correct in 4 lessons</p>
+                        <div class="progress">
+                            <div class="progress-bar"></div>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+        </div> <!-- Closing the main-content div here -->
+    </div> <!-- Closing the content div here -->
     <!-- JavaScript -->
     <script>
         function toggleDropdown() {

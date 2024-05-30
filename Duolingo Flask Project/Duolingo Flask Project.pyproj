@@ -77,6 +77,7 @@
     <Content Include="templates\lesson1.html" />
     <Content Include="templates\lesson2.html" />
     <Content Include="templates\lesson3.html" />
+    <Content Include="templates\lesson4.html" />
     <Content Include="templates\lessonhubfr.html" />
     <Content Include="templates\lessonhubjp.html" />
     <Content Include="templates\lessonhub.html" />

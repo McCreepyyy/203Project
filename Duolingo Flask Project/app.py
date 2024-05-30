@@ -83,14 +83,6 @@ def lesson3():
 def lesson4():
     return render_template('lesson1.html')
 
-@app.route('/lesson5')
-def lesson5():
-    return render_template('lesson1.html')
-
-@app.route('/lesson6')
-def lesson6():
-    return render_template('lesson1.html')
-
 @app.route('/signin')
 def signin():
     return render_template('signin.html')

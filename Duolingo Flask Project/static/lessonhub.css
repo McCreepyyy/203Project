@@ -308,6 +308,6 @@ body {
     cursor: pointer;
 }
 
-.leaderboard-link:hover {
-    text-decoration: underline;
-}
+    .leaderboard-link:hover {
+        text-decoration: underline;
+    }
