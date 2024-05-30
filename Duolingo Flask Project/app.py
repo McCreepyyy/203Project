@@ -1,3 +1,4 @@
+﻿# -*- coding: utf-8 -*-
 from flask import Flask, render_template, request, redirect, session, url_for
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime, timedelta, date
@@ -15,6 +16,8 @@ app = Flask(__name__)
 app.secret_key = '6969'  # Set a secret key
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + os.path.join(os.path.abspath(os.path.dirname(__file__)), 'test.db')
 db = SQLAlchemy(app)
+
+app.config['TEMPLATES_AUTO_RELOAD'] = True
 
 class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -70,6 +73,7 @@ def index():
 @app.route('/lesson1')
 def lesson1():
     return render_template('lesson1.html')
+
 
 @app.route('/lesson2')
 def lesson2():

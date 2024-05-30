@@ -1,11 +1,190 @@
 <!DOCTYPE html>
-
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<html lang="en">
 <head>
-    <meta charset="utf-8" />
-    <title></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Duolingo ー Lesson 1</title>
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='images/bird.png') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='lesson1.css') }}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap">
 </head>
 <body>
+    <h1>TRANSLATE THESE QUESTIONS</h1>
+    <div id="questions">
+        <!-- Multiple Choice Questions -->
+        <div class="question">
+            <p>Translate すし、ごはん</p>
+            <button>sushi, rice</button>
+            <button>sushi, water</button>
+            <button>sushi, green tea</button>
+        </div>
 
+        <div class="question">
+            <p>Translate すし、みず</p>
+            <button>sushi, rice</button>
+            <button>sushi, water</button>
+            <button>sushi, green tea</button>
+        </div>
+
+        <div class="question">
+            <p>Translate すし、おちゃ</p>
+            <button>sushi, rice</button>
+            <button>sushi, water</button>
+            <button>sushi, green tea</button>
+        </div>
+
+        <div class="question">
+            <p>Translate ごはん、みず</p>
+            <button>rice, water</button>
+            <button>rice, green tea</button>
+            <button>sushi, rice</button>
+        </div>
+
+        <div class="question">
+            <p>Translate ごはん、おちゃ</p>
+            <button>rice, water</button>
+            <button>rice, green tea</button>
+            <button>sushi, rice</button>
+        </div>
+
+        <div class="question">
+            <p>Translate すしとごはん、ください</p>
+            <button>sushi and rice, please</button>
+            <button>sushi and water, please</button>
+            <button>sushi and green tea, please</button>
+        </div>
+
+        <div class="question">
+            <p>Translate すしとみず、ください</p>
+            <button>sushi and rice, please</button>
+            <button>sushi and water, please</button>
+            <button>sushi and green tea, please</button>
+        </div>
+
+        <div class="question">
+            <p>Translate すしとおちゃ、ください</p>
+            <button>sushi and rice, please</button>
+            <button>sushi and water, please</button>
+            <button>sushi and green tea, please</button>
+        </div>
+
+        <div class="question">
+            <p>Translate ごはんとみず、ください</p>
+            <button>rice and water, please</button>
+            <button>rice and green tea, please</button>
+            <button>sushi and rice, please</button>
+        </div>
+
+        <div class="question">
+            <p>Translate ごはんとおちゃ、ください</p>
+            <button>rice and water, please</button>
+            <button>rice and green tea, please</button>
+            <button>sushi and rice, please</button>
+        </div>
+
+        <div class="question">
+            <p>Translate すしとごはんです</p>
+            <button>it's sushi and rice</button>
+            <button>it's sushi and water</button>
+            <button>it's sushi and green tea</button>
+        </div>
+
+        <div class="question">
+            <p>Translate すしとみずです</p>
+            <button>it's sushi and rice</button>
+            <button>it's sushi and water</button>
+            <button>it's sushi and green tea</button>
+        </div>
+
+        <div class="question">
+            <p>Translate すしとおちゃです</p>
+            <button>it's sushi and rice</button>
+            <button>it's sushi and water</button>
+            <button>it's sushi and green tea</button>
+        </div>
+
+        <div class="question">
+            <p>Translate ごはんとみずです</p>
+            <button>it's rice and water</button>
+            <button>it's rice and green tea</button>
+            <button>it's sushi and rice</button>
+        </div>
+
+        <div class="question">
+            <p>Translate ごはんとおちゃです</p>
+            <button>it's rice and water</button>
+            <button>it's rice and green tea</button>
+            <button>it's sushi and rice</button>
+        </div>
+
+        <!-- Drag and Drop Questions -->
+        <div class="question">
+            <p>Drag and drop the correct answer すしと_____、ください</p>
+            <div class="drag-drop">
+                <div class="drag-container" ondrop="drop(event)" ondragover="allowDrop(event)">
+                    <!-- Drag items -->
+                    <div class="drag-item" id="drag-item-1" draggable="true" ondragstart="drag(event)">Item 1</div>
+                    <div class="drag-item" id="drag-item-2" draggable="true" ondragstart="drag(event)">Item 2</div>
+                    <!-- Drag and drop options -->
+                    <div class="drag-option" id="drag-option-1" draggable="true" ondragstart="drag(event)">Option 1</div>
+                    <div class="drag-option" id="drag-option-2" draggable="true" ondragstart="drag(event)">Option 2</div>
+                    <div class="drag-option" id="drag-option-3" draggable="true" ondragstart="drag(event)">Option 3</div>
+                </div>
+                <!-- Drop zone -->
+                <div class="drop-zone" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+            </div>
+        </div>
+
+        <div class="question">
+            <p>Drag and drop the correct answer ごはんと____です</p>
+            <div class="drag-drop">
+                <div class="drag-container" ondrop="drop(event)" ondragover="allowDrop(event)">
+                    <!-- Drag items -->
+                    <div class="drag-item" id="drag-item-1" draggable="true" ondragstart="drag(event)">Item 1</div>
+                    <div class="drag-item" id="drag-item-2" draggable="true" ondragstart="drag(event)">Item 2</div>
+                    <!-- Drag and drop options -->
+                    <div class="drag-option" id="drag-option-1" draggable="true" ondragstart="drag(event)">Option 1</div>
+                    <div class="drag-option" id="drag-option-2" draggable="true" ondragstart="drag(event)">Option 2</div>
+                    <div class="drag-option" id="drag-option-3" draggable="true" ondragstart="drag(event)">Option 3</div>
+                </div>
+                <!-- Drop zone -->
+                <div class="drop-zone" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+            </div>
+        </div>
+
+        <div class="question">
+            <p>Drag and drop the correct answer すしと____、ください</p>
+            <div class="drag-drop">
+                <div class="drag-container" ondrop="drop(event)" ondragover="allowDrop(event)">
+                    <!-- Drag items -->
+                    <div class="drag-item" id="drag-item-1" draggable="true" ondragstart="drag(event)">Item 1</div>
+                    <div class="drag-item" id="drag-item-2" draggable="true" ondragstart="drag(event)">Item 2</div>
+                    <!-- Drag and drop options -->
+                    <div class="drag-option" id="drag-option-1" draggable="true" ondragstart="drag(event)">Option 1</div>
+                    <div class="drag-option" id="drag-option-2" draggable="true" ondragstart="drag(event)">Option 2</div>
+                    <div class="drag-option" id="drag-option-3" draggable="true" ondragstart="drag(event)">Option 3</div>
+                </div>
+                <!-- Drop zone -->
+                <div class="drop-zone" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
+
+<script>
+    // Drag and drop logic
+    function allowDrop(ev) {
+        ev.preventDefault();
+    }
+    
+    function drag(ev) {
+        ev.dataTransfer.setData("text", ev.target.id);
+    }
+    
+    function drop(ev) {
+        ev.preventDefault();
+        var data = ev.dataTransfer.getData("text");
+        ev.target.appendChild(document.getElementById(data));
+    }
+</script>

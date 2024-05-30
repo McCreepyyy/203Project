@@ -1,0 +1,55 @@
+	Order Food Lessons (L1 & L2):
+
+Image choices - rice (ごはん), water (みず), green tea (おちゃ)
+すし、ごはん - sushi, rice
+すし、みず - sushi, water
+すし、おちゃ - sushi, green tea
+ごはん、みず - rice, water
+ごはん、おちゃ - rice, green tea
+すしとごはん、ください - sushi and rice, please
+すしとみず、ください - sushi and water, please
+すしとおちゃ、ください - sushi and green tea, please
+ごはんとみず、ください - rice and water, please
+ごはんとおちゃ、ください - rice and green tea, please
+すしとごはんです - it's sushi and rice
+すしとみずです - it's sushi and water
+すしとおちゃです - it's sushi and green tea
+ごはんとみずです - it's rice and water
+ごはんとおちゃです - it's rice and green tea
+
+
+	Discuss People Lessons (L3 & L4)：
+
+Image choices (teacher, doctor, lawyer, student)
+やさしい - nice
+かっこいい - cool
+ひと - person
+やさしいせんせい - nice teacher / a nice teacher
+やさしいいしゃ - nice doctor / a nice doctor
+やさしいべんごし - nice lawyer / a nice lawyer
+やさしいがくせい - nice student / a nice student
+かっこいいせんせい - cool teacher / a cool teacher
+かっこいいいしゃ - cool doctor / a cool doctor
+かっこいいべんごし - cool lawyer / a cool lawyer
+かっこいいがくせい - cool student / a cool student
+やさしいせんせいです - he's/she's a nice teacher
+やさしいいしゃです - he's/she's a nice doctor
+やさしいべんごしです - he's/she's a nice lawyer
+やさしいがくせいです - he's/she's a nice student
+かっこいいせんせいです - he's/she's a cool teacher
+かっこいいいしゃです - he's/she's a cool doctor
+かっこいいべんごしです - he's/she's a cool lawyer
+かっこいいがくせいです - he's/she's a cool student
+
+やさしいせんせいとやさしいいしゃ - a nice teacher and a nice doctor
+やさしいせんせいとやさしいべんごし - a nice teacher and a nice lawyer
+やさしいせんせいとやさしいがくせい - a nice teacher a nice student
+やさしいいしゃとやさしいべんごし - a nice doctor and a nice lawyer
+やさしいいしゃとやさしいがくせい - a nice doctor and a nice student
+やさしいべんごしとやさしいがくせい - a nice lawyer and a nice student
+かっこいいせんせいとかっこいいいしゃ - a cool teacher and a cool doctor
+かっこいいせんせいとかっこいいべんごし - a cool teacher and a cool lawyer
+かっこいいせんせいとかっこいいがくせい - a cool teacher and a cool student
+かっこいいいしゃとかっこいいべんごし - a cool doctor and a cool lawyer
+かっこいいいしゃとかっこいいがくせい - a cool doctor and a cool student
+かっこいいべんごしとかっこいいがくせい - a cool lawyer and a cool student
