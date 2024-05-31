@@ -12,11 +12,6 @@ app.secret_key = '6969'  # Set a secret key
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + os.path.join(os.path.abspath(os.path.dirname(__file__)), 'test.db')
 db = SQLAlchemy(app)
 
-app = Flask(__name__)
-app.secret_key = '6969'  # Set a secret key
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + os.path.join(os.path.abspath(os.path.dirname(__file__)), 'test.db')
-db = SQLAlchemy(app)
-
 app.config['TEMPLATES_AUTO_RELOAD'] = True
 
 class User(db.Model):
@@ -72,8 +67,82 @@ def index():
 
 @app.route('/lesson1')
 def lesson1():
-    return render_template('lesson1.html')
+    # Assuming that the user is logged in and their ID is stored in the session
+    if 'user_id' in session:
+        user = User.query.get(session['user_id'])
+        if user:
+            return render_template('lesson1.html', user=user)
+        else:
+            # Handle the case where the user is not found
+            return "User not found", 404
+    else:
+        # Redirect to the login page if the user is not logged in
+        return redirect(url_for('signin'))
 
+
+
+@app.route('/get_question')
+def get_question():
+    questions = [
+        {"question": "Translate すし、ごはん", "options": ["sushi, rice", "sushi, water", "sushi, green tea"], "correct": "sushi, rice"},
+        {"question": "Translate すし、みず", "options": ["sushi, rice", "sushi, water", "sushi, green tea"], "correct": "sushi, water"},
+        {"question": "Translate すし、おちゃ", "options": ["sushi, rice", "sushi, water", "sushi, green tea"], "correct": "sushi, green tea"},
+        {"question": "Translate ごはん、みず", "options": ["rice, water", "rice, green tea", "sushi, rice"], "correct": "rice, water"},
+        {"question": "Translate ごはん、おちゃ", "options": ["rice, water", "rice, green tea", "sushi, rice"], "correct": "rice, green tea"},
+        {"question": "Translate すしとごはん、ください", "options": ["sushi and rice, please", "sushi and water, please", "sushi and green tea, please"], "correct": "sushi and rice, please"},
+        {"question": "Translate すしとみず、ください", "options": ["sushi and rice, please", "sushi and water, please", "sushi and green tea, please"], "correct": "sushi and water, please"},
+        {"question": "Translate すしとおちゃ、ください", "options": ["sushi and rice, please", "sushi and water, please", "sushi and green tea, please"], "correct": "sushi and green tea, please"},
+        {"question": "Translate ごはんとみず、ください", "options": ["rice and water, please", "rice and green tea, please", "sushi and rice, please"], "correct": "rice and water, please"},
+        {"question": "Translate ごはんとおちゃ、ください", "options": ["rice and water, please", "rice and green tea, please", "sushi and rice, please"], "correct": "rice and green tea, please"},
+        {"question": "Translate すしとごはんです", "options": ["it's sushi and rice", "it's sushi and water", "it's sushi and green tea"], "correct": "it's sushi and rice"},
+        {"question": "Translate すしとみずです", "options": ["it's sushi and rice", "it's sushi and water", "it's sushi and green tea"], "correct": "it's sushi and water"},
+        {"question": "Translate すしとおちゃです", "options": ["it's sushi and rice", "it's sushi and water", "it's sushi and green tea"], "correct": "it's sushi and green tea"},
+        {"question": "Translate ごはんとみずです", "options": ["it's rice and water", "it's rice and green tea", "it's sushi and rice"], "correct": "it's rice and water"},
+        {"question": "Translate ごはんとおちゃです", "options": ["it's rice and water", "it's rice and green tea", "it's sushi and rice"], "correct": "it's rice and green tea"}
+    ]
+
+    question = random.choice(questions)
+    return jsonify(question)
+
+@app.route('/complete_lesson', methods=['POST'])
+def complete_lesson():
+    user = User.query.get(session['user_id'])
+    user.xp += 50
+    db.session.commit()
+    return jsonify({"success": True})
+
+
+@app.route('/update_xp', methods=['POST'])
+def update_xp():
+    if 'user_id' in session:
+        user = User.query.get(session['user_id'])
+        if user:
+            data = request.get_json()
+            xp_earned = data.get('xp', 0)
+            user.xp += xp_earned
+            db.session.commit()
+            return jsonify({'success': True, 'new_xp': user.xp})
+    return jsonify({'success': False}), 400
+
+@app.route('/lose_heart', methods=['POST'])
+def lose_heart():
+    user = User.query.get(session['user_id'])
+    if user.hearts > 0:
+        user.hearts -= 1
+        db.session.commit()
+        if user.hearts == 0:
+            # Logic to lock the user out of lessons
+            return jsonify({'success': True, 'hearts': user.hearts, 'locked': True})
+        return jsonify({'success': True, 'hearts': user.hearts, 'locked': False})
+    return jsonify({'success': False}), 400
+
+
+@app.route('/get_user_hearts')
+def get_user_hearts():
+    user = User.query.get(session['user_id'])
+    if user:
+        return jsonify({'success': True, 'hearts': user.hearts})
+    return jsonify({'success': False}), 400
 
 @app.route('/lesson2')
 def lesson2():
