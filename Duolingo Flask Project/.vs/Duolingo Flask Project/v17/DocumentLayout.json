@@ -38,8 +38,7 @@
               "RelativeToolTip": "static\\signin.css",
               "ViewState": "AQIAAFgAAAAAAAAAAAAtwFoAAAAGAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
-              "WhenOpened": "2024-05-31T04:25:09.504Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-05-31T04:25:09.504Z"
             },
             {
               "$type": "Document",
@@ -51,8 +50,7 @@
               "RelativeToolTip": "templates\\lesson1.html",
               "ViewState": "AQIAAFYAAAAAAAAAAAAtwGQAAAAjAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
-              "WhenOpened": "2024-05-31T04:16:57.358Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-05-31T04:16:57.358Z"
             },
             {
               "$type": "Document",
@@ -62,7 +60,7 @@
               "RelativeDocumentMoniker": "static\\lesson1.css",
               "ToolTip": "C:\\Yoobee\\2024\\203\\.2\\203Project\\Duolingo Flask Project\\static\\lesson1.css",
               "RelativeToolTip": "static\\lesson1.css",
-              "ViewState": "AQIAAJwAAAAAAAAAAAAtwKUAAAAAAAAA",
+              "ViewState": "AQIAAAcAAAAAAAAAAAAtwBgAAAASAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
               "WhenOpened": "2024-05-30T03:17:56.738Z",
               "EditorCaption": ""

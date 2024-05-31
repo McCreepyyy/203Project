@@ -23,7 +23,6 @@ h1 {
     width: 250px;
     background-color: #1e2a30;
     padding: 20px;
-    border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
 
@@ -323,10 +322,10 @@ h1 {
     background-color: #131f24;
     padding: 10px 20px;
     position: fixed;
-    left: 210px;
+    left: 1285px;
     margin-bottom: 688px;
-    margin-right: 15px;
     right: 0;
+    width: 400px;
 
 }
 
