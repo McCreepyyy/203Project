@@ -52,6 +52,7 @@ h1 {
 }
 
 .dropbtn {
+    font-family: 'Varela Round', sans-serif;
     background-color: transparent;
     color: white;
     padding: 16px;
@@ -126,13 +127,13 @@ h1 {
 }
 
 .lessons {
-    width: 90%;
-    max-width: 600px;
+    width: 1000px;
     background-color: #1e2a30;
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
     margin-bottom: 20px;
+    margin-left: 50px;
 }
 
     .lessons h1 {
@@ -168,23 +169,45 @@ h1 {
 }
 
 .hidden {
-    display: none;
+    display: none !important;
 }
+
+#next-button {
+    display: block;
+    margin: 10px auto;
+    padding: 5px 20px;
+    background-color: #009af4;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    color: white;
+}
+
+    #next-button:hover {
+        background-color: #0078a0;
+    }
+
+    #next-button:disabled {
+        background-color: #ccc;
+        cursor: not-allowed;
+    }
 
 .btn {
     display: block;
     width: calc(100% - 40px);
     margin: 10px auto;
-    padding: 10px 20px;
-    background-color: #f0f0f0;
-    border: 1px solid #ccc;
+    padding: 5px 20px;
+    background-color: #009af4;
+    border: none;
     border-radius: 5px;
     cursor: pointer;
     font-size: 16px;
+    color: white;
 }
 
     .btn:hover {
-        background-color: #e0e0e0;
+        background-color: #007bbd;
     }
 
     .btn:disabled {
@@ -220,4 +243,120 @@ h1 {
 .translation {
     font-style: italic;
     text-align: center;
+}
+
+/* Sidebar styles */
+.sidebar {
+    width: 200px;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #131f24;
+    box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+    padding-top: 20px;
+    border-right: 2px solid rgba(255, 255, 255, 0.1);
+}
+
+    .sidebar a {
+        text-decoration: none;
+        color: white;
+        display: flex;
+        align-items: center;
+        padding: 15px;
+        font-size: 16px;
+        position: relative;
+    }
+
+.sidebar-link:hover {
+    color: white;
+}
+
+    .sidebar-link:hover::after {
+        content: '';
+        position: absolute;
+        left: 10px;
+        right: 10px;
+        top: 50%;
+        transform: translateY(-50%);
+        height: 60%;
+        background-color: rgba(241, 241, 241, 0.1);
+        border-radius: 15px;
+        z-index: -1;
+    }
+
+.sidebar img {
+    margin-right: 15px;
+}
+
+.logo-link {
+    pointer-events: none;
+}
+
+    .logo-link img {
+        margin: 0 auto;
+    }
+
+/* Specific style for the profile image to make it circular */
+.profile-image {
+    border-radius: 50%;
+}
+
+
+.language {
+    font-family: 'Varela Round', sans-serif;
+    list-style: none;
+    color: #c0c0c0;
+}
+
+.flag {
+    width: 20px;
+    height: auto;
+    border-radius: 5px;
+    margin-right: 5px;
+}
+
+.menu {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #131f24;
+    padding: 10px 20px;
+    position: fixed;
+    left: 210px;
+    margin-bottom: 688px;
+    margin-right: 15px;
+    right: 0;
+
+}
+
+.header-icons {
+    position: absolute;
+    top: 20px; /* Adjust top position */
+    right: 30px; /* Adjust right position */
+    margin-top: 80px;
+    display: flex;
+    align-items: center;
+    color: white;
+}
+
+.hearts,
+.gems,
+.day-streak {
+    display: flex;
+    align-items: center;
+    margin-right: 20px;
+}
+
+    .hearts img,
+    .gems img,
+    .day-streak img {
+        width: 25px;
+        height: 25px;
+        margin-right: 5px;
+    }
+
+#question-text {
+    text-align: center;
+    margin: 0 auto;
 }

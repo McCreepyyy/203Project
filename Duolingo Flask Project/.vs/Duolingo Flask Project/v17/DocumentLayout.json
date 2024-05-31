@@ -3,20 +3,16 @@
   "WorkspaceRootPath": "C:\\Yoobee\\2024\\203\\.2\\203Project\\Duolingo Flask Project\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{BB94A4AE-9D06-4FF2-A444-4E66D91857B1}|Duolingo Flask Project.pyproj|C:\\Yoobee\\2024\\203\\.2\\203Project\\Duolingo Flask Project\\templates\\lesson1.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{BB94A4AE-9D06-4FF2-A444-4E66D91857B1}|Duolingo Flask Project.pyproj|solutionrelative:templates\\lesson1.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{BB94A4AE-9D06-4FF2-A444-4E66D91857B1}|Duolingo Flask Project.pyproj|C:\\Yoobee\\2024\\203\\.2\\203Project\\Duolingo Flask Project\\static\\lesson1.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
       "RelativeMoniker": "D:0:0:{BB94A4AE-9D06-4FF2-A444-4E66D91857B1}|Duolingo Flask Project.pyproj|solutionrelative:static\\lesson1.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{BB94A4AE-9D06-4FF2-A444-4E66D91857B1}|Duolingo Flask Project.pyproj|C:\\Yoobee\\2024\\203\\.2\\203Project\\Duolingo Flask Project\\app.py||{8B382828-6202-11D1-8870-0000F87579D2}",
-      "RelativeMoniker": "D:0:0:{BB94A4AE-9D06-4FF2-A444-4E66D91857B1}|Duolingo Flask Project.pyproj|solutionrelative:app.py||{8B382828-6202-11D1-8870-0000F87579D2}"
+      "AbsoluteMoniker": "D:0:0:{BB94A4AE-9D06-4FF2-A444-4E66D91857B1}|Duolingo Flask Project.pyproj|C:\\Yoobee\\2024\\203\\.2\\203Project\\Duolingo Flask Project\\templates\\lesson1.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{BB94A4AE-9D06-4FF2-A444-4E66D91857B1}|Duolingo Flask Project.pyproj|solutionrelative:templates\\lesson1.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{BB94A4AE-9D06-4FF2-A444-4E66D91857B1}|Duolingo Flask Project.pyproj|C:\\Yoobee\\2024\\203\\.2\\203Project\\Duolingo Flask Project\\static\\leaderboards.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
-      "RelativeMoniker": "D:0:0:{BB94A4AE-9D06-4FF2-A444-4E66D91857B1}|Duolingo Flask Project.pyproj|solutionrelative:static\\leaderboards.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+      "AbsoluteMoniker": "D:0:0:{BB94A4AE-9D06-4FF2-A444-4E66D91857B1}|Duolingo Flask Project.pyproj|C:\\Yoobee\\2024\\203\\.2\\203Project\\Duolingo Flask Project\\static\\signin.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{BB94A4AE-9D06-4FF2-A444-4E66D91857B1}|Duolingo Flask Project.pyproj|solutionrelative:static\\signin.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
     }
   ],
   "DocumentGroupContainers": [
@@ -34,54 +30,41 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "leaderboards.css",
-              "DocumentMoniker": "C:\\Yoobee\\2024\\203\\.2\\203Project\\Duolingo Flask Project\\static\\leaderboards.css",
-              "RelativeDocumentMoniker": "static\\leaderboards.css",
-              "ToolTip": "C:\\Yoobee\\2024\\203\\.2\\203Project\\Duolingo Flask Project\\static\\leaderboards.css",
-              "RelativeToolTip": "static\\leaderboards.css",
-              "ViewState": "AQIAAM8AAAAAAAAAAAAIwOgAAAAAAAAA",
+              "DocumentIndex": 2,
+              "Title": "signin.css",
+              "DocumentMoniker": "C:\\Yoobee\\2024\\203\\.2\\203Project\\Duolingo Flask Project\\static\\signin.css",
+              "RelativeDocumentMoniker": "static\\signin.css",
+              "ToolTip": "C:\\Yoobee\\2024\\203\\.2\\203Project\\Duolingo Flask Project\\static\\signin.css",
+              "RelativeToolTip": "static\\signin.css",
+              "ViewState": "AQIAAFgAAAAAAAAAAAAtwFoAAAAGAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
-              "WhenOpened": "2024-05-30T03:32:17.05Z",
+              "WhenOpened": "2024-05-31T04:25:09.504Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "lesson1.css",
-              "DocumentMoniker": "C:\\Yoobee\\2024\\203\\.2\\203Project\\Duolingo Flask Project\\static\\lesson1.css",
-              "RelativeDocumentMoniker": "static\\lesson1.css",
-              "ToolTip": "C:\\Yoobee\\2024\\203\\.2\\203Project\\Duolingo Flask Project\\static\\lesson1.css",
-              "RelativeToolTip": "static\\lesson1.css",
-              "ViewState": "AQIAACkAAAAAAAAAAAAowEQAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
-              "WhenOpened": "2024-05-30T03:17:56.738Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
               "Title": "lesson1.html",
               "DocumentMoniker": "C:\\Yoobee\\2024\\203\\.2\\203Project\\Duolingo Flask Project\\templates\\lesson1.html",
               "RelativeDocumentMoniker": "templates\\lesson1.html",
               "ToolTip": "C:\\Yoobee\\2024\\203\\.2\\203Project\\Duolingo Flask Project\\templates\\lesson1.html",
               "RelativeToolTip": "templates\\lesson1.html",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAL4AAAAAAAAA",
+              "ViewState": "AQIAAFYAAAAAAAAAAAAtwGQAAAAjAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
-              "WhenOpened": "2024-05-30T03:17:44.581Z",
+              "WhenOpened": "2024-05-31T04:16:57.358Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "app.py",
-              "DocumentMoniker": "C:\\Yoobee\\2024\\203\\.2\\203Project\\Duolingo Flask Project\\app.py",
-              "RelativeDocumentMoniker": "app.py",
-              "ToolTip": "C:\\Yoobee\\2024\\203\\.2\\203Project\\Duolingo Flask Project\\app.py",
-              "RelativeToolTip": "app.py",
-              "ViewState": "AQIAADwAAAAAAAAAAAAqwEoAAAAqAAAA",
-              "Icon": "00000000-0000-0000-0000-000000000000.000000|iVBORw0KGgoAAAANSUhEUgAAABIAAAASCAYAAABWzo5XAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAALpSURBVDhPrZRLTxNRFMf/M522006nD2gHKC2EmEKwUNEQIyaoaZAE3xEWxJ2fwe/g0mjizoUxBndG9ybEhGgiMQilrRGhvIWG0gftUDqPjrfDuKgW3fhLTu6dc8/9z5lzzx38FzRNo4ypztDQ0OPOzs47xmNDKIqaSiaTzxcWFpYNlw5jjDosy3pHR0c7BgcHDU898Xgc6XR6TBCEoslkejM3N/fNWILJGHW6urruRqPR/lAoBFEUDe8xwWAQhUIBfr\u002Bfb2lpaVYUBbIs7xJytXVaj/oNhmFgt9vrjKaPQyVJ4iwWy\u002BlAIDBC7KzuJDQUInUASb3ONFDweAUwrB28y\u002BNob28PkFD/8Y4ThCqVCvL5vG65XA6rPzJY2i0iS3tQ5gKoejrA\u002BYKM2\u002B1mjS31xf6Fw\u002BGA1WrV50pVQ3pHwvvFPSQ2s8gXD8GZgX6fiTsdDrfqQYSGGdWySCSSWIwnsBBPYjNTIrWRoSkqqqTI2YKIXFlmm31ewem0806n09xQyOv1oqcvAqa1G/PFJmxkRciqimaegY18g6rKcNmPXJPXhYn1\u002BLMv66vJyRMz\u002BrS4hLdzu5hNZRBbzSC5kUFqJ4sD8RCqLINSC5SNXre4LMsBl2XrQUOhWo1sDjdS6QKKh0eQJQnngjRGwmbcGGBx/7IDNwcU0PIaIGfMkLd7Tjy1UqkEVSFv1hTcHtAwHlnDeN8yJs6s4lZ4BRFhA5S8T05DpEjxmIZCtT7ibWYEPTbQVQlXumWEhR2EPJs45V6D35aCHds1EXJhVQVMW6qhEM/z6O0K4Gp/Gy71tsLHa2AoFajKxDSymdwsky8P7kIM3MVZWLtf/NFH\u002B/v7WFlZ0efdvAm9ETecbFajyhLJoEyB5knTEGMjWwfma69isdh3YOndP38jNpsFTx7es3LqtIuSdi2AldyfJgXc\u002BfkPX4Wnw8PDL43Qv0OajcnlsmOa\u002BPmjln0tantTkpafjmuVnUczMzPR4yjgJ7DGIodIMjgNAAAAAElFTkSuQmCC",
-              "WhenOpened": "2024-05-30T02:30:23.067Z",
+              "DocumentIndex": 0,
+              "Title": "lesson1.css",
+              "DocumentMoniker": "C:\\Yoobee\\2024\\203\\.2\\203Project\\Duolingo Flask Project\\static\\lesson1.css",
+              "RelativeDocumentMoniker": "static\\lesson1.css",
+              "ToolTip": "C:\\Yoobee\\2024\\203\\.2\\203Project\\Duolingo Flask Project\\static\\lesson1.css",
+              "RelativeToolTip": "static\\lesson1.css",
+              "ViewState": "AQIAAJwAAAAAAAAAAAAtwKUAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2024-05-30T03:17:56.738Z",
               "EditorCaption": ""
             }
           ]
