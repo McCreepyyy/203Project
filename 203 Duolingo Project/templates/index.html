@@ -1,0 +1,37 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Duolingo</title>
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='images/bird.png') }}" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='index.css') }}">
+</head>
+<body>
+    <!-- Container for Image and Text -->
+    <div class="container">
+        <!-- Image -->
+        <div class="groupimage">
+            <img src="{{ url_for('static', filename='images/group.png') }}" width="800" height="500" alt="Group of Characters" />
+        </div>
+        <!-- Text -->
+        <div class="getstarted">
+            <h1><b>The free, fun, and effective way</b></h1>
+            <h1 class="text1"><b>learn a language!</b></h1>
+
+            <button onclick="window.location.href='{{ url_for('getstarted') }}'" class="signupbtn"><h2>GET STARTED</h2></button>
+            <button onclick="window.location.href='{{ url_for('signin') }}'" class="signinbtn"><h2>I ALREADY HAVE AN ACCOUNT</h2></button>
+
+        </div>
+
+    </div>
+
+    <script>
+        function toggleDropdown() {
+            var dropdownContent = document.getElementById("dropdownContent");
+            dropdownContent.classList.toggle("active");
+        }
+    </script>
+</body>
+</html>

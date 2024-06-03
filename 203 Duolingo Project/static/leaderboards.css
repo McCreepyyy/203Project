@@ -1,0 +1,151 @@
+/* Global styles */
+body {
+    font-family: 'Varela Round', sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    margin: 0;
+    padding: 0;
+    background-color: #131f24;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Sidebar styles */
+.sidebar {
+    width: 200px;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #131f24;
+    box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+    padding-top: 20px;
+    border-right: 2px solid rgba(255, 255, 255, 0.1);
+}
+
+    .sidebar a {
+        text-decoration: none;
+        color: white;
+        display: flex;
+        align-items: center;
+        padding: 15px;
+        font-size: 16px;
+        position: relative;
+    }
+
+.sidebar-link:hover {
+    color: white;
+}
+
+    .sidebar-link:hover::after {
+        content: '';
+        position: absolute;
+        left: 10px;
+        right: 10px;
+        top: 50%;
+        transform: translateY(-50%);
+        height: 60%;
+        background-color: rgba(241, 241, 241, 0.1);
+        border-radius: 15px;
+        z-index: -1;
+    }
+
+.sidebar img {
+    margin-right: 15px;
+}
+
+.logo-link {
+    pointer-events: none;
+}
+
+    .logo-link img {
+        margin: 0 auto;
+        display: block;
+    }
+
+/* Specific style for the profile image to make it circular */
+.profile-image {
+    border-radius: 50%;
+}
+
+/* Content styles */
+.content {
+    margin-left: 200px;
+    padding: 20px;
+    flex-grow: 1;
+}
+
+/* Main Content styles */
+.main-content {
+    color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+/* Hearts, Gems, Day Streak Styling */
+.hearts,
+.gems,
+.day-streak {
+    display: flex;
+    align-items: center;
+    margin-right: 20px;
+}
+
+    .hearts img,
+    .gems img,
+    .day-streak img {
+        width: 25px;
+        height: 25px;
+        margin-right: 5px;
+    }
+
+.header-icons {
+    position: absolute;
+    top: 100px;
+    right: 20px;
+    display: flex;
+    align-items: center;
+    color: white;
+}
+
+.hearts,
+.day-streak,
+.gems {
+    margin-right: 20px;
+}
+
+/* Leaderboard and Quests Container styles */
+.leaderboard-container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; /* Align to the top */
+    height: 100vh;
+    width: 100%; /* Ensure it takes full width of the viewport */
+    padding-top: 60px; /* Adjust to move it closer to the top */
+}
+
+.leaderboard {
+    background-color: #1e2b30;
+    color: white;
+    padding: 30px; /* Increased padding for a bigger size */
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    width: 300px; /* Increased width for a bigger size */
+    margin-top: 50px;
+}
+
+.daily-quests {
+    background-color: #1e2b30;
+    color: white;
+    padding: 20px;
+    margin-top: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    width: 250px;
+    position: absolute;
+    top: 160px; /* Adjust this value to position correctly under the header-icons */
+    right: 20px;
+}

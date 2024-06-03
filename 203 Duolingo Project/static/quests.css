@@ -1,0 +1,250 @@
+/* Global styles */
+body {
+    font-family: 'Varela Round', sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    background-color: #131f24;
+    color: white;
+}
+
+/* Sidebar styles */
+.sidebar {
+    width: 200px;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #131f24;
+    box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+    padding-top: 20px;
+    border-right: 2px solid rgba(255, 255, 255, 0.1);
+}
+
+    .sidebar a {
+        text-decoration: none;
+        color: white;
+        display: flex;
+        align-items: center;
+        padding: 15px;
+        font-size: 16px;
+        position: relative;
+    }
+
+.sidebar-link:hover {
+    color: white;
+}
+
+    .sidebar-link:hover::after {
+        content: '';
+        position: absolute;
+        left: 10px;
+        right: 10px;
+        top: 50%;
+        transform: translateY(-50%);
+        height: 60%;
+        background-color: rgba(241, 241, 241, 0.1);
+        border-radius: 15px;
+        z-index: -1;
+    }
+
+.sidebar img {
+    margin-right: 15px;
+}
+
+.logo-link {
+    pointer-events: none;
+}
+
+    .logo-link img {
+        margin: 0 auto;
+    }
+
+/* Specific style for the profile image to make it circular */
+.profile-image {
+    border-radius: 50%;
+}
+
+/* Content styles */
+.content {
+    margin-left: 200px;
+    padding: 20px;
+    flex-grow: 1;
+}
+
+/* Main Content styles */
+.main-content {
+    color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+/* Hearts, Gems, Day Streak Styling */
+.hearts,
+.gems,
+.day-streak {
+    display: flex;
+    align-items: center;
+    margin-right: 20px;
+}
+
+    .hearts img,
+    .gems img,
+    .day-streak img {
+        width: 25px;
+        height: 25px;
+        margin-right: 5px;
+    }
+
+.header-icons {
+    position: absolute;
+    top: 100px;
+    right: 20px;
+    display: flex;
+    align-items: center;
+    color: white;
+}
+
+.hearts,
+.day-streak,
+.gems {
+    margin-right: 20px;
+}
+
+/* Characters section styles */
+.main-content .characters {
+    position: relative;
+    color: white;
+    text-align: center;
+    font-weight: 600;
+    margin-top: 20px; /* Adjust as needed for positioning */
+}
+
+    .main-content .characters .scripts {
+        display: flex;
+        justify-content: center;
+        gap: 50px; /* Adjust gap between links */
+        margin-right: 51px;
+        padding-top: 20px;
+    }
+
+    .main-content .characters .characters-link {
+        color: white;
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 18px;
+        position: relative;
+        padding-bottom: 30px;
+    }
+
+        .main-content .characters .characters-link::after {
+            content: '';
+            position: absolute;
+            bottom: -3px;
+            left: 0;
+            width: 0; /* Set width to 0 to remove the border */
+            height: 1px;
+            background-color: transparent; /* Set background color to transparent */
+            z-index: -1;
+        }
+
+        .main-content .characters .characters-link:hover {
+            color: #009af4;
+            border-color: #009af4;
+        }
+
+    .main-content .characters .hiragana {
+        margin-top: 15px;
+        font-weight: 300;
+    }
+
+    .main-content .characters .katakana {
+        margin-top: 15px;
+        font-weight: 300;
+        align-content: center;
+        padding-right: 30px;
+    }
+
+        .main-content .characters .katakana .katakana-text1 {
+            padding-right: 30px;
+        }
+
+/* Leaderboard and Daily Quests styles */
+.leaderboard,
+.daily-quests {
+    background-color: #1e2b30;
+    color: white;
+    padding: 20px;
+    margin-top: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    position: fixed;
+}
+
+    .leaderboard h2,
+    .daily-quests h2 {
+        margin-bottom: 10px;
+        font-size: 20px;
+    }
+
+/* Positioning of Leaderboard and Daily Quests */
+.leaderboard {
+    top: 180px;
+    right: 20px;
+    width: 250px;
+}
+
+    .leaderboard .leaderboard-text {
+        text-align: center;
+    }
+
+    .leaderboard .user-info {
+        padding-left: 10px;
+    }
+
+/* Daily Quests */
+.daily-quests {
+    position: relative; /* Remove 'fixed' positioning */
+    margin: 0 auto; /* Center horizontally */
+    width: 250px; /* Set a fixed width */
+    text-align: center; /* Center text */
+    background-color: #1e2b30;
+    color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    margin-top: 160px; /* Adjust as needed for spacing */
+}
+
+    .daily-quests .daily-quests-text {
+        text-align: center;
+    }
+
+    .daily-quests .quest-info {
+        padding-left: 10px;
+    }
+
+    .daily-quests .quest {
+        margin-bottom: 10px;
+    }
+
+    .daily-quests .completed {
+        color: lightgreen;
+    }
+
+    .daily-quests button {
+        background-color: #009af4;
+        color: white;
+        border: none;
+        padding: 5px 10px;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+        .daily-quests button:hover {
+            background-color: #007bbd;
+        }

@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Duolingo ー Lesson Hub</title>
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='images/bird.png') }}" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap">
+    <link rel="stylesheet" href="{{ url_for('static', filename='lessonhub.css') }}" />
+</head>
+<body>
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <a href="{{ url_for('lessonhub') }}" class="logo-link">
+            <img src="{{ url_for('static', filename='images/duolingo2.png') }}" alt="Duolingo" class="logo-image" style="width:120px;height:30px;" draggable="false" />
+        </a>
+        <a href="{{ url_for('lessonhub') }}" class="sidebar-link">
+            <img src="{{ url_for('static', filename='images/learn.png') }}" alt="Learn" style="width: 35px; height: 35px;" draggable="false" />
+            <b>Learn</b>
+        </a>
+        <a href="{{ url_for('characters') }}" class="sidebar-link">
+            <img src="{{ url_for('static', filename='images/characters.png') }}" alt="Characters" style="width: 35px; height: 35px;" draggable="false" />
+            <b>Characters</b>
+        </a>
+        <a href="{{ url_for('leaderboards') }}" class="sidebar-link">
+            <img src="{{ url_for('static', filename='images/leaderboards.png') }}" alt="Leaderboards" style="width: 35px; height: 35px;" draggable="false" />
+            <b>Leaderboard</b>
+        </a>
+        <a href="{{ url_for('quests') }}" class="sidebar-link">
+            <img src="{{ url_for('static', filename='images/quests.png') }}" alt="Quests" style="width: 35px; height: 35px;" draggable="false" />
+            <b>Quests</b>
+        </a>
+        <a href="{{ url_for('shop') }}" class="sidebar-link">
+            <img src="{{ url_for('static', filename='images/shop.png') }}" alt="Shop" style="width: 35px; height: 35px;" draggable="false" />
+            <b>Shop</b>
+        </a>
+        <a href="{{ url_for('profile') }}" class="sidebar-link">
+            <img src="{{ url_for('static', filename='images/profile.png') }}" alt="Profile" style="width: 35px; height: 35px;" draggable="false" />
+            <b>Profile</b>
+        </a>
+        <a href="{{ url_for('settings') }}" class="sidebar-link">
+            <img src="{{ url_for('static', filename='images/settings.png') }}" alt="Settings" style="width: 35px; height: 35px;" draggable="false" />
+            <b>Settings</b>
+        </a>
+        <a href="{{ url_for('index') }}" class="sidebar-link">
+            <img src="{{ url_for('static', filename='images/signout.png') }}" alt="Sign Out" style="width: 35px; height: 35px;" draggable="false" />
+            <b>Sign Out</b>
+        </a>
+    </div>
+
+    <!-- Content -->
+    <div class="content"></div>
+
+    <!-- Main Content Area -->
+    <div class="main-content">
+        <!-- Hearts, Day Streak, Gems -->
+        <div class="header-icons">
+            <div class="hearts">
+                <img src="{{ url_for('static', filename='images/hearts.png') }}" alt="Hearts" draggable="false" />
+                <span id="heartsCount">{{ user.hearts }}</span>
+            </div>
+            <div class="day-streak">
+                <img src="{{ url_for('static', filename='images/daystreak.png') }}" alt="Day Streak" draggable="false" />
+                <span id="streakCount">{{ user.day_streak }}</span>
+            </div>
+            <div class="gems">
+                <img src="{{ url_for('static', filename='images/gems.png') }}" alt="Gems" draggable="false" />
+                <span id="gemsCount">{{ user.gems }}</span>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <section class="lessons">
+            <h2><b>SECTION 1, UNIT 1</b></h2>
+            <h3>Order Food & Describe People</h3>
+            <div class="lesson1-link">
+                <a href="{{ url_for('lesson1') }}" class="lesson-link">
+                    <div class="circle complete"></div>
+                    <p>Lesson 1 ー Order Food</p>
+                </a>
+            </div>
+
+            <div class="lesson2-link">
+                <a href="{{ url_for('lesson2') }}" class="lesson-link">
+                    <div class="circle complete"></div>
+                    <p>Lesson 2 ー Order Food</p>
+                </a>
+            </div>
+
+            <div class="lesson3-link">
+                <a href="{{ url_for('lesson3') }}" class="lesson-link">
+                    <div class="circle complete"></div>
+                    <p>Lesson 3 ー Describe People</p>
+                </a>
+            </div>
+
+            <div class="lesson4-link">
+                <a href="{{ url_for('lesson4') }}" class="lesson-link">
+                    <div class="circle complete"></div>
+                    <p>Lesson 4 ー Describe People</p>
+                </a>
+            </div>
+        </section>
+        <aside class="sidebar-right">
+            <div class="league">
+                <h3>LEADERBOARD</h3>
+                <!-- Leaderboard List -->
+                <ol>
+                    {% for user in top_users %}
+                    <li>{{ user.username }} - {{ user.xp }} XP</li>
+                    {% endfor %}
+                </ol>
+                <a href="{{ url_for('leaderboards') }}" class="leaderboard-link"><b>View League</b></a>
+            </div>
+            <div class="daily-quests">
+                <h3>DAILY QUESTS</h3>
+                <div class="quest">
+                    <p>Earn 50 XP</p>
+                    <div class="progress">
+                        <div class="progress-bar"></div>
+                    </div>
+                </div>
+                <div class="quest">
+                    <p>Complete 2 perfect lessons</p>
+                    <div class="progress">
+                        <div class="progress-bar"></div>
+                    </div>
+                </div>
+                <div class="quest">
+                    <p>Get 10 in a row correct in 4 lessons</p>
+                    <div class="progress">
+                        <div class="progress-bar"></div>
+                    </div>
+                </div>
+            </div>
+        </aside>
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+        function toggleDropdown() {
+            var dropdown = document.getElementById("dropdownContent");
+            dropdown.classList.toggle("active");
+        }
+
+        // Fetch the current user's hearts from the server
+        function fetchHearts() {
+            fetch('/get_user_hearts')
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        heartsCount = data.hearts; // Set heartsCount to the number of hearts from the server
+                        updateHearts();
+                    } else {
+                        console.error('Failed to fetch hearts');
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
+        }
+
+        function updateHearts() {
+            document.getElementById("heartsCount").innerText = heartsCount;
+        }
+
+        function loseHeart() {
+            if (heartsCount > 0) {
+                heartsCount--;
+                updateHearts();
+                // Call the Flask route to update the hearts in the database
+                fetch('/lose_heart', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.success) {
+                            console.log(`Hearts left: ${data.hearts}`);
+                        } else {
+                            console.error('Failed to update hearts');
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                    });
+            }
+        }
+
+        function regenerateHeart() {
+            // This function should also call a server route to increment the heart count in the database
+        }
+
+        // Call function to fetch and initialize hearts count from the server
+        fetchHearts();
+    </script>
+
+</body>
+</html>

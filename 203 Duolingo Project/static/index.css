@@ -1,0 +1,90 @@
+﻿body {
+    font-family: 'Varela Round', sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.container {
+    display: flex;
+}
+
+.groupimage {
+    flex: 1;
+    background-color: #ffffff;
+    padding: 20px;
+    padding-top: 75px;
+    padding-left: 150px;
+}
+
+.getstarted {
+    flex: 1;
+    background-color: #ffffff;
+    padding-top: 95px;
+    margin-top: 80px;
+    font-size: medium;
+    flex-direction: column;
+    align-items: center; /* Maybe Delete */
+    gap: 15px;
+}
+
+    .getstarted .signupbtn,
+    .getstarted .signinbtn {
+        font-family: 'Varela Round', sans-serif;
+        font-weight: 100;
+        width: 325px;
+        padding: 10px 20px;
+        border-radius: 20px;
+        cursor: pointer;
+        transition: box-shadow 0.3s ease;
+        box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.3);
+        display: flex;
+        justify-content: center; /* Center the text within the button */
+        align-items: center;
+    }
+
+    .getstarted .signupbtn {
+        font-family: 'Varela Round', sans-serif;
+        background-color: #58cc02;
+        color: #000000;
+        padding: 10px 20px;
+        margin-left: 70px;
+        font-weight: 100;
+        width: 325px;
+        border-radius: 20px;
+        cursor: pointer;
+        transition: box-shadow 0.3s ease;
+        box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.3);
+        justify-content: center;
+        align-items: center;
+    }
+
+        .getstarted .signupbtn:active {
+            position: relative;
+            top: 1px;
+            box-shadow: -2px 2px 5px rgba(0, 0, 0, 0.3);
+        }
+
+    .getstarted .signinbtn {
+        margin-top: 15px;
+        font-family: 'Varela Round', sans-serif;
+        background-color: #ffffff;
+        color: #009af4;
+        padding: 10px 20px;
+        font-weight: 100;
+        width: 325px;
+        margin-left: 70px;
+        border-radius: 20px;
+        cursor: pointer;
+        transition: box-shadow 0.3s ease;
+        box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.3);
+    }
+
+        .getstarted .signinbtn:active {
+            position: relative;
+            top: 1px;
+            box-shadow: -2px 2px 5px rgba(0, 0, 0, 0.3);
+        }
+
+.text1 {
+    margin-left: 90px;
+}
