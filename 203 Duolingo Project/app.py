@@ -78,8 +78,29 @@ def lesson1():
     else:
         # Redirect to the login page if the user is not logged in
         return redirect(url_for('signin'))
+    
+@app.route('/lesson2')
+def lesson2():
+    # Assuming that the user is logged in and their ID is stored in the session
+    if 'user_id' in session:
+        user = User.query.get(session['user_id'])
+        if user:
+            return render_template('lesson2.html', user=user)
+        else:
+            # Handle the case where the user is not found
+            return "User not found", 404
+    else:
+        # Redirect to the login page if the user is not logged in
+        return redirect(url_for('signin'))
 
 
+@app.route('/lesson3')
+def lesson3():
+    return render_template('lesson3.html')
+
+@app.route('/lesson4')
+def lesson4():
+    return render_template('lesson4.html')
 
 @app.route('/get_question')
 def get_question():
@@ -143,18 +164,6 @@ def get_user_hearts():
     if user:
         return jsonify({'success': True, 'hearts': user.hearts})
     return jsonify({'success': False}), 400
-
-@app.route('/lesson2')
-def lesson2():
-    return render_template('lesson1.html')
-
-@app.route('/lesson3')
-def lesson3():
-    return render_template('lesson1.html')
-
-@app.route('/lesson4')
-def lesson4():
-    return render_template('lesson1.html')
 
 @app.route('/signin')
 def signin():

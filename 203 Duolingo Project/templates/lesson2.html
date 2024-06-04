@@ -1,11 +1,302 @@
 <!DOCTYPE html>
-
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<html lang="en">
 <head>
     <meta charset="utf-8" />
-    <title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Duolingo ー Lesson Hub</title>
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='images/bird.png') }}" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap">
+    <link rel="stylesheet" href="{{ url_for('static', filename='lesson2.css') }}" />
 </head>
 <body>
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <a href="{{ url_for('lessonhub') }}" class="logo-link">
+            <img src="{{ url_for('static', filename='images/duolingo2.png') }}" alt="Duolingo" class="logo-image" style="width:120px;height:30px;" draggable="false" />
+        </a>
+        <a href="{{ url_for('lessonhub') }}" class="sidebar-link">
+            <img src="{{ url_for('static', filename='images/learn.png') }}" alt="Learn" style="width: 35px; height: 35px;" draggable="false" />
+            <b>Learn</b>
+        </a>
+        <!-- Other sidebar links -->
+    </div>
+    <!-- Main Content Area -->
+    <div class="main-content">
+        <!-- Hearts, Day Streak, Gems -->
+        <div class="header-icons">
+            <div class="hearts">
+                <img src="{{ url_for('static', filename='images/hearts.png') }}" alt="Hearts" draggable="false" />
+                <span id="heartsCount">{{ user.hearts }}</span>
+            </div>
+            <div class="day-streak">
+                <img src="{{ url_for('static', filename='images/daystreak.png') }}" alt="Day Streak" draggable="false" />
+                <span id="streakCount">{{ user.day_streak }}</span>
+            </div>
+            <div class="gems">
+                <img src="{{ url_for('static', filename='images/gems.png') }}" alt="Gems" draggable="false" />
+                <span id="gemsCount">{{ user.gems }}</span>
+            </div>
+        </div>
 
+        <!-- Main Content -->
+        <section class="lessons">
+            <h1>TRANSLATE OR FILL IN THE BLANKS</h1>
+            <div id="hearts-container"></div>
+            <div id="question-container" class="question-container hidden">
+                <div class="question">
+                    <p id="question-text"></p>
+                    <div id="answer-buttons" class="multiple-choice hidden"></div>
+                    <div id="fill-in-the-blanks" class="fill-in-the-blanks hidden">
+                        <div class="sentence" id="fill-sentence"></div>
+                        <div class="words" id="fill-words"></div>
+                    </div>
+                </div>
+                <div id="feedback" class="feedback hidden"></div>
+            </div>
+            <button id="next-button" class="hidden">Next</button>
+        </section>
+    </div>
+    <script>
+        function allowDrop(event) {
+            event.preventDefault();
+        }
+
+        function drag(event) {
+            event.dataTransfer.setData("text", event.target.id);
+        }
+
+        function drop(event) {
+            event.preventDefault();
+            var data = event.dataTransfer.getData("text");
+            var word = document.getElementById(data).innerHTML;
+            if (event.target.classList.contains('blank') && event.target.innerHTML === "") {
+                event.target.innerHTML = word;
+                document.getElementById(data).style.display = 'none';
+                checkCompletion();
+            }
+        }
+
+        function checkCompletion() {
+            var blanks = document.querySelectorAll('.blank');
+            var isComplete = true;
+            blanks.forEach(blank => {
+                if (blank.innerHTML === "") {
+                    isComplete = false;
+                }
+            });
+
+            if (isComplete) {
+                nextButton.classList.remove('hidden');
+            }
+        }
+
+        const questions = [
+            { text: 'Translate すし、ごはん', answers: ['sushi, rice', 'sushi, water', 'sushi, green tea'], correct: 'sushi, rice' },
+            { type: 'fill-in-the-blank', sentence: '______ と ______、ください。', words: ['ごはん', 'すし'], correct: ['すし', 'ごはん'] },
+            { text: 'Translate すし、みず', answers: ['sushi, rice', 'sushi, water', 'sushi, green tea'], correct: 'sushi, water' },
+            { text: 'Translate ごはん、おちゃ', answers: ['rice, water', 'rice, green tea', 'sushi, rice'], correct: 'rice, green tea' },
+            { type: 'fill-in-the-blank', sentence: '______ と ______ です。', words: ['おちゃ', 'みず'], correct: ['おちゃ', 'みず'] },
+            { text: 'Translate すしとごはん、ください', answers: ['sushi and rice, please', 'sushi and water, please', 'sushi and green tea, please'], correct: 'sushi and rice, please' },
+            { text: 'Translate すしとみずです', answers: ["it's sushi and rice", "it's sushi and water", "it's sushi and green tea"], correct: "it's sushi and water" },
+            { type: 'fill-in-the-blank', sentence: '______ と ______ です。', words: ['おちゃ', 'ごはん'], correct: ['ごはん', 'おちゃ'] },
+            { text: 'Translate ごはんとみずです', answers: ["it's rice and water", "it's rice and green tea", "it's sushi and rice"], correct: "it's rice and water" },
+            { type: 'fill-in-the-blank', sentence: '______ と ______、ください。', words: ['ごはん', 'みず'], correct: ['ごはん', 'みず'] },
+            { text: 'Translate すしとおちゃ、ください', answers: ['sushi and rice, please', 'sushi and water, please', 'sushi and green tea, please'], correct: 'sushi and green tea, please' },
+        ];
+
+        let currentQuestionIndex = 0;
+        let score = 0;
+        let hearts = 5;
+
+        const questionContainer = document.getElementById('question-container');
+        const questionText = document.getElementById('question-text');
+        const answerButtons = document.getElementById('answer-buttons');
+        const fillInTheBlanks = document.getElementById('fill-in-the-blanks');
+        const fillSentence = document.getElementById('fill-sentence');
+        const fillWords = document.getElementById('fill-words');
+        const feedback = document.getElementById('feedback');
+        const nextButton = document.getElementById('next-button');
+        const heartsContainer = document.getElementById('hearts-container');
+
+        function startGame() {
+            score = 0;
+            hearts = 5;
+            currentQuestionIndex = 0;
+            heartsContainer.innerHTML = '';
+            for (let i = 0; i < hearts; i++) {
+                const heart = document.createElement('div');
+                heart.classList.add('heart');
+                heartsContainer.appendChild(heart);
+            }
+            nextButton.classList.add('hidden');
+            showQuestion();
+        }
+
+        function showQuestion() {
+            resetState();
+            questionContainer.classList.remove('hidden');
+            feedback.classList.add('hidden');
+            const question = questions[currentQuestionIndex];
+            if (question.hasOwnProperty('type') && question.type === 'fill-in-the-blank') {
+                showFillInTheBlankQuestion(question);
+            } else {
+                showTranslateQuestion(question);
+            }
+        }
+
+        function showTranslateQuestion(question) {
+            questionText.innerText = question.text;
+            answerButtons.classList.remove('hidden');
+            question.answers.forEach(answer => {
+                const button = document.createElement('button');
+                button.innerText = answer;
+                button.classList.add('btn');
+                button.dataset.correct = answer === question.correct;
+                button.addEventListener('click', selectAnswer);
+                answerButtons.appendChild(button);
+            });
+        }
+
+        function showFillInTheBlankQuestion(question) {
+            fillInTheBlanks.classList.remove('hidden');
+            const blankCount = (question.sentence.match(/______/g) || []).length;
+            fillSentence.innerHTML = question.sentence.split('______').join('<span class="blank" ondrop="drop(event)" ondragover="allowDrop(event)"></span>');
+
+            fillWords.innerHTML = '';
+            question.words.forEach((word, index) => {
+                const wordSpan = document.createElement('span');
+                wordSpan.id = `word${index}_${currentQuestionIndex}`;
+                wordSpan.classList.add('word');
+                wordSpan.draggable = true;
+                wordSpan.innerText = word;
+                wordSpan.ondragstart = drag;
+                fillWords.appendChild(wordSpan);
+            });
+        }
+
+
+        function resetState() {
+            while (answerButtons.firstChild) {
+                answerButtons.removeChild(answerButtons.firstChild);
+            }
+            nextButton.classList.add('hidden');
+            feedback.classList.add('hidden');
+            fillInTheBlanks.classList.add('hidden');
+        }
+
+        function selectAnswer(e) {
+            const selectedButton = e.target;
+            const correct = selectedButton.dataset.correct === 'true';
+            if (correct) {
+                feedback.innerText = 'Correct!';
+                feedback.classList.remove('incorrect');
+                feedback.classList.add('correct');
+                score += 10;
+            } else {
+                feedback.innerText = 'Incorrect!';
+                feedback.classList.remove('correct');
+                feedback.classList.add('incorrect');
+                hearts--;
+                heartsContainer.removeChild(heartsContainer.lastChild);
+                // Call the Flask route to update the hearts in the database
+                fetch('/lose_heart', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.success) {
+                            console.log(`Hearts left: ${data.hearts}`);
+                            if (data.locked) {
+                                window.location.href = "{{ url_for('lessonhub') }}";
+                            }
+                        } else {
+                            console.error('Failed to update hearts');
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                    });
+            }
+            feedback.classList.remove('hidden');
+            nextButton.classList.remove('hidden');
+            Array.from(answerButtons.children).forEach(button => {
+                button.disabled = true;
+                setStatusClass(button, button.dataset.correct === 'true');
+            });
+            if (hearts === 0) {
+                feedback.innerText = 'Game Over';
+                nextButton.innerText = 'OK';
+                nextButton.classList.remove('hidden');
+                nextButton.removeEventListener('click', nextQuestion);
+                nextButton.addEventListener('click', () => {
+                    window.location.href = '{{ url_for("lessonhub") }}';
+                });
+            }
+
+            // Check if the question is fill-in-the-blank and provide feedback
+            if (questions[currentQuestionIndex].type === 'fill-in-the-blank') {
+                if (correct) {
+                    feedback.innerText = 'Correct!';
+                    feedback.classList.remove('incorrect');
+                    feedback.classList.add('correct');
+                } else {
+                    feedback.innerText = 'Incorrect!';
+                    feedback.classList.remove('correct');
+                    feedback.classList.add('incorrect');
+                }
+            }
+        }
+
+        function setStatusClass(element, correct) {
+            clearStatusClass(element);
+            if (correct) {
+                element.classList.add('correct');
+            } else {
+                element.classList.add('incorrect');
+            }
+        }
+
+        function clearStatusClass(element) {
+            element.classList.remove('correct');
+            element.classList.remove('incorrect');
+        }
+
+        function nextQuestion() {
+            currentQuestionIndex++;
+            if (currentQuestionIndex < questions.length) {
+                showQuestion();
+            } else {
+                // Call the Flask route to save the score in the database
+                fetch('/save_score', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ score: score })
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        console.log('Score saved successfully');
+                    } else {
+                        console.error('Failed to save score');
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
+                window.location.href = '{{ url_for("lessonhub") }}';
+            }
+        }
+
+        nextButton.addEventListener('click', () => {
+            nextQuestion();
+        });
+
+        startGame();
+    </script>
 </body>
 </html>
