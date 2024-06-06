@@ -72,6 +72,7 @@ body {
     margin-left: 200px;
     padding: 20px;
     flex-grow: 1;
+    position: relative; /* Add this to ensure children can use absolute positioning */
 }
 
 /* Main Content styles */
@@ -79,7 +80,7 @@ body {
     color: white;
     padding: 20px;
     border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    position: relative; /* Ensure relative positioning for inner elements */
 }
 
 /* Hearts, Gems, Day Streak Styling */
@@ -116,19 +117,19 @@ body {
 
 /* Characters section styles */
 .main-content .characters {
-    position: relative;
+    position: absolute; /* Changed to absolute positioning */
+    margin-left: 250px !important; /* Adjust this value to move to the right */
     color: white;
     text-align: center;
     font-weight: 600;
-    margin-top: 150px; /* Adjust as needed for positioning */
-    margin-right: 200px;
+    margin-top: 150px;
 }
 
     .main-content .characters .scripts {
         display: flex;
         justify-content: center;
         gap: 50px; /* Adjust gap between links */
-        margin-right: 51px;
+        margin-left: 30px;
         padding-top: 20px;
     }
 
@@ -157,11 +158,6 @@ body {
             border-color: #009af4;
         }
 
-        .main-content .characters .characters-link:hover {
-            color: #009af4;
-            border-color: #009af4;
-        }
-
     .main-content .characters .hiragana {
         margin-top: 15px;
         font-weight: 300;
@@ -172,10 +168,11 @@ body {
         font-weight: 300;
         align-content: center;
         padding-right: 30px;
+        margin-left: 50px;
     }
 
         .main-content .characters .katakana .katakana-text1 {
-            padding-right: 30px;
+            padding-left: 20px;
         }
 
 .sidebar-right {
@@ -187,7 +184,6 @@ body {
     width: 300px; /* Set a fixed width */
     margin-right: 15px;
 }
-
 
 .box {
     font-family: 'Varela Round', sans-serif;

@@ -118,13 +118,6 @@
                     {% for quest in quests %}
                     <div class="quest">
                         <p class="quest-info">{{ quest.description }} - {{ quest.reward }} Gems</p>
-                        {% if quest.completed %}
-                        <span class="completed">(Completed)</span>
-                        {% else %}
-                        <form method="post" action="{{ url_for('complete_quest', quest_id=quest.id) }}">
-                            <button type="submit">Complete</button>
-                        </form>
-                        {% endif %}
                     </div>
                     {% endfor %}
                 </div>

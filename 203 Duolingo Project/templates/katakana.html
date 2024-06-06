@@ -1,4 +1,3 @@
-HTML:
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -83,28 +82,15 @@ HTML:
                 </div>
                 <div class="daily-quests">
                     <h3>DAILY QUESTS</h3>
-                    <div class="quest">
-                        <p>Earn 50 XP</p>
-                        <div class="progress">
-                            <div class="progress-bar"></div>
+                    <div class="quest-info">
+                        {% for quest in quests %}
+                        <div class="quest">
+                            <p class="quest-info">{{ quest.description }} - {{ quest.reward }} Gems</p>
                         </div>
-                    </div>
-                    <div class="quest">
-                        <p>Complete 2 perfect lessons</p>
-                        <div class="progress">
-                            <div class="progress-bar"></div>
-                        </div>
-                    </div>
-                    <div class="quest">
-                        <p>Get 10 in a row correct in 4 lessons</p>
-                        <div class="progress">
-                            <div class="progress-bar"></div>
-                        </div>
+                        {% endfor %}
                     </div>
                 </div>
             </aside>
-        </div>
-
 
             <!-- Main Content -->
             <div class="characters">
@@ -122,65 +108,63 @@ HTML:
                     <p>Add small characters to make new syllables</p>
                     <img src="{{ url_for('static', filename='images/katakanacombo.png') }}" alt="Katakana - Combo" class="katakana" style="width: 390px; height:750px;" draggable="false" />
                 </div>
-
             </div>
         </div>
+    </div>
 
-        <!-- JavaScript -->
-        <script>
-            // Function to update user's rank and XP
-            function updateUserInfo(rank, xp) {
-                document.getElementById("userRank").innerText = rank;
-                document.getElementById("userXP").innerText = xp;
+    <!-- JavaScript -->
+    <script>
+        // Function to update user's rank and XP
+        function updateUserInfo(rank, xp) {
+            document.getElementById("userRank").innerText = rank;
+            document.getElementById("userXP").innerText = xp;
+        }
+
+        // Function to update quests
+        function updateQuestsInfo(quest1XP, quest2XP, quest3XP) {
+            document.getElementById("quest1XP").innerText = quest1XP;
+            document.getElementById("quest2XP").innerText = quest2XP;
+            document.getElementById("quest3XP").innerText = quest3XP;
+        }
+
+        // Placeholder Values
+        var userRankPlaceholder = 10;
+        var userXPPlaceholder = 500;
+
+        var quest1XPPlaceholder = 30;
+        var quest2XPPlaceholder = 10;
+        var quest3XPPlaceholder = 15;
+
+        function toggleDropdown() {
+            var dropdown = document.getElementById("dropdownContent");
+            dropdown.classList.toggle("active");
+        }
+
+        // Initialize hearts count
+        var heartsCount = 5;
+
+        function updateHearts() {
+            document.getElementById("heartsCount").innerText = heartsCount;
+        }
+
+        function loseHeart() {
+            if (heartsCount > 0) {
+                heartsCount--;
+                updateHearts();
             }
+        }
 
-            // Function to update quests
-            function updateQuestsInfo(quest1XP, quest2XP, quest3XP) {
-                document.getElementById("quest1XP").innerText = quest1XP;
-                document.getElementById("quest2XP").innerText = quest2XP;
-                document.getElementById("quest3XP").innerText = quest3XP;
+        function regenerateHeart() {
+            if (heartsCount < 5) {
+                heartsCount++;
+                updateHearts();
             }
+        }
 
-            // Placeholder Values
-            var userRankPlaceholder = 10;
-            var userXPPlaceholder = 500;
-
-            var quest1XPPlaceholder = 30;
-            var quest2XPPlaceholder = 10;
-            var quest3XPPlaceholder = 15;
-
-            function toggleDropdown() {
-                var dropdown = document.getElementById("dropdownContent");
-                dropdown.classList.toggle("active");
-            }
-
-            // Initialize hearts count
-            var heartsCount = 5;
-
-            function updateHearts() {
-                document.getElementById("heartsCount").innerText = heartsCount;
-            }
-
-            function loseHeart() {
-                if (heartsCount > 0) {
-                    heartsCount--;
-                    updateHearts();
-                }
-            }
-
-            function regenerateHeart() {
-                if (heartsCount < 5) {
-                    heartsCount++;
-                    updateHearts();
-                }
-            }
-
-            // Call function to initialize hearts count
-            updateHearts();
-            updateUserInfo(userRankPlaceholder, userXPPlaceholder);
-            updateQuestsInfo(quest1XPPlaceholder, quest2XPPlaceholder, quest3XPPlaceholder);
-
-        </script>
-
+        // Call function to initialize hearts count
+        updateHearts();
+        updateUserInfo(userRankPlaceholder, userXPPlaceholder);
+        updateQuestsInfo(quest1XPPlaceholder, quest2XPPlaceholder, quest3XPPlaceholder);
+    </script>
 </body>
 </html>

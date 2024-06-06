@@ -184,17 +184,22 @@ def lessonhub():
     generate_daily_quests(user)  # Ensure the user has quests for today
     quests = DailyQuest.query.filter_by(user_id=user.id, date_assigned=date.today()).all()
     return render_template('lessonhub.html',  user=user, quests=quests, top_users=top_users)
+
 @app.route('/katakana')
 def katakana():
     user = User.query.get(session['user_id'])  # Get the current user
     top_users = User.query.order_by(User.xp.desc()).limit(3).all()  # Get top 3 users
-    return render_template('katakana.html', user=user, top_users=top_users)
+    generate_daily_quests(user)  # Ensure the user has quests for today
+    quests = DailyQuest.query.filter_by(user_id=user.id, date_assigned=date.today()).all()
+    return render_template('katakana.html',  user=user, quests=quests, top_users=top_users)
 
 @app.route('/characters')
 def characters():
     user = User.query.get(session['user_id'])  # Get the current user
     top_users = User.query.order_by(User.xp.desc()).limit(3).all()  # Get top 3 users
-    return render_template('characters.html', user=user, top_users=top_users)
+    generate_daily_quests(user)  # Ensure the user has quests for today
+    quests = DailyQuest.query.filter_by(user_id=user.id, date_assigned=date.today()).all()
+    return render_template('characters.html',  user=user, quests=quests, top_users=top_users)
 
 @app.route('/leaderboards')
 def leaderboards():

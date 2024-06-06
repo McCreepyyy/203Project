@@ -87,17 +87,6 @@
 
     <!-- Sidebar Right -->
     <aside class="sidebar-right">
-        <div class="league">
-            <h3>LEADERBOARD</h3>
-            <!-- Leaderboard List -->
-            <ol>
-                {% for user in top_users %}
-                <li>{{ user.username }} - {{ user.xp }} XP</li>
-                {% endfor %}
-            </ol>
-            <a href="{{ url_for('leaderboards') }}" class="leaderboard-link"><b>View League</b></a>
-        </div>
-
         <!-- Daily Quests Section -->
         <div class="daily-quests">
             <h3>DAILY QUESTS</h3>
@@ -105,21 +94,11 @@
                 {% for quest in quests %}
                 <div class="quest">
                     <p class="quest-info">{{ quest.description }} - {{ quest.reward }} Gems</p>
-                    {% if quest.completed %}
-                    <span class="completed">(Completed)</span>
-                    {% else %}
-                    <form method="post" action="{{ url_for('complete_quest', quest_id=quest.id) }}">
-                        <button type="submit">Complete</button>
-                    </form>
-                    {% endif %}
                 </div>
                 {% endfor %}
             </div>
         </div>
     </aside>
-
-
-
 
     <!-- JavaScript -->
     <script>
