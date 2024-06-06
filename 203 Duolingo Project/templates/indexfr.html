@@ -1,0 +1,55 @@
+﻿<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Duolingo</title>
+    <link rel="icon" type="image/x-icon" href="images/bird.png" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap">
+    <link rel="stylesheet" href="index.css" />
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="menu">
+        <div style="position:relative; left: 360px; bottom: 15px;">
+            <a href="indexfr.html"><img src="images/duolingo.png" alt="Duolingo" style="width:179px;height:42px"></a>
+        </div>
+
+        <ul>
+            <li class="language">
+                <div class="dropdown">
+                    <button class="dropbtn" onclick="toggleDropdown()"><b>LANGUE DU SITE : FRANÇAIS</b><span class="arrow">&#9662;</span></button>
+                    <div class="dropdown-content" id="dropdownContent">
+                        <a href="index.html"><img src="images/flag_en.png" alt="English" class="flag" />Anglais</a>
+                        <a href="indexjp.html"><img src="images/flag_jp.png" alt="Japanese" class="flag" />Japonais</a>
+                        <a href="indexfr.html"><img src="images/flag_fr.png" alt="French" class="flag" />Français</a>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </nav>
+    <!-- Container for Image and Text -->
+    <div class="container">
+        <!-- Image -->
+        <div class="groupimage">
+            <img src="images/group.png" width="800" height="500" alt="Group of Characters" />
+        </div>
+        <!-- Text -->
+        <div class="getstarted" ;>
+            <h1><b>La manière gratuite, amusante et efficace</b></h1>
+            <h1 class="text1"><b>apprendre une langue!</b></h1>
+
+            <button onclick="window.location.href='getstartedfr.html'" class="signupbtn"><h2>COMMENCER</h2></button>
+            <button onclick="window.location.href='signinfr.html'" class="signinbtn"><h2>JE AI DÉJÀ UN COMPTE</h2></button>
+        </div>
+
+    </div>
+
+    <script>
+        function toggleDropdown() {
+            var dropdownContent = document.getElementById("dropdownContent");
+            dropdownContent.classList.toggle("active");
+        }
+    </script>
+</body>
+</html>

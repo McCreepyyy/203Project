@@ -123,6 +123,17 @@ h1 {
     cursor: pointer;
 }
 
+
+.fill-in-the-blanks .blank.correct {
+    background-color: #d4edda;
+    color: #155724;
+}
+
+.fill-in-the-blanks .blank.incorrect {
+    background-color: #f8d7da;
+    color: #721c24;
+}
+
 .header-icons {
     display: flex;
     justify-content: space-between;

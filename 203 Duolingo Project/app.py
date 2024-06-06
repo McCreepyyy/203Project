@@ -181,30 +181,39 @@ def privacypolicy():
 def lessonhub():
     user = User.query.get(session['user_id'])  # Get the current user
     top_users = User.query.order_by(User.xp.desc()).limit(3).all()  # Get top 3 users
-    return render_template('lessonhub.html', user=user, top_users=top_users)
-
+    generate_daily_quests(user)  # Ensure the user has quests for today
+    quests = DailyQuest.query.filter_by(user_id=user.id, date_assigned=date.today()).all()
+    return render_template('lessonhub.html',  user=user, quests=quests, top_users=top_users)
 @app.route('/katakana')
 def katakana():
     user = User.query.get(session['user_id'])  # Get the current user
-    return render_template('katakana.html', user=user)
+    top_users = User.query.order_by(User.xp.desc()).limit(3).all()  # Get top 3 users
+    return render_template('katakana.html', user=user, top_users=top_users)
 
 @app.route('/characters')
 def characters():
     user = User.query.get(session['user_id'])  # Get the current user
-    return render_template('characters.html', user=user)
+    top_users = User.query.order_by(User.xp.desc()).limit(3).all()  # Get top 3 users
+    return render_template('characters.html', user=user, top_users=top_users)
 
 @app.route('/leaderboards')
 def leaderboards():
     # Fetch all users and sort them by XP in descending order
+    user = User.query.get(session['user_id'])  # Get the current user
     all_users = User.query.order_by(User.xp.desc()).limit(10).all()
-    return render_template('leaderboards.html', users=all_users)
+    generate_daily_quests(user)  # Ensure the user has quests for today
+    quests = DailyQuest.query.filter_by(user_id=user.id, date_assigned=date.today()).all()
+    current_user = User.query.get(session['user_id'])  # Get the current logged-in user
+    return render_template('leaderboards.html', user=user, quests=quests, users=all_users)
 
 @app.route('/quests')
 def quests():
     user = User.query.get(session['user_id'])  # Get the current user
+    top_users = User.query.order_by(User.xp.desc()).limit(3).all()  # Get top 3 users
     generate_daily_quests(user)  # Ensure the user has quests for today
     quests = DailyQuest.query.filter_by(user_id=user.id, date_assigned=date.today()).all()
-    return render_template('quests.html', user=user, quests=quests)
+    return render_template('quests.html', user=user, quests=quests, top_users=top_users)
+
 
 @app.route('/complete-quest/<int:quest_id>', methods=['POST'])
 def complete_quest(quest_id):

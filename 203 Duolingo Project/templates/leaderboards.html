@@ -55,16 +55,16 @@
         <!-- Hearts, Day Streak, Gems -->
         <div class="header-icons">
             <div class="hearts">
-                <img src="{{ url_for('static', filename='images/hearts.png') }}" alt="Hearts" draggable="false" style="height:25px; width:25px;" />
-                <span id="heartsCount">5</span>
+                <img src="{{ url_for('static', filename='images/hearts.png') }}" alt="Hearts" draggable="false" />
+                <span id="heartsCount">{{ user.hearts }}</span>
             </div>
             <div class="day-streak">
-                <img src="{{ url_for('static', filename='images/daystreak.png') }}" alt="Day Streak" draggable="false" style="height:25px; width:25px;" />
-                <span id="streakCount">0</span>
+                <img src="{{ url_for('static', filename='images/daystreak.png') }}" alt="Day Streak" draggable="false" />
+                <span id="streakCount">{{ user.day_streak }}</span>
             </div>
             <div class="gems">
-                <img src="{{ url_for('static', filename='images/gems.png') }}" alt="Gems" draggable="false" style="height:25px; width:25px;" />
-                <span id="gemsCount">0</span>
+                <img src="{{ url_for('static', filename='images/gems.png') }}" alt="Gems" draggable="false" />
+                <span id="gemsCount">{{ user.gems }}</span>
             </div>
         </div>
 
@@ -84,6 +84,39 @@
             </div>
         </div>
     </div>
+
+    <!-- Sidebar Right -->
+    <aside class="sidebar-right">
+        <div class="league">
+            <h3>LEADERBOARD</h3>
+            <!-- Leaderboard List -->
+            <ol>
+                {% for user in top_users %}
+                <li>{{ user.username }} - {{ user.xp }} XP</li>
+                {% endfor %}
+            </ol>
+            <a href="{{ url_for('leaderboards') }}" class="leaderboard-link"><b>View League</b></a>
+        </div>
+
+        <!-- Daily Quests Section -->
+        <div class="daily-quests">
+            <h3>DAILY QUESTS</h3>
+            <div class="quest-info">
+                {% for quest in quests %}
+                <div class="quest">
+                    <p class="quest-info">{{ quest.description }} - {{ quest.reward }} Gems</p>
+                    {% if quest.completed %}
+                    <span class="completed">(Completed)</span>
+                    {% else %}
+                    <form method="post" action="{{ url_for('complete_quest', quest_id=quest.id) }}">
+                        <button type="submit">Complete</button>
+                    </form>
+                    {% endif %}
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </aside>
 
 
 

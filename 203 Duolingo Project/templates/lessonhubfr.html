@@ -3,10 +3,10 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Duolingo ー Shop</title>
+    <title>Duolingo ー Lesson Hub</title>
     <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='images/bird.png') }}" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap">
-    <link rel="stylesheet" href="{{ url_for('static', filename='shop.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='lessonhub.css') }}" />
 </head>
 <body>
     <!-- Sidebar -->
@@ -24,7 +24,7 @@
         </a>
         <a href="{{ url_for('leaderboards') }}" class="sidebar-link">
             <img src="{{ url_for('static', filename='images/leaderboards.png') }}" alt="Leaderboards" style="width: 35px; height: 35px;" draggable="false" />
-            <b>Leaderboards</b>
+            <b>Leaderboard</b>
         </a>
         <a href="{{ url_for('quests') }}" class="sidebar-link">
             <img src="{{ url_for('static', filename='images/quests.png') }}" alt="Quests" style="width: 35px; height: 35px;" draggable="false" />
@@ -35,7 +35,7 @@
             <b>Shop</b>
         </a>
         <a href="{{ url_for('profile') }}" class="sidebar-link">
-            <img src="{{ url_for('static', filename='images/profile.png') }}" alt="Profile" class="profile-image" style="width: 35px; height: 35px;" draggable="false" />
+            <img src="{{ url_for('static', filename='images/profile.png') }}" alt="Profile" style="width: 35px; height: 35px;" draggable="false" />
             <b>Profile</b>
         </a>
         <a href="{{ url_for('settings') }}" class="sidebar-link">
@@ -44,12 +44,30 @@
         </a>
         <a href="{{ url_for('index') }}" class="sidebar-link">
             <img src="{{ url_for('static', filename='images/signout.png') }}" alt="Sign Out" style="width: 35px; height: 35px;" draggable="false" />
-            <b>Sign out</b>
+            <b>Sign Out</b>
         </a>
     </div>
 
     <!-- Content -->
     <div class="content">
+        <!-- Navigation Bar -->
+        <nav class="menu">
+            <div style="position:relative; left: 50px; bottom: 15px;"></div>
+
+            <ul>
+                <li class="language">
+                    <div class="dropdown">
+                        <button class="dropbtn" onclick="toggleDropdown()"><b>SITE LANGUAGE: ENGLISH</b><span class="arrow">&#9662;</span></button>
+                        <div class="dropdown-content" id="dropdownContent">
+                            <a href="{{ url_for('lessonhub') }}"><img src="{{ url_for('static', filename='images/flag_en.png') }}" alt="English" class="flag" draggable="false" />English</a>
+                            <a href="{{ url_for('lessonhubjp') }}"><img src="{{ url_for('static', filename='images/flag_jp.png') }}" alt="Japanese" class="flag" draggable="false" />日本語</a>
+                            <a href="{{ url_for('lessonhubfr') }}"><img src="{{ url_for('static', filename='images/flag_fr.png') }}" alt="French" class="flag" draggable="false" />French</a>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </nav>
+
         <!-- Main Content Area -->
         <div class="main-content">
             <!-- Hearts, Day Streak, Gems -->
@@ -68,57 +86,14 @@
                 </div>
             </div>
 
-            <!-- Shop Content -->
-            <div class="shop-content">
-                <h2 class="hearts-text"><b>Hearts</b></h2>
-                <form method="post" action="{{ url_for('shop') }}">
-                    <input type="hidden" name="item_id" value="hearts">
-                    <img src="{{ url_for('static', filename='images/hearts2.png') }}" alt="Hearts" style="width: 100px; height:100px;" draggable="false" />
-                    <div class="refill-hearts">
-                        <h3><b>Refill hearts</b></h3>
-                        <p>Get full hearts so you can worry less about making mistakes in a lesson.</p>
-                        <button type="submit" class="gemsbtn"><img src="{{ url_for('static', filename='images/gems.png') }}" alt="Gems" style="width: 20px; height: 20px;" draggable="false" />350</button>
-                    </div>
-                </form>
-
-                <h2 class="powerups-text"><b>Power Ups</b></h2>
-                <form method="post" action="{{ url_for('shop') }}">
-                    <input type="hidden" name="item_id" value="streak_freeze">
-                    <img src="{{ url_for('static', filename='images/streakfreeze.png') }}" alt="Streak Freeze" style="width: 100px; height:100px;" draggable="false" />
-                    <div class="streak-freeze">
-                        <h3><b>Streak Freeze</b></h3>
-                        <p>Streak freeze allows your streak to remain in place.</p>
-                        <button type="submit" class="gemsbtn"><img src="{{ url_for('static', filename='images/gems.png') }}" alt="Gems" style="width: 20px; height: 20px;" draggable="false" />200</button>
-                    </div>
-                </form>
-            </div>
+            <!-- Main Content -->
+            <h1>Welcome to Duolingo Learning Hub</h1>
+            <p>This is a placeholder for the main content area. Here you can add different sections related to your learning materials, lessons, and other relevant content.</p>
         </div>
     </div>
 
-
     <!-- JavaScript -->
     <script>
-        // Function to update user's rank and XP
-        function updateUserInfo(rank, xp) {
-            document.getElementById("userRank").innerText = rank;
-            document.getElementById("userXP").innerText = xp;
-        }
-
-        // Function to update quests
-        function updateQuestsInfo(quest1XP, quest2XP, quest3XP) {
-            document.getElementById("quest1XP").innerText = quest1XP;
-            document.getElementById("quest2XP").innerText = quest2XP;
-            document.getElementById("quest3XP").innerText = quest3XP;
-        }
-
-        // Placeholder Values
-        var userRankPlaceholder = 10;
-        var userXPPlaceholder = 500;
-
-        var quest1XPPlaceholder = 30;
-        var quest2XPPlaceholder = 10;
-        var quest3XPPlaceholder = 15;
-
         function toggleDropdown() {
             var dropdown = document.getElementById("dropdownContent");
             dropdown.classList.toggle("active");
@@ -147,9 +122,6 @@
 
         // Call function to initialize hearts count
         updateHearts();
-        updateUserInfo(userRankPlaceholder, userXPPlaceholder);
-        updateQuestsInfo(quest1XPPlaceholder, quest2XPPlaceholder, quest3XPPlaceholder);
-
     </script>
 
 </body>

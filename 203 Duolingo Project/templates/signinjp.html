@@ -1,0 +1,35 @@
+﻿<!DOCTYPE html>
+<html lang="jp">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Duolingo ー ログイン</title>
+    <link rel="icon" type="image/x-icon" href="images/bird.png" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" />
+    <link rel="stylesheet" href="signin.css" />
+</head>
+<body>
+    <nav class="menu">
+        <div style="position:relative; left: 30px; top: 20px;">
+            <a href="indexjp.html"><img src="images/duolingo.png" alt="Duolingo" style="width: 179px; height: 42px;"></a>
+        </div>
+    </nav>
+    <div class="container">
+        <a href="signupjp.html" class="login-button">サインアップ</a>
+        <h2 class="profile-text">ログイン</h2>
+        <form action="/submit_form" method="post">
+            <div class="form-group">
+                <input type="email" id="email" name="email" placeholder="メール" required>
+            </div>
+            <div class="form-group">
+                <input type="password" id="password" name="password" placeholder="パスワード" required>
+            </div>
+            <button type="submit">ログイン</button>
+        </form>
+        <div class="terms">
+            <p>Duolingo にサインインすると、利用規約とプライバシー ポリシーに同意したことになります。</p>
+            <p>このサイトは reCAPTCHA Enterprise によって保護されており、Google のプライバシー ポリシーと利用規約が適用されます。</p>
+        </div>
+    </div>
+</body>
+</html>

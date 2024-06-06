@@ -69,10 +69,22 @@
             event.preventDefault();
             var data = event.dataTransfer.getData("text");
             var word = document.getElementById(data).innerHTML;
+            console.log('Dropped word:', word);
+            console.log('Drop target:', event.target);
+
             if (event.target.classList.contains('blank') && event.target.innerHTML === "") {
                 event.target.innerHTML = word;
                 document.getElementById(data).style.display = 'none';
+                if (event.target.getAttribute('data-correct') === word) {
+                    event.target.classList.add('correct');
+                    console.log('Correct word dropped');
+                } else {
+                    event.target.classList.add('incorrect');
+                    console.log('Incorrect word dropped');
+                }
                 checkCompletion();
+            } else {
+                console.log('Invalid drop target or target already filled');
             }
         }
 

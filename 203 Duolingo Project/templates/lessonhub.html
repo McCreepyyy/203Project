@@ -114,23 +114,19 @@
             </div>
             <div class="daily-quests">
                 <h3>DAILY QUESTS</h3>
-                <div class="quest">
-                    <p>Earn 50 XP</p>
-                    <div class="progress">
-                        <div class="progress-bar"></div>
+                <div class="quest-info">
+                    {% for quest in quests %}
+                    <div class="quest">
+                        <p class="quest-info">{{ quest.description }} - {{ quest.reward }} Gems</p>
+                        {% if quest.completed %}
+                        <span class="completed">(Completed)</span>
+                        {% else %}
+                        <form method="post" action="{{ url_for('complete_quest', quest_id=quest.id) }}">
+                            <button type="submit">Complete</button>
+                        </form>
+                        {% endif %}
                     </div>
-                </div>
-                <div class="quest">
-                    <p>Complete 2 perfect lessons</p>
-                    <div class="progress">
-                        <div class="progress-bar"></div>
-                    </div>
-                </div>
-                <div class="quest">
-                    <p>Get 10 in a row correct in 4 lessons</p>
-                    <div class="progress">
-                        <div class="progress-bar"></div>
-                    </div>
+                    {% endfor %}
                 </div>
             </div>
         </aside>

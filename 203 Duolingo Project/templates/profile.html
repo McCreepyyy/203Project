@@ -53,18 +53,18 @@
         <!-- Main Content Area -->
         <div class="main-content">
             <!-- Hearts, Day Streak, Gems -->
-            <div class="header-icons">
+            < <div class="header-icons">
                 <div class="hearts">
                     <img src="{{ url_for('static', filename='images/hearts.png') }}" alt="Hearts" draggable="false" />
-                    <span id="heartsCount">5</span>
+                    <span id="heartsCount">{{ user.hearts }}</span>
                 </div>
                 <div class="day-streak">
                     <img src="{{ url_for('static', filename='images/daystreak.png') }}" alt="Day Streak" draggable="false" />
-                    <span id="streakCount">0</span>
+                    <span id="streakCount">{{ user.day_streak }}</span>
                 </div>
                 <div class="gems">
                     <img src="{{ url_for('static', filename='images/gems.png') }}" alt="Gems" draggable="false" />
-                    <span id="gemsCount">0</span>
+                    <span id="gemsCount">{{ user.gems }}</span>
                 </div>
             </div>
         </div>
