@@ -70,14 +70,13 @@
     <Content Include="static\index.css" />
     <Content Include="static\katakana.css" />
     <Content Include="static\leaderboards.css" />
-    <Content Include="static\lesson1.css" />
+    <Content Include="static\lesson.css" />
     <Content Include="static\lessonhub.css" />
     <Content Include="static\profile.css" />
     <Content Include="static\quests.css" />
     <Content Include="static\settings.css" />
     <Content Include="static\shop.css" />
     <Content Include="static\signin.css" />
-    <Content Include="static\lesson2.css" />
     <Content Include="templates\characters.html" />
     <Content Include="templates\getstarted.html" />
     <Content Include="templates\index.html" />

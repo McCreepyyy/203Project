@@ -6,7 +6,7 @@
     <title>Duolingo ー Lesson Hub</title>
     <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='images/bird.png') }}" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap">
-    <link rel="stylesheet" href="{{ url_for('static', filename='lesson2.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='lesson.css') }}" />
 </head>
 <body>
     <!-- Sidebar -->
@@ -18,7 +18,35 @@
             <img src="{{ url_for('static', filename='images/learn.png') }}" alt="Learn" style="width: 35px; height: 35px;" draggable="false" />
             <b>Learn</b>
         </a>
-        <!-- Other sidebar links -->
+        <a href="{{ url_for('characters') }}" class="sidebar-link">
+            <img src="{{ url_for('static', filename='images/characters.png') }}" alt="Characters" style="width: 35px; height: 35px;" draggable="false" />
+            <b>Characters</b>
+        </a>
+        <a href="{{ url_for('leaderboards') }}" class="sidebar-link">
+            <img src="{{ url_for('static', filename='images/leaderboards.png') }}" alt="Leaderboards" style="width: 35px; height: 35px;" draggable="false" />
+            <b>Leaderboard</b>
+        </a>
+        <a href="{{ url_for('quests') }}" class="sidebar-link">
+            <img src="{{ url_for('static', filename='images/quests.png') }}" alt="Quests" style="width: 35px; height: 35px;" draggable="false" />
+            <b>Quests</b>
+        </a>
+        <a href="{{ url_for('shop') }}" class="sidebar-link">
+            <img src="{{ url_for('static', filename='images/shop.png') }}" alt="Shop" style="width: 35px; height: 35px;" draggable="false" />
+            <b>Shop</b>
+        </a>
+        <a href="{{ url_for('profile') }}" class="sidebar-link">
+            <img src="{{ url_for('static', filename='images/profile.png') }}" alt="Profile" style="width: 35px; height: 35px;" draggable="false" />
+            <b>Profile</b>
+        </a>
+        <a href="{{ url_for('settings') }}" class="sidebar-link">
+            <img src="{{ url_for('static', filename='images/settings.png') }}" alt="Settings" style="width: 35px; height: 35px;" draggable="false" />
+            <b>Settings</b>
+        </a>
+        <a href="{{ url_for('index') }}" class="sidebar-link">
+            <img src="{{ url_for('static', filename='images/signout.png') }}" alt="Sign Out" style="width: 35px; height: 35px;" draggable="false" />
+            <b>Sign Out</b>
+        </a>
+    </div>
     </div>
     <!-- Main Content Area -->
     <div class="main-content">

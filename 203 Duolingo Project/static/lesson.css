@@ -19,42 +19,86 @@ h1 {
     color: #fff;
 }
 
+/* Sidebar styles */
 .sidebar {
-    width: 250px;
-    background-color: #1e2a30;
-    padding: 20px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    width: 200px;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #131f24;
+    box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+    padding-top: 20px;
+    border-right: 2px solid rgba(255, 255, 255, 0.1);
 }
 
-.sidebar-link {
-    display: flex;
-    align-items: center;
+    .sidebar a {
+        text-decoration: none;
+        color: white;
+        display: flex;
+        align-items: center;
+        padding: 15px;
+        font-size: 16px;
+        position: relative;
+    }
+
+.sidebar-link:hover {
     color: white;
-    text-decoration: none;
-    margin-bottom: 10px;
 }
 
-.logo-image {
-    width: 120px;
-    height: 30px;
+    .sidebar-link:hover::after {
+        content: '';
+        position: absolute;
+        left: 10px;
+        right: 10px;
+        top: 50%;
+        transform: translateY(-50%);
+        height: 60%;
+        background-color: rgba(241, 241, 241, 0.1);
+        border-radius: 15px;
+        z-index: -1;
+    }
+
+.sidebar img {
+    margin-right: 15px;
 }
 
+.logo-link {
+    pointer-events: none;
+}
+
+    .logo-link img {
+        margin: 0 auto;
+    }
+
+/* Specific style for the profile image to make it circular */
+.profile-image {
+    border-radius: 50%;
+}
+
+/* Content styles */
 .content {
-    margin-left: 20px;
-    margin-right: 20px;
+    margin-left: 200px;
+    padding: 20px;
+    flex-grow: 1;
 }
 
 .header-icons {
     display: flex;
     justify-content: space-between;
     margin-bottom: 20px;
+    margin-right: -15px;
 }
 
 .main-content {
     display: flex;
     flex-direction: column;
     align-items: center;
+    padding: 20px;
+    max-width: 800px;
+    margin: 0 auto;
 }
+
 
 .leaderboard-link {
     display: block;
@@ -71,6 +115,13 @@ h1 {
 .league,
 .quest {
     margin-bottom: 20px;
+}
+
+.question-container {
+    padding: 20px;
+    border-radius: 10px;
+    margin-top: 20px;
+    text-align: center;
 }
 
 .lessons {
@@ -94,18 +145,77 @@ h1 {
     align-items: center;
 }
 
+    .multiple-choice button,
+    .btn {
+        display: block;
+        width: 100%;
+        padding: 10px;
+        margin: 10px 0;
+        background-color: #009af4; /* Updated background color */
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        color: white; /* Text color */
+    }
+
+        .multiple-choice button.correct {
+            background-color: #d4edda;
+            color: #155724;
+        }
+
+        .multiple-choice button.incorrect {
+            background-color: #f8d7da;
+            color: #721c24;
+        }
+
 .heart {
     width: 30px;
     height: 30px;
     margin: 0 5px;
-    background-image: url('/path/to/heart.png'); /* Replace with the actual path */
+    background-image: url('{{ url_for('static', filename='images/heart.png') }}');
     background-size: cover;
 }
 
 .feedback {
-    font-size: 16px;
-    margin-top: 15px;
+    margin-top: 10px;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.fill-in-the-blanks .sentence {
+    margin-bottom: 20px;
+    font-size: 18px;
+}
+
+.fill-in-the-blanks .blank {
+    display: inline-block;
+    width: 100px;
+    height: 30px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.5);
     text-align: center;
+    vertical-align: middle;
+    line-height: 30px;
+    margin: 0 5px;
+}
+
+.fill-in-the-blanks .word {
+    display: inline-block;
+    padding: 10px;
+    background-color: #58CC02;
+    color: white;
+    margin: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.fill-in-the-blanks .blank.correct {
+    background-color: #d4edda;
+    color: #155724;
+}
+
+.fill-in-the-blanks .blank.incorrect {
+    background-color: #f8d7da;
+    color: #721c24;
 }
 
 .correct {
@@ -121,15 +231,14 @@ h1 {
 }
 
 #next-button {
-    display: block;
-    margin: 10px auto;
-    padding: 5px 20px;
-    background-color: #009af4;
+    margin-top: 20px;
+    margin-left: 470px;
+    padding: 10px 20px;
+    background-color: #58CC02;
+    color: white;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    font-size: 16px;
-    color: white;
 }
 
     #next-button:hover {
@@ -139,6 +248,10 @@ h1 {
     #next-button:disabled {
         background-color: #ccc;
         cursor: not-allowed;
+    }
+
+    #next-button.hidden {
+        display: none;
     }
 
 .btn {
@@ -275,7 +388,6 @@ h1 {
     margin-bottom: 688px;
     right: 0;
     width: 400px;
-
 }
 
 .header-icons {

@@ -1,11 +1,346 @@
 <!DOCTYPE html>
-
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<html lang="en">
 <head>
     <meta charset="utf-8" />
-    <title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Duolingo ー Lesson Hub</title>
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='images/bird.png') }}" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap">
+    <link rel="stylesheet" href="{{ url_for('static', filename='lesson.css') }}" />
 </head>
 <body>
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <a href="{{ url_for('lessonhub') }}" class="logo-link">
+            <img src="{{ url_for('static', filename='images/duolingo2.png') }}" alt="Duolingo" class="logo-image" style="width:120px;height:30px;" draggable="false" />
+        </a>
+        <a href="{{ url_for('lessonhub') }}" class="sidebar-link">
+            <img src="{{ url_for('static', filename='images/learn.png') }}" alt="Learn" style="width: 35px; height: 35px;" draggable="false" />
+            <b>Learn</b>
+        </a>
+        <a href="{{ url_for('characters') }}" class="sidebar-link">
+            <img src="{{ url_for('static', filename='images/characters.png') }}" alt="Characters" style="width: 35px; height: 35px;" draggable="false" />
+            <b>Characters</b>
+        </a>
+        <a href="{{ url_for('leaderboards') }}" class="sidebar-link">
+            <img src="{{ url_for('static', filename='images/leaderboards.png') }}" alt="Leaderboards" style="width: 35px; height: 35px;" draggable="false" />
+            <b>Leaderboard</b>
+        </a>
+        <a href="{{ url_for('quests') }}" class="sidebar-link">
+            <img src="{{ url_for('static', filename='images/quests.png') }}" alt="Quests" style="width: 35px; height: 35px;" draggable="false" />
+            <b>Quests</b>
+        </a>
+        <a href="{{ url_for('shop') }}" class="sidebar-link">
+            <img src="{{ url_for('static', filename='images/shop.png') }}" alt="Shop" style="width: 35px; height: 35px;" draggable="false" />
+            <b>Shop</b>
+        </a>
+        <a href="{{ url_for('profile') }}" class="sidebar-link">
+            <img src="{{ url_for('static', filename='images/profile.png') }}" alt="Profile" style="width: 35px; height: 35px;" draggable="false" />
+            <b>Profile</b>
+        </a>
+        <a href="{{ url_for('settings') }}" class="sidebar-link">
+            <img src="{{ url_for('static', filename='images/settings.png') }}" alt="Settings" style="width: 35px; height: 35px;" draggable="false" />
+            <b>Settings</b>
+        </a>
+        <a href="{{ url_for('index') }}" class="sidebar-link">
+            <img src="{{ url_for('static', filename='images/signout.png') }}" alt="Sign Out" style="width: 35px; height: 35px;" draggable="false" />
+            <b>Sign Out</b>
+        </a>
+    </div>
+    </div>
+    <!-- Main Content Area -->
+    <div class="main-content">
+        <!-- Hearts, Day Streak, Gems -->
+        <div class="header-icons">
+            <div class="hearts">
+                <img src="{{ url_for('static', filename='images/hearts.png') }}" alt="Hearts" draggable="false" />
+                <span id="heartsCount">{{ user.hearts }}</span>
+            </div>
+            <div class="day-streak">
+                <img src="{{ url_for('static', filename='images/daystreak.png') }}" alt="Day Streak" draggable="false" />
+                <span id="streakCount">{{ user.day_streak }}</span>
+            </div>
+            <div class="gems">
+                <img src="{{ url_for('static', filename='images/gems.png') }}" alt="Gems" draggable="false" />
+                <span id="gemsCount">{{ user.gems }}</span>
+            </div>
+        </div>
 
+        <!-- Main Content -->
+        <section class="lessons">
+            <h1>TRANSLATE OR FILL IN THE BLANKS</h1>
+            <div id="hearts-container"></div>
+            <div id="question-container" class="question-container hidden">
+                <div class="question">
+                    <p id="question-text"></p>
+                    <div id="answer-buttons" class="multiple-choice hidden"></div>
+                    <div id="fill-in-the-blanks" class="fill-in-the-blanks hidden">
+                        <div class="sentence" id="fill-sentence"></div>
+                        <div class="words" id="fill-words"></div>
+                    </div>
+                </div>
+                <div id="feedback" class="feedback hidden"></div>
+            </div>
+            <button id="next-button" class="hidden">Next</button>
+        </section>
+    </div>
+    <script>
+    function allowDrop(event) {
+        event.preventDefault();
+    }
+
+    function drag(event) {
+        event.dataTransfer.setData("text", event.target.id);
+    }
+
+    function drop(event) {
+        event.preventDefault();
+        var data = event.dataTransfer.getData("text");
+        var word = document.getElementById(data).innerHTML;
+
+        if (event.target.classList.contains('blank') && event.target.innerHTML === "") {
+            event.target.innerHTML = word;
+            document.getElementById(data).style.display = 'none';
+
+            if (event.target.getAttribute('data-correct') === word) {
+                event.target.classList.add('correct');
+            } else {
+                event.target.classList.add('incorrect');
+            }
+
+            checkCompletion();
+        }
+    }
+
+    function checkCompletion() {
+        var blanks = document.querySelectorAll('.blank');
+        var isComplete = true;
+        blanks.forEach(blank => {
+            if (blank.innerHTML === "") {
+                isComplete = false;
+            }
+        });
+
+        if (isComplete) {
+            var allCorrect = true;
+            blanks.forEach(blank => {
+                if (!blank.classList.contains('correct')) {
+                    allCorrect = false;
+                }
+            });
+
+            if (allCorrect) {
+                feedback.innerText = 'Correct!';
+                feedback.classList.remove('incorrect');
+                feedback.classList.add('correct');
+            } else {
+                feedback.innerText = 'Incorrect!';
+                feedback.classList.remove('correct');
+                feedback.classList.add('incorrect');
+            }
+
+            feedback.classList.remove('hidden');
+            nextButton.classList.remove('hidden');
+        }
+    }
+
+    const questions = [
+        { text: 'Translate ひと', answers: ['teacher', 'person', 'lawyer'], correct: 'person' },
+        { type: 'fill-in-the-blank', sentence: 'やさしい ______ と ______ がくせい。', words: ['やさしい', 'せんせい'], correct: ['せんせい', 'やさしい'] },
+        { text: 'Translate べんごし', answers: ['student', 'doctor', 'lawyer'], correct: 'lawyer' },
+        { text: 'Translate いしゃ', answers: ['doctor', 'student', 'teacher'], correct: 'doctor' },
+        { type: 'fill-in-the-blank', sentence: 'かっこいい ______ と やさしい ______ です。', words: ['がくせい', 'べんごし'], correct: ['べんごし', 'がくせい'] },
+        { text: 'Translate がくせい', answers: ['doctor', 'student', 'teacher'], correct: 'student' },
+        { text: 'Translate いしゃです', answers: ["he's a teacher", "he's a doctor", "he's a lawyer"], correct: "he's a doctor" },
+        { type: 'fill-in-the-blank', sentence: '______ と ______ です。', words: ['べんごし', 'せんせい'], correct: ['せんせい', 'べんごし'] },
+        { text: 'Translate かっこいいべんごしです', answers: ["she's a cool lawyer", "she's a cool teacher", "she's a cool person"], correct: "she's a cool lawyer" },
+        { text: 'Translate やさしいがくせいです', answers: ["she's a nice doctor", "he's a nice student", "he's a nice teacher"], correct: "he's a nice student" },
+        { text: 'Translate やさしいひとです', answers: ["she's a nice teacher", "he's a nice doctor", "she's a nice person"], correct: "she's a nice person" },
+    ];
+
+    let currentQuestionIndex = 0;
+    let score = 0;
+    let hearts = 5;
+
+    const questionContainer = document.getElementById('question-container');
+    const questionText = document.getElementById('question-text');
+    const answerButtons = document.getElementById('answer-buttons');
+    const fillInTheBlanks = document.getElementById('fill-in-the-blanks');
+    const fillSentence = document.getElementById('fill-sentence');
+    const fillWords = document.getElementById('fill-words');
+    const feedback = document.getElementById('feedback');
+    const nextButton = document.getElementById('next-button');
+    const heartsContainer = document.getElementById('hearts-container');
+
+    function startGame() {
+        score = 0;
+        hearts = 5;
+        currentQuestionIndex = 0;
+        heartsContainer.innerHTML = '';
+        for (let i = 0; i < hearts; i++) {
+            const heart = document.createElement('div');
+            heart.classList.add('heart');
+            heartsContainer.appendChild(heart);
+        }
+        nextButton.classList.add('hidden');
+        showQuestion();
+    }
+
+    function showQuestion() {
+        resetState();
+        questionContainer.classList.remove('hidden');
+        feedback.classList.add('hidden');
+        const question = questions[currentQuestionIndex];
+        if (question.hasOwnProperty('type') && question.type === 'fill-in-the-blank') {
+            showFillInTheBlankQuestion(question);
+        } else {
+            showTranslateQuestion(question);
+        }
+    }
+
+    function showTranslateQuestion(question) {
+        questionText.innerText = question.text;
+        answerButtons.classList.remove('hidden');
+        question.answers.forEach(answer => {
+            const button = document.createElement('button');
+            button.innerText = answer;
+            button.classList.add('btn');
+            button.dataset.correct = answer === question.correct;
+            button.addEventListener('click', selectAnswer);
+            answerButtons.appendChild(button);
+        });
+    }
+
+    function showFillInTheBlankQuestion(question) {
+        fillInTheBlanks.classList.remove('hidden');
+        questionText.innerText = '';
+        const sentenceParts = question.sentence.split('______');
+        fillSentence.innerHTML = '';
+
+        for (let i = 0; i < sentenceParts.length - 1; i++) {
+            fillSentence.innerHTML += sentenceParts[i] + `<span class="blank" data-correct="${question.correct[i]}" ondrop="drop(event)" ondragover="allowDrop(event)"></span>`;
+        }
+        fillSentence.innerHTML += sentenceParts[sentenceParts.length - 1];
+
+        fillWords.innerHTML = '';
+        question.words.forEach((word, index) => {
+            const wordSpan = document.createElement('span');
+            wordSpan.id = `word${index}_${currentQuestionIndex}`;
+            wordSpan.classList.add('word');
+            wordSpan.draggable = true;
+            wordSpan.innerText = word;
+            wordSpan.ondragstart = drag;
+            fillWords.appendChild(wordSpan);
+        });
+    }
+
+    function resetState() {
+        while (answerButtons.firstChild) {
+            answerButtons.removeChild(answerButtons.firstChild);
+        }
+        nextButton.classList.add('hidden');
+        feedback.classList.add('hidden');
+        fillInTheBlanks.classList.add('hidden');
+    }
+
+    function selectAnswer(e) {
+        const selectedButton = e.target;
+        const correct = selectedButton.dataset.correct === 'true';
+        if (correct) {
+            feedback.innerText = 'Correct!';
+            feedback.classList.remove('incorrect');
+            feedback.classList.add('correct');
+            score += 10;
+        } else {
+            feedback.innerText = 'Incorrect!';
+            feedback.classList.remove('correct');
+            feedback.classList.add('incorrect');
+            hearts--;
+            heartsContainer.removeChild(heartsContainer.lastChild);
+            fetch('/lose_heart', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    console.log(`Hearts left: ${data.hearts}`);
+                    if (data.locked) {
+                        window.location.href = "{{ url_for('lessonhub') }}";
+                    }
+                } else {
+                    console.error('Failed to update hearts');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+        }
+        feedback.classList.remove('hidden');
+        nextButton.classList.remove('hidden');
+        Array.from(answerButtons.children).forEach(button => {
+            button.disabled = true;
+            setStatusClass(button, button.dataset.correct === 'true');
+        });
+        if (hearts === 0) {
+            feedback.innerText = 'Game Over';
+            nextButton.innerText = 'OK';
+            nextButton.classList.remove('hidden');
+            nextButton.removeEventListener('click', nextQuestion);
+            nextButton.addEventListener('click', () => {
+                window.location.href = '{{ url_for("lessonhub") }}';
+            });
+        }
+    }
+
+    function setStatusClass(element, correct) {
+        clearStatusClass(element);
+        if (correct) {
+            element.classList.add('correct');
+        } else {
+            element.classList.add('incorrect');
+        }
+    }
+
+    function clearStatusClass(element) {
+        element.classList.remove('correct');
+        element.classList.remove('incorrect');
+    }
+
+    function nextQuestion() {
+        currentQuestionIndex++;
+        if (currentQuestionIndex < questions.length) {
+            showQuestion();
+        } else {
+            fetch('/save_score', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ score: score })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    console.log('Score saved successfully');
+                } else {
+                    console.error('Failed to save score');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+            window.location.href = '{{ url_for("lessonhub") }}';
+        }
+    }
+
+    nextButton.addEventListener('click', () => {
+        nextQuestion();
+    });
+
+    startGame();
+    </script>
 </body>
 </html>

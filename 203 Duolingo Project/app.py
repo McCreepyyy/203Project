@@ -96,11 +96,31 @@ def lesson2():
 
 @app.route('/lesson3')
 def lesson3():
-    return render_template('lesson3.html')
+    # Assuming that the user is logged in and their ID is stored in the session
+    if 'user_id' in session:
+        user = User.query.get(session['user_id'])
+        if user:
+            return render_template('lesson3.html', user=user)
+        else:
+            # Handle the case where the user is not found
+            return "User not found", 404
+    else:
+        # Redirect to the login page if the user is not logged in
+        return redirect(url_for('signin'))
 
 @app.route('/lesson4')
 def lesson4():
-    return render_template('lesson4.html')
+    # Assuming that the user is logged in and their ID is stored in the session
+    if 'user_id' in session:
+        user = User.query.get(session['user_id'])
+        if user:
+            return render_template('lesson4.html', user=user)
+        else:
+            # Handle the case where the user is not found
+            return "User not found", 404
+    else:
+        # Redirect to the login page if the user is not logged in
+        return redirect(url_for('signin'))
 
 @app.route('/get_question')
 def get_question():
