@@ -159,29 +159,29 @@
         dropdown.classList.toggle("active");
     }
 
-    // Initialize hearts count
-    var heartsCount = 5;
+        // Initialize hearts count
+        var heartsCount = { userhearts };
 
-    function updateHearts() {
-        document.getElementById("heartsCount").innerText = heartsCount;
-    }
-
-    function loseHeart() {
-        if (heartsCount > 0) {
-            heartsCount--;
-            updateHearts();
+        function updateHearts() {
+            document.getElementById("heartsCount").innerText = heartsCount;
         }
-    }
 
-    function regenerateHeart() {
-        if (heartsCount < 5) {
-            heartsCount++;
-            updateHearts();
+        function loseHeart() {
+            if (heartsCount > 0) {
+                heartsCount--;
+                updateHearts();
+            }
         }
-    }
 
-    // Call function to initialize hearts count
-    updateHearts();
+        function regenerateHeart() {
+            if (heartsCount < 5) {
+                heartsCount++;
+                updateHearts();
+            }
+        }
+
+        // Call function to initialize hearts count
+        updateHearts();
     updateUserInfo(userRankPlaceholder, userXPPlaceholder);
     updateQuestsInfo(quest1XPPlaceholder, quest2XPPlaceholder, quest3XPPlaceholder);
     </script>
