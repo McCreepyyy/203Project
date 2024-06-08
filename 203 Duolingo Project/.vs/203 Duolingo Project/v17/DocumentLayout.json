@@ -3,48 +3,16 @@
   "WorkspaceRootPath": "C:\\Yoobee\\2024\\203\\.2\\203Project\\203 Duolingo Project\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{F6F7B033-AD96-4D66-B7C3-B3E8C9B62FC1}|203 Duolingo Project.pyproj|C:\\Yoobee\\2024\\203\\.2\\203Project\\203 Duolingo Project\\static\\characters.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
-      "RelativeMoniker": "D:0:0:{F6F7B033-AD96-4D66-B7C3-B3E8C9B62FC1}|203 Duolingo Project.pyproj|solutionrelative:static\\characters.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F6F7B033-AD96-4D66-B7C3-B3E8C9B62FC1}|203 Duolingo Project.pyproj|C:\\Yoobee\\2024\\203\\.2\\203Project\\203 Duolingo Project\\static\\getstarted.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
-      "RelativeMoniker": "D:0:0:{F6F7B033-AD96-4D66-B7C3-B3E8C9B62FC1}|203 Duolingo Project.pyproj|solutionrelative:static\\getstarted.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F6F7B033-AD96-4D66-B7C3-B3E8C9B62FC1}|203 Duolingo Project.pyproj|C:\\Yoobee\\2024\\203\\.2\\203Project\\203 Duolingo Project\\static\\leaderboards.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
-      "RelativeMoniker": "D:0:0:{F6F7B033-AD96-4D66-B7C3-B3E8C9B62FC1}|203 Duolingo Project.pyproj|solutionrelative:static\\leaderboards.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F6F7B033-AD96-4D66-B7C3-B3E8C9B62FC1}|203 Duolingo Project.pyproj|C:\\Yoobee\\2024\\203\\.2\\203Project\\203 Duolingo Project\\static\\index.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
-      "RelativeMoniker": "D:0:0:{F6F7B033-AD96-4D66-B7C3-B3E8C9B62FC1}|203 Duolingo Project.pyproj|solutionrelative:static\\index.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F6F7B033-AD96-4D66-B7C3-B3E8C9B62FC1}|203 Duolingo Project.pyproj|C:\\Yoobee\\2024\\203\\.2\\203Project\\203 Duolingo Project\\static\\katakana.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
-      "RelativeMoniker": "D:0:0:{F6F7B033-AD96-4D66-B7C3-B3E8C9B62FC1}|203 Duolingo Project.pyproj|solutionrelative:static\\katakana.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+      "AbsoluteMoniker": "D:0:0:{F6F7B033-AD96-4D66-B7C3-B3E8C9B62FC1}|203 Duolingo Project.pyproj|C:\\Yoobee\\2024\\203\\.2\\203Project\\203 Duolingo Project\\templates\\lesson2.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{F6F7B033-AD96-4D66-B7C3-B3E8C9B62FC1}|203 Duolingo Project.pyproj|solutionrelative:templates\\lesson2.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{F6F7B033-AD96-4D66-B7C3-B3E8C9B62FC1}|203 Duolingo Project.pyproj|C:\\Yoobee\\2024\\203\\.2\\203Project\\203 Duolingo Project\\static\\lesson2.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
       "RelativeMoniker": "D:0:0:{F6F7B033-AD96-4D66-B7C3-B3E8C9B62FC1}|203 Duolingo Project.pyproj|solutionrelative:static\\lesson2.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F6F7B033-AD96-4D66-B7C3-B3E8C9B62FC1}|203 Duolingo Project.pyproj|C:\\Yoobee\\2024\\203\\.2\\203Project\\203 Duolingo Project\\static\\lessonhub.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
-      "RelativeMoniker": "D:0:0:{F6F7B033-AD96-4D66-B7C3-B3E8C9B62FC1}|203 Duolingo Project.pyproj|solutionrelative:static\\lessonhub.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F6F7B033-AD96-4D66-B7C3-B3E8C9B62FC1}|203 Duolingo Project.pyproj|C:\\Yoobee\\2024\\203\\.2\\203Project\\203 Duolingo Project\\static\\profile.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
-      "RelativeMoniker": "D:0:0:{F6F7B033-AD96-4D66-B7C3-B3E8C9B62FC1}|203 Duolingo Project.pyproj|solutionrelative:static\\profile.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F6F7B033-AD96-4D66-B7C3-B3E8C9B62FC1}|203 Duolingo Project.pyproj|C:\\Yoobee\\2024\\203\\.2\\203Project\\203 Duolingo Project\\static\\quests.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
-      "RelativeMoniker": "D:0:0:{F6F7B033-AD96-4D66-B7C3-B3E8C9B62FC1}|203 Duolingo Project.pyproj|solutionrelative:static\\quests.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F6F7B033-AD96-4D66-B7C3-B3E8C9B62FC1}|203 Duolingo Project.pyproj|C:\\Yoobee\\2024\\203\\.2\\203Project\\203 Duolingo Project\\static\\settings.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
-      "RelativeMoniker": "D:0:0:{F6F7B033-AD96-4D66-B7C3-B3E8C9B62FC1}|203 Duolingo Project.pyproj|solutionrelative:static\\settings.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F6F7B033-AD96-4D66-B7C3-B3E8C9B62FC1}|203 Duolingo Project.pyproj|C:\\Yoobee\\2024\\203\\.2\\203Project\\203 Duolingo Project\\static\\lesson1.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
-      "RelativeMoniker": "D:0:0:{F6F7B033-AD96-4D66-B7C3-B3E8C9B62FC1}|203 Duolingo Project.pyproj|solutionrelative:static\\lesson1.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+      "AbsoluteMoniker": "D:0:0:{F6F7B033-AD96-4D66-B7C3-B3E8C9B62FC1}|203 Duolingo Project.pyproj|C:\\Yoobee\\2024\\203\\.2\\203Project\\203 Duolingo Project\\app.py||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{F6F7B033-AD96-4D66-B7C3-B3E8C9B62FC1}|203 Duolingo Project.pyproj|solutionrelative:app.py||{8B382828-6202-11D1-8870-0000F87579D2}"
     }
   ],
   "DocumentGroupContainers": [
@@ -54,7 +22,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 11,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Bookmark",
@@ -62,145 +30,41 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "settings.css",
-              "DocumentMoniker": "C:\\Yoobee\\2024\\203\\.2\\203Project\\203 Duolingo Project\\static\\settings.css",
-              "RelativeDocumentMoniker": "static\\settings.css",
-              "ToolTip": "C:\\Yoobee\\2024\\203\\.2\\203Project\\203 Duolingo Project\\static\\settings.css",
-              "RelativeToolTip": "static\\settings.css",
-              "ViewState": "AQIAAIoAAAAAAAAAAAAQwJ4AAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
-              "WhenOpened": "2024-06-06T04:30:49.05Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "quests.css",
-              "DocumentMoniker": "C:\\Yoobee\\2024\\203\\.2\\203Project\\203 Duolingo Project\\static\\quests.css",
-              "RelativeDocumentMoniker": "static\\quests.css",
-              "ToolTip": "C:\\Yoobee\\2024\\203\\.2\\203Project\\203 Duolingo Project\\static\\quests.css",
-              "RelativeToolTip": "static\\quests.css",
-              "ViewState": "AQIAAD0AAAAAAAAAAAAQwFEAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
-              "WhenOpened": "2024-06-06T04:30:48.453Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "profile.css",
-              "DocumentMoniker": "C:\\Yoobee\\2024\\203\\.2\\203Project\\203 Duolingo Project\\static\\profile.css",
-              "RelativeDocumentMoniker": "static\\profile.css",
-              "ToolTip": "C:\\Yoobee\\2024\\203\\.2\\203Project\\203 Duolingo Project\\static\\profile.css",
-              "RelativeToolTip": "static\\profile.css",
-              "ViewState": "AQIAAEIAAAAAAAAAAAAQwFYAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
-              "WhenOpened": "2024-06-06T04:30:48.032Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "lessonhub.css",
-              "DocumentMoniker": "C:\\Yoobee\\2024\\203\\.2\\203Project\\203 Duolingo Project\\static\\lessonhub.css",
-              "RelativeDocumentMoniker": "static\\lessonhub.css",
-              "ToolTip": "C:\\Yoobee\\2024\\203\\.2\\203Project\\203 Duolingo Project\\static\\lessonhub.css",
-              "RelativeToolTip": "static\\lessonhub.css",
-              "ViewState": "AQIAADwAAAAAAAAAAAAQwFMAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
-              "WhenOpened": "2024-06-06T04:30:47.488Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "lesson2.css",
-              "DocumentMoniker": "C:\\Yoobee\\2024\\203\\.2\\203Project\\203 Duolingo Project\\static\\lesson2.css",
-              "RelativeDocumentMoniker": "static\\lesson2.css",
-              "ToolTip": "C:\\Yoobee\\2024\\203\\.2\\203Project\\203 Duolingo Project\\static\\lesson2.css",
-              "RelativeToolTip": "static\\lesson2.css",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAcAAAAHAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
-              "WhenOpened": "2024-06-06T04:30:47.067Z",
+              "DocumentIndex": 0,
+              "Title": "lesson2.html",
+              "DocumentMoniker": "C:\\Yoobee\\2024\\203\\.2\\203Project\\203 Duolingo Project\\templates\\lesson2.html",
+              "RelativeDocumentMoniker": "templates\\lesson2.html",
+              "ToolTip": "C:\\Yoobee\\2024\\203\\.2\\203Project\\203 Duolingo Project\\templates\\lesson2.html",
+              "RelativeToolTip": "templates\\lesson2.html",
+              "ViewState": "AQIAAJQAAAAAAAAAAAAewKEAAAAtAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
+              "WhenOpened": "2024-06-08T05:02:26.421Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "leaderboards.css",
-              "DocumentMoniker": "C:\\Yoobee\\2024\\203\\.2\\203Project\\203 Duolingo Project\\static\\leaderboards.css",
-              "RelativeDocumentMoniker": "static\\leaderboards.css",
-              "ToolTip": "C:\\Yoobee\\2024\\203\\.2\\203Project\\203 Duolingo Project\\static\\leaderboards.css",
-              "RelativeToolTip": "static\\leaderboards.css",
-              "ViewState": "AQIAAEAAAAAAAAAAAAAQwFQAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
-              "WhenOpened": "2024-06-06T04:30:46.26Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "katakana.css",
-              "DocumentMoniker": "C:\\Yoobee\\2024\\203\\.2\\203Project\\203 Duolingo Project\\static\\katakana.css",
-              "RelativeDocumentMoniker": "static\\katakana.css",
-              "ToolTip": "C:\\Yoobee\\2024\\203\\.2\\203Project\\203 Duolingo Project\\static\\katakana.css",
-              "RelativeToolTip": "static\\katakana.css",
-              "ViewState": "AQIAAD4AAAAAAAAAAAAQwFMAAAABAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
-              "WhenOpened": "2024-06-06T04:30:43.76Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "index.css",
-              "DocumentMoniker": "C:\\Yoobee\\2024\\203\\.2\\203Project\\203 Duolingo Project\\static\\index.css",
-              "RelativeDocumentMoniker": "static\\index.css",
-              "ToolTip": "C:\\Yoobee\\2024\\203\\.2\\203Project\\203 Duolingo Project\\static\\index.css",
-              "RelativeToolTip": "static\\index.css",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
-              "WhenOpened": "2024-06-06T04:30:43.332Z",
+              "Title": "app.py",
+              "DocumentMoniker": "C:\\Yoobee\\2024\\203\\.2\\203Project\\203 Duolingo Project\\app.py",
+              "RelativeDocumentMoniker": "app.py",
+              "ToolTip": "C:\\Yoobee\\2024\\203\\.2\\203Project\\203 Duolingo Project\\app.py",
+              "RelativeToolTip": "app.py",
+              "ViewState": "AQIAAC4BAAAAAAAAAAAQwE4BAAAAAAAA",
+              "Icon": "00000000-0000-0000-0000-000000000000.000000|iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAHeSURBVDhPpVMxa1NRFP7ebZLSlgaltNpSVCySRUxL0NAh4FJpHWpxcZAUBEPG/AKHDsVBN5eGrCnoYKCDoDiUCKKBjtZBUZtJ2ojYJr40ue\u002B\u002B47k3VzD0hQr94OOed8853/k47z2cCETk2NAgk8mQDQMhhFjK5/Mb9vEotIDruoEsFovEzVvZbPaWLTcQ9uxCpVLp4l\u002Bk0\u002BlEPB5/wIPm7RVC9uxCMpm0UTdKpRKi0WiCQy3wUt8FCvw7VSNxbRapG4voDwucGgyjXC7bzH84ePt1HysbH/GhWoNstzA1OoSFhZuxQqFg8sfu4FutAd\u002BT8KSEYm7v7GJ0YnLClgYLaAcjU9N4Vx9Dda8OBz7OjwywSNsIXY39vEL7TxWpxv2eO3hWHUZ19xc8ti25UdvXzdpNWH0BDj8JiLOrPXfweOu9mRgRhOXUEPr7IiBfYeacB9HaBNRvQH4f6\u002BlgMERwGxJP7grEoq9shj9Uz\u002BVGpmIi4vXcwdzlcePgzLAuZPiSGw869Jg\u002Biw1Mvw50oLGcuoh71y8h1HwB1Js8UfFLnwScNnBhdYVLWsy1IwK5XM5GHaw9uu0LeSCMddZA32lz7zjOQxMcByK1SPU3O/Rjnai2fkjNz8/5L77TyQJ/AJc67LNf3QeWAAAAAElFTkSuQmCC",
+              "WhenOpened": "2024-06-08T05:01:15.653Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "getstarted.css",
-              "DocumentMoniker": "C:\\Yoobee\\2024\\203\\.2\\203Project\\203 Duolingo Project\\static\\getstarted.css",
-              "RelativeDocumentMoniker": "static\\getstarted.css",
-              "ToolTip": "C:\\Yoobee\\2024\\203\\.2\\203Project\\203 Duolingo Project\\static\\getstarted.css",
-              "RelativeToolTip": "static\\getstarted.css",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Title": "lesson2.css",
+              "DocumentMoniker": "C:\\Yoobee\\2024\\203\\.2\\203Project\\203 Duolingo Project\\static\\lesson2.css",
+              "RelativeDocumentMoniker": "static\\lesson2.css",
+              "ToolTip": "C:\\Yoobee\\2024\\203\\.2\\203Project\\203 Duolingo Project\\static\\lesson2.css",
+              "RelativeToolTip": "static\\lesson2.css",
+              "ViewState": "AQIAAIgAAAAAAAAAAAAUwKkAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
-              "WhenOpened": "2024-06-06T04:30:42.877Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "lesson1.css",
-              "DocumentMoniker": "C:\\Yoobee\\2024\\203\\.2\\203Project\\203 Duolingo Project\\static\\lesson1.css",
-              "RelativeDocumentMoniker": "static\\lesson1.css",
-              "ToolTip": "C:\\Yoobee\\2024\\203\\.2\\203Project\\203 Duolingo Project\\static\\lesson1.css",
-              "RelativeToolTip": "static\\lesson1.css",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
-              "WhenOpened": "2024-06-06T04:30:46.673Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "characters.css",
-              "DocumentMoniker": "C:\\Yoobee\\2024\\203\\.2\\203Project\\203 Duolingo Project\\static\\characters.css",
-              "RelativeDocumentMoniker": "static\\characters.css",
-              "ToolTip": "C:\\Yoobee\\2024\\203\\.2\\203Project\\203 Duolingo Project\\static\\characters.css",
-              "RelativeToolTip": "static\\characters.css",
-              "ViewState": "AQIAAD4AAAAAAAAAAAAQwFIAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
-              "WhenOpened": "2024-06-06T04:30:42.337Z",
+              "WhenOpened": "2024-06-06T04:30:47.067Z",
               "EditorCaption": ""
             }
           ]

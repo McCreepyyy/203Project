@@ -157,7 +157,7 @@
         }
 
         function showTranslateQuestion(question) {
-            questionText.innerText = question.text;
+            questionText.innerText = question.text; // Adjust this line if needed
             answerButtons.classList.remove('hidden');
             question.answers.forEach(answer => {
                 const button = document.createElement('button');
@@ -171,6 +171,7 @@
 
         function showFillInTheBlankQuestion(question) {
             fillInTheBlanks.classList.remove('hidden');
+            questionText.innerText = ''; // Hide the question text for fill-in-the-blank questions
             const blankCount = (question.sentence.match(/______/g) || []).length;
             fillSentence.innerHTML = question.sentence.split('______').join('<span class="blank" ondrop="drop(event)" ondragover="allowDrop(event)"></span>');
 
