@@ -112,37 +112,70 @@
         }
     }
 
-    function checkCompletion() {
-        var blanks = document.querySelectorAll('.blank');
-        var isComplete = true;
-        blanks.forEach(blank => {
-            if (blank.innerHTML === "") {
-                isComplete = false;
-            }
-        });
-
-        if (isComplete) {
-            var allCorrect = true;
+        function checkCompletion() {
+            var blanks = document.querySelectorAll('.blank');
+            var isComplete = true;
             blanks.forEach(blank => {
-                if (!blank.classList.contains('correct')) {
-                    allCorrect = false;
+                if (blank.innerHTML === "") {
+                    isComplete = false;
                 }
             });
 
-            if (allCorrect) {
-                feedback.innerText = 'Correct!';
-                feedback.classList.remove('incorrect');
-                feedback.classList.add('correct');
-            } else {
-                feedback.innerText = 'Incorrect!';
-                feedback.classList.remove('correct');
-                feedback.classList.add('incorrect');
-            }
+            if (isComplete) {
+                var allCorrect = true;
+                blanks.forEach(blank => {
+                    if (!blank.classList.contains('correct')) {
+                        allCorrect = false;
+                    }
+                });
 
-            feedback.classList.remove('hidden');
-            nextButton.classList.remove('hidden');
+                if (allCorrect) {
+                    feedback.innerText = 'Correct!';
+                    feedback.classList.remove('incorrect');
+                    feedback.classList.add('correct');
+                } else {
+                    feedback.innerText = 'Incorrect!';
+                    feedback.classList.remove('correct');
+                    feedback.classList.add('incorrect');
+                    hearts--;
+                    heartsContainer.removeChild(heartsContainer.lastChild);
+                    document.getElementById('heartsCount').textContent = hearts; // Update the hearts count immediately
+                    fetch('/lose_heart', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                    })
+                        .then(response => response.json())
+                        .then(data => {
+                            if (data.success) {
+                                console.log(`Hearts left: ${data.hearts}`);
+                                if (data.locked) {
+                                    window.location.href = "{{ url_for('lessonhub') }}";
+                                }
+                            } else {
+                                console.error('Failed to update hearts');
+                            }
+                        })
+                        .catch(error => {
+                            console.error('Error:', error);
+                        });
+                }
+
+                feedback.classList.remove('hidden');
+                nextButton.classList.remove('hidden');
+
+                if (hearts === 0) {
+                    feedback.innerText = 'Game Over';
+                    nextButton.innerText = 'OK';
+                    nextButton.classList.remove('hidden');
+                    nextButton.removeEventListener('click', nextQuestion);
+                    nextButton.addEventListener('click', () => {
+                        window.location.href = '{{ url_for("lessonhub") }}';
+                    });
+                }
+            }
         }
-    }
 
     const questions = [
         { text: 'Translate ひと', answers: ['teacher', 'person', 'lawyer'], correct: 'person' },
@@ -243,41 +276,59 @@
         fillInTheBlanks.classList.add('hidden');
     }
 
-    function selectAnswer(e) {
-        const selectedButton = e.target;
-        const correct = selectedButton.dataset.correct === 'true';
-        if (correct) {
-            feedback.innerText = 'Correct!';
-            feedback.classList.remove('incorrect');
-            feedback.classList.add('correct');
-            score += 10;
-        } else {
-            feedback.innerText = 'Incorrect!';
-            feedback.classList.remove('correct');
-            feedback.classList.add('incorrect');
-            hearts--;
-            heartsContainer.removeChild(heartsContainer.lastChild);
-            fetch('/lose_heart', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-            })
-            .then(response => response.json())
-            .then(data => {
-                if (data.success) {
-                    console.log(`Hearts left: ${data.hearts}`);
-                    if (data.locked) {
-                        window.location.href = "{{ url_for('lessonhub') }}";
-                    }
-                } else {
-                    console.error('Failed to update hearts');
-                }
-            })
-            .catch(error => {
-                console.error('Error:', error);
+        function selectAnswer(e) {
+            const selectedButton = e.target;
+            const correct = selectedButton.dataset.correct === 'true';
+            if (correct) {
+                feedback.innerText = 'Correct!';
+                feedback.classList.remove('incorrect');
+                feedback.classList.add('correct');
+                score += 10;
+            } else {
+                feedback.innerText = 'Incorrect!';
+                feedback.classList.remove('correct');
+                feedback.classList.add('incorrect');
+                hearts--;
+                heartsContainer.removeChild(heartsContainer.lastChild);
+                heartsCount.textContent = hearts; // Update the hearts count immediately
+                fetch('/lose_heart', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.success) {
+                            console.log(`Hearts left: ${data.hearts}`);
+                            if (data.locked) {
+                                window.location.href = "{{ url_for('lessonhub') }}";
+                            }
+                        } else {
+                            console.error('Failed to update hearts');
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                    });
+            }
+            feedback.classList.remove('hidden');
+            nextButton.classList.remove('hidden');
+            Array.from(answerButtons.children).forEach(button => {
+                button.disabled = true;
+                setStatusClass(button, button.dataset.correct === 'true');
             });
+            if (hearts === 0) {
+                feedback.innerText = 'Game Over';
+                nextButton.innerText = 'OK';
+                nextButton.classList.remove('hidden');
+                nextButton.removeEventListener('click', nextQuestion);
+                nextButton.addEventListener('click', () => {
+                    window.location.href = '{{ url_for("lessonhub") }}';
+                });
+            }
         }
+
         feedback.classList.remove('hidden');
         nextButton.classList.remove('hidden');
         Array.from(answerButtons.children).forEach(button => {
