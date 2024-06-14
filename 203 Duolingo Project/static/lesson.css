@@ -151,11 +151,11 @@ h1 {
         width: 100%;
         padding: 10px;
         margin: 10px 0;
-        background-color: #009af4; /* Updated background color */
+        background-color: #009af4; 
         border: none;
         border-radius: 5px;
         cursor: pointer;
-        color: white; /* Text color */
+        color: white;
     }
 
         .multiple-choice button.correct {
@@ -392,8 +392,8 @@ h1 {
 
 .header-icons {
     position: absolute;
-    top: 20px; /* Adjust top position */
-    right: 30px; /* Adjust right position */
+    top: 20px; 
+    right: 30px;
     margin-top: 80px;
     display: flex;
     align-items: center;
@@ -435,4 +435,25 @@ h1 {
     border-radius: 5px;
     font-size: 16px;
     color: black;
+}
+
+.char-button {
+    margin: 2px;
+    padding: 5px 10px;
+    font-size: 16px;
+    color: white;
+    cursor: pointer;
+    background-color: #3a4a53;
+    font-family: 'Varela Round', sans-serif;
+    border-radius: 15px;
+}
+
+#grammar-race-input.correct {
+    background-color: #d4edda;
+    color: #155724;
+}
+
+#grammar-race-input.incorrect {
+    background-color: #f8d7da;
+    color: #721c24;
 }

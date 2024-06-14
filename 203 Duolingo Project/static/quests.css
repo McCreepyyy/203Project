@@ -119,13 +119,13 @@ body {
     color: white;
     text-align: center;
     font-weight: 600;
-    margin-top: 20px; /* Adjust as needed for positioning */
+    margin-top: 20px;
 }
 
     .main-content .characters .scripts {
         display: flex;
         justify-content: center;
-        gap: 50px; /* Adjust gap between links */
+        gap: 50px;
         margin-right: 51px;
         padding-top: 20px;
     }
@@ -144,9 +144,9 @@ body {
             position: absolute;
             bottom: -3px;
             left: 0;
-            width: 0; /* Set width to 0 to remove the border */
+            width: 0;
             height: 1px;
-            background-color: transparent; /* Set background color to transparent */
+            background-color: transparent;
             z-index: -1;
         }
 
@@ -174,10 +174,10 @@ body {
 .sidebar-right {
     font-family: 'Varela Round', sans-serif;
     color: white;
-    position: absolute; /* Set position absolute for sidebar-right */
-    top: 150px; /* Align to the top */
-    right: 0; /* Align to the right */
-    width: 300px; /* Set a fixed width */
+    position: absolute;
+    top: 150px;
+    right: 0;
+    width: 300px;
     margin-right: 15px;
 }
 
@@ -191,16 +191,16 @@ body {
 
 /* Daily Quests */
 .daily-quests {
-    position: relative; /* Remove 'fixed' positioning */
-    margin: 0 auto; /* Center horizontally */
-    width: 250px; /* Set a fixed width */
-    text-align: center; /* Center text */
+    position: relative;
+    margin: 0 auto;
+    width: 250px;
+    text-align: center;
     background-color: #1e2b30;
     color: white;
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    margin-top: 160px; /* Adjust as needed for spacing */
+    margin-top: 160px;
 }
 
     .daily-quests .daily-quests-text {

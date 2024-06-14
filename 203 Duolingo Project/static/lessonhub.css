@@ -107,8 +107,8 @@ body {
 
 .header-icons {
     position: absolute;
-    top: 20px; /* Adjust top position */
-    right: 30px; /* Adjust right position */
+    top: 20px;
+    right: 30px; 
     margin-top: 80px;
     display: flex;
     align-items: center;
@@ -154,8 +154,8 @@ body {
     width: 30px;
     height: 30px;
     border-radius: 50%;
-    background-color: #28a745; /* Set default circle color to green */
-    margin-right: 10px; /* Add margin to create space between circle and lesson text */
+    background-color: #28a745;
+    margin-right: 10px;
 }
 
 .lesson-link {
@@ -163,8 +163,8 @@ body {
     align-items: center;
     text-decoration: none;
     color: white;
-    width: 300px; /* Set a fixed width for each lesson link */
-    padding: 10px; /* Add padding to the lesson links */
+    width: 300px;
+    padding: 10px;
     margin-left: 75px;
 }
 
@@ -176,10 +176,10 @@ body {
 .sidebar-right {
     font-family: 'Varela Round', sans-serif;
     color: white;
-    position: absolute; /* Set position absolute for sidebar-right */
-    top: 150px; /* Align to the top */
-    right: 0; /* Align to the right */
-    width: 300px; /* Set a fixed width */
+    position: absolute;
+    top: 150px;
+    right: 0;
+    width: 300px;
     margin-right: 15px;
 }
 
@@ -226,10 +226,10 @@ body {
 .daily-quests {
     font-family: 'Varela Round', sans-serif;
     color: white;
-    background-color: #1e2b30; /* Add background color */
+    background-color: #1e2b30;
     padding: 20px;
     border-radius: 10px;
-    margin-bottom: 20px; /* Add margin bottom */
+    margin-bottom: 20px;
 }
 
 .league {

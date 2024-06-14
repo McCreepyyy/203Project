@@ -47,7 +47,6 @@
             <b>Sign Out</b>
         </a>
     </div>
-    </div>
     <!-- Main Content Area -->
     <div class="main-content">
         <!-- Hearts, Day Streak, Gems -->
@@ -78,118 +77,143 @@
                         <div class="sentence" id="fill-sentence"></div>
                         <div class="words" id="fill-words"></div>
                     </div>
+                    <div id="grammar-race" class="grammar-race hidden">
+                        <p id="grammar-race-text"></p>
+                        <div id="character-buttons-container"></div>
+                        <textarea id="grammar-race-input" rows="4" cols="50"></textarea>
+                    </div>
                 </div>
                 <div id="feedback" class="feedback hidden"></div>
             </div>
             <button id="next-button" class="hidden">Next</button>
         </section>
     </div>
+
+    <!-- Java Script -->
     <script>
-    function allowDrop(event) {
-        event.preventDefault();
-    }
-
-    function drag(event) {
-        event.dataTransfer.setData("text", event.target.id);
-    }
-
-    function drop(event) {
-        event.preventDefault();
-        var data = event.dataTransfer.getData("text");
-        var word = document.getElementById(data).innerHTML;
-
-        if (event.target.classList.contains('blank') && event.target.innerHTML === "") {
-            event.target.innerHTML = word;
-            document.getElementById(data).style.display = 'none';
-
-            if (event.target.getAttribute('data-correct') === word) {
-                event.target.classList.add('correct');
-            } else {
-                event.target.classList.add('incorrect');
+            function allowDrop(event) {
+                event.preventDefault();
             }
 
-            checkCompletion();
-        }
-    }
+            function drag(event) {
+                event.dataTransfer.setData("text", event.target.id);
+            }
 
-        function checkCompletion() {
-            var blanks = document.querySelectorAll('.blank');
-            var isComplete = true;
-            blanks.forEach(blank => {
-                if (blank.innerHTML === "") {
-                    isComplete = false;
+            function drop(event) {
+                event.preventDefault();
+                var data = event.dataTransfer.getData("text");
+                var word = document.getElementById(data).innerHTML;
+
+                if (event.target.classList.contains('blank') && event.target.innerHTML === "") {
+                    event.target.innerHTML = word;
+                    document.getElementById(data).style.display = 'none';
+
+                    if (event.target.getAttribute('data-correct') === word) {
+                        event.target.classList.add('correct');
+                    } else {
+                        event.target.classList.add('incorrect');
+                    }
+
+                    checkCompletion();
                 }
-            });
+            }
 
-            if (isComplete) {
-                var allCorrect = true;
+            function checkCompletion() {
+                var blanks = document.querySelectorAll('.blank');
+                var isComplete = true;
                 blanks.forEach(blank => {
-                    if (!blank.classList.contains('correct')) {
-                        allCorrect = false;
+                    if (blank.innerHTML === "") {
+                        isComplete = false;
                     }
                 });
 
-                if (allCorrect) {
-                    feedback.innerText = 'Correct!';
-                    feedback.classList.remove('incorrect');
-                    feedback.classList.add('correct');
-                } else {
-                    feedback.innerText = 'Incorrect!';
-                    feedback.classList.remove('correct');
-                    feedback.classList.add('incorrect');
-                    hearts--;
-                    heartsContainer.removeChild(heartsContainer.lastChild);
-                    document.getElementById('heartsCount').textContent = hearts; // Update the hearts count immediately
-                    fetch('/lose_heart', {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json',
-                        },
-                    })
-                        .then(response => response.json())
-                        .then(data => {
-                            if (data.success) {
-                                console.log(`Hearts left: ${data.hearts}`);
-                                if (data.locked) {
-                                    window.location.href = "{{ url_for('lessonhub') }}";
-                                }
-                            } else {
-                                console.error('Failed to update hearts');
-                            }
-                        })
-                        .catch(error => {
-                            console.error('Error:', error);
-                        });
-                }
-
-                feedback.classList.remove('hidden');
-                nextButton.classList.remove('hidden');
-
-                if (hearts === 0) {
-                    feedback.innerText = 'Game Over';
-                    nextButton.innerText = 'OK';
-                    nextButton.classList.remove('hidden');
-                    nextButton.removeEventListener('click', nextQuestion);
-                    nextButton.addEventListener('click', () => {
-                        window.location.href = '{{ url_for("lessonhub") }}';
+                // Check if the current question is a grammar race type
+                if (questions[currentQuestionIndex].type === 'grammar-race') {
+                    // Call the checkAnswer function for grammar race questions
+                    checkAnswer();
+                } else if (isComplete) {
+                    // Existing logic for fill-in-the-blank questions
+                    var allCorrect = true;
+                    blanks.forEach(blank => {
+                        if (!blank.classList.contains('correct')) {
+                            allCorrect = false;
+                        }
                     });
+
+                    if (allCorrect) {
+                        feedback.innerText = 'Correct!';
+                        feedback.classList.remove('incorrect');
+                        feedback.classList.add('correct');
+                        score += 10;
+                    } else {
+                        feedback.innerText = 'Incorrect!';
+                        feedback.classList.remove('correct');
+                        feedback.classList.add('incorrect');
+                        hearts--;
+                        if (hearts > 0) {
+                            heartsContainer.removeChild(heartsContainer.lastChild);
+                        }
+                        document.getElementById('heartsCount').textContent = hearts;
+                        // Fetch call to update hearts on the server
+                        updateHearts();
+                    }
+
+                    feedback.classList.remove('hidden');
+                    nextButton.classList.remove('hidden');
+
+                    if (hearts === 0) {
+                        endGame();
+                    }
                 }
             }
-        }
 
-    const questions = [
-        { text: 'Translate すし、ごはん', answers: ['sushi, rice', 'sushi, water', 'sushi, green tea'], correct: 'sushi, rice' },
-        { type: 'fill-in-the-blank', sentence: '______ と ______、ください。', words: ['ごはん', 'すし'], correct: ['すし', 'ごはん'] },
-        { text: 'Translate すし、みず', answers: ['sushi, rice', 'sushi, water', 'sushi, green tea'], correct: 'sushi, water' },
-        { text: 'Translate ごはん、おちゃ', answers: ['rice, water', 'rice, green tea', 'sushi, rice'], correct: 'rice, green tea' },
-        { type: 'fill-in-the-blank', sentence: '______ と ______ です。', words: ['おちゃ', 'みず'], correct: ['おちゃ', 'みず'] },
-        { text: 'Translate すしとごはん、ください', answers: ['sushi and rice, please', 'sushi and water, please', 'sushi and green tea, please'], correct: 'sushi and rice, please' },
-        { text: 'Translate すしとみずです', answers: ["it's sushi and rice", "it's sushi and water", "it's sushi and green tea"], correct: "it's sushi and water" },
-        { type: 'fill-in-the-blank', sentence: '______ と ______ です。', words: ['おちゃ', 'ごはん'], correct: ['ごはん', 'おちゃ'] },
-        { text: 'Translate ごはんとみずです', answers: ["it's rice and water", "it's rice and green tea", "it's sushi and rice"], correct: "it's rice and water" },
-        { type: 'fill-in-the-blank', sentence: '______ と ______、ください。', words: ['ごはん', 'みず'], correct: ['ごはん', 'みず'] },
-        { text: 'Translate すしとおちゃ、ください', answers: ['sushi and rice, please', 'sushi and water, please', 'sushi and green tea, please'], correct: 'sushi and green tea, please' },
-    ];
+            function updateHearts() {
+                fetch('/lose_heart', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.success) {
+                            console.log(`Hearts left: ${data.hearts}`);
+                            if (data.locked) {
+                                window.location.href = "{{ url_for('lessonhub') }}";
+                            }
+                        } else {
+                            console.error('Failed to update hearts');
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                    });
+            }
+
+            function endGame() {
+                feedback.innerText = 'Game Over';
+                nextButton.innerText = 'OK';
+                nextButton.classList.remove('hidden');
+                nextButton.removeEventListener('click', nextQuestion);
+                nextButton.addEventListener('click', () => {
+                    window.location.href = '{{ url_for("lessonhub") }}';
+                });
+            }
+
+
+        const questions = [
+            { text: 'Translate すし、ごはん', answers: ['sushi, rice', 'sushi, water', 'sushi, green tea'], correct: 'sushi, rice' },
+            { type: 'fill-in-the-blank', sentence: '______ と ______、ください。', words: ['ごはん', 'すし'], correct: ['すし', 'ごはん'] },
+            { text: 'Translate すし、みず', answers: ['sushi, rice', 'sushi, water', 'sushi, green tea'], correct: 'sushi, water' },
+            { text: 'Translate ごはん、おちゃ', answers: ['rice, water', 'rice, green tea', 'sushi, rice'], correct: 'rice, green tea' },
+            { type: 'fill-in-the-blank', sentence: '______ と ______ です。', words: ['おちゃ', 'みず'], correct: ['おちゃ', 'みず'] },
+            { text: 'Translate すしとごはん、ください', answers: ['sushi and rice, please', 'sushi and water, please', 'sushi and green tea, please'], correct: 'sushi and rice, please' },
+            { text: 'Translate すしとみずです', answers: ["it's sushi and rice", "it's sushi and water", "it's sushi and green tea"], correct: "it's sushi and water" },
+            { type: 'fill-in-the-blank', sentence: '______ と ______ です。', words: ['おちゃ', 'ごはん'], correct: ['ごはん', 'おちゃ'] },
+            { text: 'Translate ごはんとみずです', answers: ["it's rice and water", "it's rice and green tea", "it's sushi and rice"], correct: "it's rice and water" },
+            { type: 'fill-in-the-blank', sentence: '______ と ______、ください。', words: ['ごはん', 'みず'], correct: ['ごはん', 'みず'] },
+            { text: 'Translate すしとおちゃ、ください', answers: ['sushi and rice, please', 'sushi and water, please', 'sushi and green tea, please'], correct: 'sushi and green tea, please' },
+        ];
 
     let currentQuestionIndex = 0;
     let score = 0;
@@ -219,160 +243,272 @@
         showQuestion();
     }
 
-    function showQuestion() {
-        resetState();
-        questionContainer.classList.remove('hidden');
-        feedback.classList.add('hidden');
-        const question = questions[currentQuestionIndex];
-        if (question.hasOwnProperty('type') && question.type === 'fill-in-the-blank') {
-            showFillInTheBlankQuestion(question);
-        } else {
-            showTranslateQuestion(question);
-        }
-    }
-
-    function showTranslateQuestion(question) {
-        questionText.innerText = question.text;
-        answerButtons.classList.remove('hidden');
-        question.answers.forEach(answer => {
-            const button = document.createElement('button');
-            button.innerText = answer;
-            button.classList.add('btn');
-            button.dataset.correct = answer === question.correct;
-            button.addEventListener('click', selectAnswer);
-            answerButtons.appendChild(button);
-        });
-    }
-
-    function showFillInTheBlankQuestion(question) {
-        fillInTheBlanks.classList.remove('hidden');
-        questionText.innerText = '';
-        const sentenceParts = question.sentence.split('______');
-        fillSentence.innerHTML = '';
-
-        for (let i = 0; i < sentenceParts.length - 1; i++) {
-            fillSentence.innerHTML += sentenceParts[i] + `<span class="blank" data-correct="${question.correct[i]}" ondrop="drop(event)" ondragover="allowDrop(event)"></span>`;
-        }
-        fillSentence.innerHTML += sentenceParts[sentenceParts.length - 1];
-
-        fillWords.innerHTML = '';
-        question.words.forEach((word, index) => {
-            const wordSpan = document.createElement('span');
-            wordSpan.id = `word${index}_${currentQuestionIndex}`;
-            wordSpan.classList.add('word');
-            wordSpan.draggable = true;
-            wordSpan.innerText = word;
-            wordSpan.ondragstart = drag;
-            fillWords.appendChild(wordSpan);
-        });
-    }
-
-    function resetState() {
-        while (answerButtons.firstChild) {
-            answerButtons.removeChild(answerButtons.firstChild);
-        }
-        nextButton.classList.add('hidden');
-        feedback.classList.add('hidden');
-        fillInTheBlanks.classList.add('hidden');
-    }
-
-        function selectAnswer(e) {
-            const selectedButton = e.target;
-            const correct = selectedButton.dataset.correct === 'true';
-            if (correct) {
-                feedback.innerText = 'Correct!';
-                feedback.classList.remove('incorrect');
-                feedback.classList.add('correct');
-                score += 10;
-            } else {
-                feedback.innerText = 'Incorrect!';
-                feedback.classList.remove('correct');
-                feedback.classList.add('incorrect');
-                hearts--;
-                heartsContainer.removeChild(heartsContainer.lastChild);
-                heartsCount.textContent = hearts; // Update the hearts count immediately
-                fetch('/lose_heart', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                })
-                    .then(response => response.json())
-                    .then(data => {
-                        if (data.success) {
-                            console.log(`Hearts left: ${data.hearts}`);
-                            if (data.locked) {
-                                window.location.href = "{{ url_for('lessonhub') }}";
-                            }
-                        } else {
-                            console.error('Failed to update hearts');
-                        }
-                    })
-                    .catch(error => {
-                        console.error('Error:', error);
-                    });
+            function showQuestion() {
+                resetState();
+                questionContainer.classList.remove('hidden');
+                feedback.classList.add('hidden');
+                const question = questions[currentQuestionIndex];
+                if (question.hasOwnProperty('type') && question.type === 'fill-in-the-blank') {
+                    showFillInTheBlankQuestion(question);
+                } else if (question.hasOwnProperty('type') && question.type === 'grammar-race') {
+                    showGrammarRaceQuestion(question);
+                } else {
+                    showTranslateQuestion(question);
+                }
             }
-            feedback.classList.remove('hidden');
-            nextButton.classList.remove('hidden');
-            Array.from(answerButtons.children).forEach(button => {
-                button.disabled = true;
-                setStatusClass(button, button.dataset.correct === 'true');
-            });
-            if (hearts === 0) {
-                feedback.innerText = 'Game Over';
-                nextButton.innerText = 'OK';
-                nextButton.classList.remove('hidden');
-                nextButton.removeEventListener('click', nextQuestion);
-                nextButton.addEventListener('click', () => {
-                    window.location.href = '{{ url_for("lessonhub") }}';
+
+
+            function showTranslateQuestion(question) {
+                questionText.innerText = question.text;
+                answerButtons.classList.remove('hidden');
+                question.answers.forEach(answer => {
+                    const button = document.createElement('button');
+                    button.innerText = answer;
+                    button.classList.add('btn');
+                    button.dataset.correct = answer === question.correct;
+                    button.addEventListener('click', selectAnswer);
+                    answerButtons.appendChild(button);
                 });
             }
-        }
 
-    function setStatusClass(element, correct) {
-        clearStatusClass(element);
-        if (correct) {
-            element.classList.add('correct');
-        } else {
-            element.classList.add('incorrect');
-        }
-    }
+            function showFillInTheBlankQuestion(question) {
+                fillInTheBlanks.classList.remove('hidden');
+                questionText.innerText = '';
+                const sentenceParts = question.sentence.split('______');
+                fillSentence.innerHTML = '';
 
-    function clearStatusClass(element) {
-        element.classList.remove('correct');
-        element.classList.remove('incorrect');
-    }
-
-    function nextQuestion() {
-        currentQuestionIndex++;
-        if (currentQuestionIndex < questions.length) {
-            showQuestion();
-        } else {
-            fetch('/save_score', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({ score: score })
-            })
-            .then(response => response.json())
-            .then(data => {
-                if (data.success) {
-                    console.log('Score saved successfully');
-                } else {
-                    console.error('Failed to save score');
+                for (let i = 0; i < sentenceParts.length - 1; i++) {
+                    fillSentence.innerHTML += sentenceParts[i] + `<span class="blank" data-correct="${question.correct[i]}" ondrop="drop(event)" ondragover="allowDrop(event)"></span>`;
                 }
-            })
-            .catch(error => {
-                console.error('Error:', error);
-            });
-            window.location.href = '{{ url_for("lessonhub") }}';
-        }
-    }
+                fillSentence.innerHTML += sentenceParts[sentenceParts.length - 1];
 
+                fillWords.innerHTML = '';
+                question.words.forEach((word, index) => {
+                    const wordSpan = document.createElement('span');
+                    wordSpan.id = `word${index}_${currentQuestionIndex}`;
+                    wordSpan.classList.add('word');
+                    wordSpan.draggable = true;
+                    wordSpan.innerText = word;
+                    wordSpan.ondragstart = drag;
+                    fillWords.appendChild(wordSpan);
+                });
+            }
+
+            function showGrammarRaceQuestion(question) {
+                const grammarRace = document.getElementById('grammar-race');
+                grammarRace.classList.remove('hidden');
+                questionText.innerText = '';
+
+                const grammarRaceText = document.getElementById('grammar-race-text');
+                const grammarRaceInput = document.getElementById('grammar-race-input');
+
+                // Clear the input value
+                grammarRaceInput.value = '';
+
+                grammarRaceText.innerText = question.text;
+
+                // Show the Next button
+                nextButton.classList.add('hidden');
+
+                // Check if the Check button already exists
+                let checkButton = document.getElementById('check-button');
+                if (!checkButton) {
+                    // Create the Check button
+                    checkButton = document.createElement('button');
+                    checkButton.id = 'check-button';
+                    checkButton.innerText = 'Check';
+                    checkButton.classList.add('btn');
+                    checkButton.addEventListener('click', checkAnswer);
+                    grammarRace.appendChild(checkButton);
+                }
+            }
+
+            function checkAnswer() {
+                const grammarRaceInput = document.getElementById('grammar-race-input');
+                const userAnswer = grammarRaceInput.value.trim();
+                const correctAnswer = questions[currentQuestionIndex].correct;
+                const feedback = document.getElementById('feedback');
+
+                // Compare user's answer with the correct answer
+                const isCorrect = userAnswer === correctAnswer;
+
+                if (isCorrect) {
+                    // Display correct feedback and turn input field green
+                    feedback.innerText = 'Correct!';
+                    feedback.classList.remove('incorrect');
+                    feedback.classList.add('correct');
+                    grammarRaceInput.classList.add('correct');
+                    grammarRaceInput.classList.remove('incorrect');
+                    score += 10; // Assuming you want to increase the score for a correct answer
+                } else {
+                    // Display incorrect feedback and turn input field red
+                    feedback.innerText = 'Incorrect!';
+                    feedback.classList.remove('correct');
+                    feedback.classList.add('incorrect');
+                    grammarRaceInput.classList.add('incorrect');
+                    grammarRaceInput.classList.remove('correct');
+                    hearts--; // Deduct a heart for an incorrect answer
+                    if (hearts > 0) {
+                        heartsContainer.removeChild(heartsContainer.lastChild);
+                    }
+                }
+
+                // Update hearts count display
+                document.getElementById('heartsCount').textContent = hearts;
+
+                // Show the feedback
+                feedback.classList.remove('hidden');
+
+                // Disable the input field
+                grammarRaceInput.disabled = true;
+
+                // Show the Next button
+                nextButton.classList.remove('hidden');
+
+                // If no hearts left, end the game
+                if (hearts === 0) {
+                    feedback.innerText = 'Game Over';
+                    nextButton.innerText = 'OK';
+                    nextButton.removeEventListener('click', nextQuestion);
+                    nextButton.addEventListener('click', () => {
+                        window.location.href = '{{ url_for("lessonhub") }}';
+                    });
+                }
+            }
+
+
+
+            function resetState() {
+                while (answerButtons.firstChild) {
+                    answerButtons.removeChild(answerButtons.firstChild);
+                }
+                nextButton.classList.add('hidden');
+                feedback.classList.add('hidden');
+                fillInTheBlanks.classList.add('hidden');
+                grammarRace.classList.add('hidden');
+            }
+
+            function selectAnswer(e) {
+                const selectedButton = e.target;
+                const correct = selectedButton.dataset.correct === 'true';
+                if (correct) {
+                    feedback.innerText = 'Correct!';
+                    feedback.classList.remove('incorrect');
+                    feedback.classList.add('correct');
+                    score += 10;
+                } else {
+                    feedback.innerText = 'Incorrect!';
+                    feedback.classList.remove('correct');
+                    feedback.classList.add('incorrect');
+                    hearts--;
+                    heartsContainer.removeChild(heartsContainer.lastChild);
+                    document.getElementById('heartsCount').textContent = hearts;
+                    fetch('/lose_heart', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                    })
+                        .then(response => response.json())
+                        .then(data => {
+                            if (data.success) {
+                                console.log(`Hearts left: ${data.hearts}`);
+                                if (data.locked) {
+                                    window.location.href = "{{ url_for('lessonhub') }}";
+                                }
+                            } else {
+                                console.error('Failed to update hearts');
+                            }
+                        })
+                        .catch(error => {
+                            console.error('Error:', error);
+                        });
+                }
+                feedback.classList.remove('hidden');
+                nextButton.classList.remove('hidden');
+                Array.from(answerButtons.children).forEach(button => {
+                    button.disabled = true;
+                    setStatusClass(button, button.dataset.correct === 'true');
+                });
+                if (hearts === 0) {
+                    feedback.innerText = 'Game Over';
+                    nextButton.innerText = 'OK';
+                    nextButton.classList.remove('hidden');
+                    nextButton.removeEventListener('click', nextQuestion);
+                    nextButton.addEventListener('click', () => {
+                        window.location.href = '{{ url_for("lessonhub") }}';
+                    });
+                }
+            }
+
+
+
+            function setStatusClass(element, correct) {
+                clearStatusClass(element);
+                if (correct) {
+                    element.classList.add('correct');
+                } else {
+                    element.classList.add('incorrect');
+                }
+            }
+
+
+            function clearStatusClass(element) {
+                element.classList.remove('correct');
+                element.classList.remove('incorrect');
+            }
+
+
+function nextQuestion() {
+    currentQuestionIndex++;
+    if (currentQuestionIndex < questions.length) {
+        showQuestion();
+    } else {
+        fetch('/save_score', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ score: score })
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                console.log('Score saved successfully');
+            } else {
+                console.error('Failed to save score');
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
+        window.location.href = '{{ url_for("lessonhub") }}';
+    }
+}
     nextButton.addEventListener('click', () => {
         nextQuestion();
     });
+
+            const grammarRace = document.getElementById('grammar-race');
+
+            function addCharacterToInput(char) {
+                const grammarRaceInput = document.getElementById('grammar-race-input');
+                grammarRaceInput.value += char; // Append the character to the input field
+            }
+
+            const japaneseCharacters = [
+                'さ', 'ひ', 'こ', 'ん', 'っ', 'で', 'せ', 'す', 'し', 'い', 'が', 'っ',
+                'か', 'く', 'と', 'や'
+            ];
+            const characterButtonsContainer = document.getElementById('character-buttons-container');
+
+            japaneseCharacters.forEach(char => {
+                const button = document.createElement('button');
+                button.innerText = char;
+                button.classList.add('char-button');
+                button.addEventListener('click', () => addCharacterToInput(char));
+                characterButtonsContainer.appendChild(button);
+            });
 
     startGame();
     </script>

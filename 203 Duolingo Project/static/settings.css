@@ -196,13 +196,13 @@ body {
     color: white;
     text-align: center;
     font-weight: 600;
-    margin-top: 20px; /* Adjust as needed for positioning */
+    margin-top: 20px;
 }
 
     .main-content .characters .scripts {
         display: flex;
         justify-content: center;
-        gap: 50px; /* Adjust gap between links */
+        gap: 50px;
         margin-right: 51px;
         padding-top: 20px;
     }
@@ -221,9 +221,9 @@ body {
             position: absolute;
             bottom: -3px;
             left: 0;
-            width: 0; /* Set width to 0 to remove the border */
+            width: 0;
             height: 1px;
-            background-color: transparent; /* Set background color to transparent */
+            background-color: transparent;
             z-index: -1;
         }
 
@@ -351,5 +351,5 @@ button {
 
     .notifications input[type="checkbox"] {
         margin-left: auto;
-        margin-right: -15px; /* Adjust the space between checkbox and text */
+        margin-right: -15px;
     }

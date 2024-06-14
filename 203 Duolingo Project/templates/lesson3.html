@@ -79,7 +79,8 @@
                     </div>
                     <div id="grammar-race" class="grammar-race hidden">
                         <p id="grammar-race-text"></p>
-                        <textarea id="grammar-race-input" rows="4" cols="50"></textarea>
+                        <div id="character-buttons-container"></div>
+                        <textarea id="grammar-race-input" rows="4" cols="50" placeholder="Enter text here..."></textarea>
                     </div>
                 </div>
                 <div id="feedback" class="feedback hidden"></div>
@@ -87,7 +88,9 @@
             <button id="next-button" class="hidden">Next</button>
         </section>
     </div>
-        <script>
+
+    <!-- Java Script -->
+    <script>
             function allowDrop(event) {
                 event.preventDefault();
             }
@@ -124,7 +127,12 @@
                     }
                 });
 
-                if (isComplete) {
+                // Check if the current question is grammar race
+                if (questions[currentQuestionIndex].type === 'grammar-race') {
+                    // Call the checkAnswer function for grammar race questions
+                    checkAnswer();
+                } else if (isComplete) {
+                    // Existing logic for fill-in-the-blank questions
                     var allCorrect = true;
                     blanks.forEach(blank => {
                         if (!blank.classList.contains('correct')) {
@@ -142,48 +150,58 @@
                         feedback.classList.remove('correct');
                         feedback.classList.add('incorrect');
                         hearts--;
-                        heartsContainer.removeChild(heartsContainer.lastChild);
+                        if (hearts > 0) {
+                            heartsContainer.removeChild(heartsContainer.lastChild);
+                        }
                         document.getElementById('heartsCount').textContent = hearts;
-                        fetch('/lose_heart', {
-                            method: 'POST',
-                            headers: {
-                                'Content-Type': 'application/json',
-                            },
-                        })
-                            .then(response => response.json())
-                            .then(data => {
-                                if (data.success) {
-                                    console.log(`Hearts left: ${data.hearts}`);
-                                    if (data.locked) {
-                                        window.location.href = "{{ url_for('lessonhub') }}";
-                                    }
-                                } else {
-                                    console.error('Failed to update hearts');
-                                }
-                            })
-                            .catch(error => {
-                                console.error('Error:', error);
-                            });
+                        updateHearts();
                     }
 
                     feedback.classList.remove('hidden');
                     nextButton.classList.remove('hidden');
 
                     if (hearts === 0) {
-                        feedback.innerText = 'Game Over';
-                        nextButton.innerText = 'OK';
-                        nextButton.classList.remove('hidden');
-                        nextButton.removeEventListener('click', nextQuestion);
-                        nextButton.addEventListener('click', () => {
-                            window.location.href = '{{ url_for("lessonhub") }}';
-                        });
+                        endGame();
                     }
                 }
             }
 
+            function updateHearts() {
+                fetch('/lose_heart', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.success) {
+                            console.log(`Hearts left: ${data.hearts}`);
+                            if (data.locked) {
+                                window.location.href = "{{ url_for('lessonhub') }}";
+                            }
+                        } else {
+                            console.error('Failed to update hearts');
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                    });
+            }
 
+            function endGame() {
+                feedback.innerText = 'Game Over';
+                nextButton.innerText = 'OK';
+                nextButton.classList.remove('hidden');
+                nextButton.removeEventListener('click', nextQuestion);
+                nextButton.addEventListener('click', () => {
+                    window.location.href = '{{ url_for("lessonhub") }}';
+                });
+            }
+
+        // List of Questions
         const questions = [
-        { type: 'grammar-race', text: 'Make this gramatically correct: やさしいひとがくせいです', correct: 'やさしいひととがくせいです' },
+        { type: 'grammar-race', text: 'Make this grammatically correct: やさしいひとがくせいです', correct: 'やさしいひととがくせいです' },
         { text: 'Translate ひと', answers: ['teacher', 'person', 'lawyer'], correct: 'person' },
         { type: 'fill-in-the-blank', sentence: 'やさしい ______ と ______ がくせい。', words: ['やさしい', 'せんせい'], correct: ['せんせい', 'やさしい'] },
         { text: 'Translate べんごし', answers: ['student', 'doctor', 'lawyer'], correct: 'lawyer' },
@@ -193,7 +211,7 @@
         { text: 'Translate いしゃです', answers: ["he's a teacher", "he's a doctor", "he's a lawyer"], correct: "he's a doctor" },
         { type: 'fill-in-the-blank', sentence: '______ と ______ です。', words: ['べんごし', 'せんせい'], correct: ['せんせい', 'べんごし'] },
         { text: 'Translate かっこいいべんごしです', answers: ["she's a cool lawyer", "she's a cool teacher", "she's a cool person"], correct: "she's a cool lawyer" },
-        { type: 'grammar-race', text: 'Make this gramatically correct: かっこいいひとかっこいいせんせいです', correct: 'かっこいいひととかっこいいせんせいです' },
+        { type: 'grammar-race', text: 'Make this grammatically correct: かっこいいひとかっこいいせんせいです', correct: 'かっこいいひととかっこいいせんせいです' },
         { text: 'Translate やさしいひとです', answers: ["she's a nice teacher", "he's a nice doctor", "she's a nice person"], correct: "she's a nice person" },
     ];
 
@@ -306,37 +324,58 @@
             }
 
             function checkAnswer() {
-                console.log("Checking answer...");
                 const grammarRaceInput = document.getElementById('grammar-race-input');
                 const userAnswer = grammarRaceInput.value.trim();
                 const correctAnswer = questions[currentQuestionIndex].correct;
-
-                console.log("User answer:", userAnswer);
-                console.log("Correct answer:", correctAnswer);
-
-                const feedback = document.getElementById('feedback'); // Update targeting
+                const feedback = document.getElementById('feedback');
 
                 // Compare user's answer with the correct answer
                 const isCorrect = userAnswer === correctAnswer;
 
                 if (isCorrect) {
-                    // Display correct feedback
+                    // Display correct feedback and turn input field green
                     feedback.innerText = 'Correct!';
                     feedback.classList.remove('incorrect');
                     feedback.classList.add('correct');
+                    grammarRaceInput.classList.add('correct');
+                    grammarRaceInput.classList.remove('incorrect');
+                    score += 10; // Assuming you want to increase the score for a correct answer
                 } else {
-                    // Display incorrect feedback
+                    // Display incorrect feedback and turn input field red
                     feedback.innerText = 'Incorrect!';
                     feedback.classList.remove('correct');
                     feedback.classList.add('incorrect');
+                    grammarRaceInput.classList.add('incorrect');
+                    grammarRaceInput.classList.remove('correct');
+                    hearts--; // Deduct a heart for an incorrect answer
+                    if (hearts > 0) {
+                        heartsContainer.removeChild(heartsContainer.lastChild);
+                    }
                 }
+
+                // Update hearts count display
+                document.getElementById('heartsCount').textContent = hearts;
+
+                // Show the feedback
+                feedback.classList.remove('hidden');
 
                 // Disable the input field
                 grammarRaceInput.disabled = true;
 
                 // Show the Next button
                 nextButton.classList.remove('hidden');
+
+                // If no hearts left, end the game
+                if (hearts === 0) {
+                    feedback.innerText = 'Game Over';
+                    nextButton.innerText = 'OK';
+                    nextButton.removeEventListener('click', nextQuestion);
+                    nextButton.addEventListener('click', () => {
+                        window.location.href = '{{ url_for("lessonhub") }}';
+                    });
+                }
             }
+
 
 
             function resetState() {
@@ -451,6 +490,25 @@ function nextQuestion() {
     });
 
             const grammarRace = document.getElementById('grammar-race');
+
+            function addCharacterToInput(char) {
+                const grammarRaceInput = document.getElementById('grammar-race-input');
+                grammarRaceInput.value += char;
+            }
+
+            const japaneseCharacters = [
+                'さ', 'ひ', 'こ', 'ん', 'っ', 'で', 'せ', 'す', 'し', 'い', 'が', 'っ',
+                'か', 'く', 'と', 'や'
+            ];
+            const characterButtonsContainer = document.getElementById('character-buttons-container');
+
+            japaneseCharacters.forEach(char => {
+                const button = document.createElement('button');
+                button.innerText = char;
+                button.classList.add('char-button');
+                button.addEventListener('click', () => addCharacterToInput(char));
+                characterButtonsContainer.appendChild(button);
+            });
 
     startGame();
     </script>
