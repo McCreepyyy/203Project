@@ -1,4 +1,6 @@
 ﻿# -*- coding: utf-8 -*-
+# Import necessary libraries and modules for the flask application
+
 from flask import Flask, render_template, request, redirect, session, url_for
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime, timedelta, date
@@ -6,14 +8,18 @@ from flask import Flask, render_template, request, redirect, url_for, jsonify
 import random
 import os
 
-
+# Intialiize the Flask application
 app = Flask(__name__)
-app.secret_key = '6969'  # Set a secret key
+# Sets a secret key for session management
+app.secret_key = '6969'
+# Configure the database URI for SQAlchemy
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + os.path.join(os.path.abspath(os.path.dirname(__file__)), 'test.db')
+# Initialize the SQLAlchemy object
 db = SQLAlchemy(app)
 
 app.config['TEMPLATES_AUTO_RELOAD'] = True
 
+# Define the User model
 class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(80), unique=True, nullable=False)
@@ -23,11 +29,12 @@ class User(db.Model):
     gems = db.Column(db.Integer, default=0)
     day_streak = db.Column(db.Integer, default=0)
     last_login = db.Column(db.DateTime, default=datetime.utcnow)
-    xp = db.Column(db.Integer, default=0)  # Add this line
+    xp = db.Column(db.Integer, default=0) # Experience Points 
 
     def __repr__(self):
         return '<User %r>' % self.username
 
+    # Defines dailyquest model
 class DailyQuest(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
@@ -38,11 +45,12 @@ class DailyQuest(db.Model):
 
     user = db.relationship('User', backref=db.backref('quests', lazy=True))
 
+# Function to generate the daily quest for the user
 def generate_daily_quests(user):
     today = date.today()
     if DailyQuest.query.filter_by(user_id=user.id, date_assigned=today).count() > 0:
         return
-
+    #list of possible quest descriptions
     quests_descriptions = [
         "Earn 100 XP",
         "Buy an item from the shop",
@@ -50,7 +58,7 @@ def generate_daily_quests(user):
         "Win a game",
         "Log in two times today"
     ]
-
+    # Generate 3 random quests for the user
     for _ in range(3):
         description = random.choice(quests_descriptions)
         reward = random.randint(10, 50) // 10 * 10  # Ensure reward is a multiple of 10
@@ -60,14 +68,15 @@ def generate_daily_quests(user):
 
 
 
-
+    #Defines the routes for all the different pages and functionalities
 @app.route('/')
 def index():
+    # Render the index page
     return render_template('index.html')
 
 @app.route('/lesson1')
 def lesson1():
-    # Assuming that the user is logged in and their ID is stored in the session
+  
     if 'user_id' in session:
         user = User.query.get(session['user_id'])
         if user:
@@ -343,12 +352,15 @@ def toggle_dark_mode():
     return jsonify({'success': True})
 
 if __name__ == '__main__':
+    # Create database tables if they don't exist
     with app.app_context():
         db.create_all()  
+    # Set host and port for the application
     HOST = os.environ.get('SERVER_HOST', 'localhost')
     try:
         PORT = int(os.environ.get('SERVER_PORT', '5555'))
     except ValueError:
         PORT = 5555
+    # Run the Flask application
     app.run(HOST, PORT)
 
